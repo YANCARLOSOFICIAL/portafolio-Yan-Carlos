@@ -5,9 +5,9 @@ export default function About() {
   <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-10 bg-gradient-to-r from-primary-light to-highlight bg-clip-text text-transparent tracking-tight dark:from-primary-light dark:to-highlight">
           Sobre mi
         </h2>
-        <p className="text-lg text-white/90 leading-relaxed text-center max-w-2xl mx-auto font-medium mb-6">
-          <span className="text-white dark:text-white">Soy <span className="text-primary font-bold dark:text-primary-light">Yan Carlos Guerra</span>, desarrollador full stack con pasión por la excelencia y la innovación. Mi misión es crear productos digitales que impacten positivamente a las personas y empresas.</span>
-          <span className="block mt-4 text-base text-purple-700 dark:text-purple-300 font-semibold">Actualmente tengo en proceso una empresa de desarrollo de software y TI llamada <a href="https://wairasolutions.com/" target="_blank" rel="noopener" className="underline hover:text-purple-500 dark:hover:text-purple-400">Waira Solutions</a>.</span>
+        <p className="text-lg leading-relaxed text-center max-w-2xl mx-auto font-medium mb-6">
+          <span className="text-slate-800 dark:text-white">Soy <span className="text-primary font-bold dark:text-primary-light">Yan Carlos Guerra</span>, desarrollador full stack con pasión por la excelencia y la innovación. Mi misión es crear productos digitales que impacten positivamente a las personas y empresas.</span>
+          <span className="block mt-4 text-base text-purple-700 dark:text-purple-300 font-semibold">Actualmente tengo en proceso una empresa de desarrollo de software y TI llamada <a href="https://wairasolutions.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-purple-500 dark:hover:text-purple-400">Waira Solutions</a>.</span>
   <span className="block mt-2 text-base text-white dark:text-white/80">Waira Solutions nace con la visión de impulsar la transformación digital de empresas y emprendedores, ofreciendo soluciones tecnológicas innovadoras, desarrollo de software a medida, consultoría en TI y acompañamiento estratégico. Nuestro objetivo es potenciar el crecimiento y la eficiencia de nuestros clientes a través de tecnología de vanguardia y un equipo apasionado por la excelencia.</span>
         </p>
         <div className="grid md:grid-cols-2 gap-8 mt-8">

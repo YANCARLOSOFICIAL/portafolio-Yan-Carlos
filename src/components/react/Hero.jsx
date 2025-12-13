@@ -25,8 +25,8 @@ export default function Hero() {
         {/* Avatar mejorado */}
         <div className="mb-12">
           <div className="w-44 h-44 mx-auto mb-8 rounded-full bg-gradient-to-tr from-purple-400 via-pink-400 to-blue-400 p-1.5 shadow-2xl animate-float relative">
-            <div className="w-full h-full rounded-full bg-slate-900 dark:bg-slate-800 bg-white dark:bg-slate-800 flex items-center justify-center relative overflow-hidden">
-              <span className="text-7xl md:text-8xl font-black bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 bg-clip-text text-transparent drop-shadow-lg dark:drop-shadow-purple-500">YC</span>
+            <div className="w-full h-full rounded-full bg-white dark:bg-slate-800 flex items-center justify-center relative overflow-hidden">
+              <span className="text-7xl md:text-8xl font-black bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 bg-clip-text text-transparent drop-shadow-lg" aria-label="Yan Carlos">YC</span>
               {/* Efecto de brillo */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent dark:via-yellow-100/10 transform -skew-x-12 -translate-x-full animate-shimmer"></div>
             </div>
@@ -55,7 +55,7 @@ export default function Hero() {
         </div>
         
         {/* Descripción mejorada */}
-        <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto mb-12 font-normal leading-relaxed animate-fadeInUp px-4">
+        <p className="text-lg sm:text-xl max-w-3xl mx-auto mb-12 font-normal leading-relaxed animate-fadeInUp px-4">
           <span className="text-slate-700 dark:text-white">Especializado en{' '}</span>
           <span className="text-blue-700 dark:text-blue-400 font-semibold">Frontend</span> <span className="text-slate-700 dark:text-white">(React, Astro, UI/UX, animaciones)</span> y{' '}
           <span className="text-purple-700 dark:text-purple-400 font-semibold">Backend</span> <span className="text-slate-700 dark:text-white">(Node.js, APIs, bases de datos, arquitectura).</span>
