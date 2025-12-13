@@ -1,19 +1,22 @@
 const frontend = [
-  { name: 'React', level: 'Intermedio' },
+  { name: 'React.js', level: 'Avanzado' },
+  { name: 'Vue.js', level: 'Avanzado' },
   { name: 'Astro', level: 'Intermedio' },
-  { name: 'Tailwind CSS', level: 'Intermedio' },
+  { name: 'Angular', level: 'Intermedio' },
+  { name: 'Tailwind CSS', level: 'Avanzado' },
   { name: 'TypeScript', level: 'Intermedio' },
-  { name: 'UI/UX', level: 'Intermedio' },
-  { name: 'Animaciones', level: 'Intermedio' },
 ];
 const backend = [
-  { name: 'Node.js', level: 'Intermedio' },
-  { name: 'Express', level: 'Intermedio' },
-  { name: 'MongoDB', level: 'Intermedio' },
-  { name: 'PostgreSQL', level: 'Intermedio' },
-  { name: 'APIs REST/GraphQL', level: 'Intermedio' },
-  { name: 'Laravel', level: 'Intermedio' },
+  { name: 'Node.js', level: 'Avanzado' },
+  { name: 'Laravel', level: 'Avanzado' },
+  { name: 'Django', level: 'Intermedio' },
   { name: 'Spring Boot', level: 'Intermedio' },
+  { name: 'FastAPI', level: 'Intermedio' },
+  { name: 'PostgreSQL', level: 'Avanzado' },
+  { name: 'MongoDB', level: 'Intermedio' },
+  { name: 'APIs REST', level: 'Avanzado' },
+  { name: 'Docker', level: 'Intermedio' },
+  { name: 'AWS', level: 'Intermedio' },
 ];
 
 export default function Skills() {

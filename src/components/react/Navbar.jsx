@@ -17,8 +17,10 @@ export default function Navbar() {
   const navLinks = [
     { href: '#hero', label: 'Inicio' },
     { href: '#about', label: 'Sobre mí' },
+    { href: '#experience', label: 'Experiencia' },
     { href: '#projects', label: 'Proyectos' },
     { href: '#skills', label: 'Habilidades' },
+    { href: '#education', label: 'Educación' },
     { href: '#contact', label: 'Contacto' },
   ];
 

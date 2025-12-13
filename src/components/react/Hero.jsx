@@ -56,22 +56,24 @@ export default function Hero() {
         
         {/* Descripción mejorada */}
         <p className="text-lg sm:text-xl max-w-3xl mx-auto mb-12 font-normal leading-relaxed animate-fadeInUp px-4">
-          <span className="text-slate-700 dark:text-white">Especializado en{' '}</span>
-          <span className="text-blue-700 dark:text-blue-400 font-semibold">Frontend</span> <span className="text-slate-700 dark:text-white">(React, Astro, UI/UX, animaciones)</span> y{' '}
-          <span className="text-purple-700 dark:text-purple-400 font-semibold">Backend</span> <span className="text-slate-700 dark:text-white">(Node.js, APIs, bases de datos, arquitectura).</span>
+          <span className="text-slate-700 dark:text-white">Estudiante de Ingeniería en Sistemas especializado en{' '}</span>
+          <span className="text-blue-700 dark:text-blue-400 font-semibold">Frontend</span> <span className="text-slate-700 dark:text-white">(React, Vue, Angular, Astro)</span> y{' '}
+          <span className="text-purple-700 dark:text-purple-400 font-semibold">Backend</span> <span className="text-slate-700 dark:text-white">(Node.js, Laravel, Django, Spring Boot).</span>
           <br className="hidden md:block" />
-          <span className="text-slate-700 dark:text-white">Transformo ideas en productos digitales de alto impacto.</span>
+          <span className="text-slate-700 dark:text-white">Full-stack Developer en Kamila Innovation S.A.S. Transformo ideas en soluciones tecnológicas de alto impacto.</span>
         </p>
         
         {/* Tecnologías con efectos mejorados */}
         <div className="flex flex-wrap justify-center gap-4 mb-12 animate-fadeInUp">
           {[
             { name: 'React', color: 'from-cyan-600 to-blue-700 dark:from-cyan-400 dark:to-blue-500' },
-            { name: 'Astro', color: 'from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400' },
+            { name: 'Vue.js', color: 'from-green-600 to-teal-700 dark:from-green-400 dark:to-teal-500' },
+            { name: 'Laravel', color: 'from-red-600 to-orange-700 dark:from-red-400 dark:to-orange-500' },
             { name: 'Node.js', color: 'from-green-600 to-emerald-700 dark:from-green-400 dark:to-emerald-500' },
-            { name: 'TypeScript', color: 'from-blue-600 to-indigo-700 dark:from-blue-400 dark:to-indigo-500' },
-            { name: 'APIs REST', color: 'from-orange-600 to-red-700 dark:from-orange-400 dark:to-red-500' },
-            { name: 'Bases de Datos', color: 'from-yellow-600 to-orange-700 dark:from-yellow-400 dark:to-orange-500' }
+            { name: 'Django', color: 'from-green-700 to-green-900 dark:from-green-500 dark:to-green-700' },
+            { name: 'AWS', color: 'from-orange-600 to-yellow-700 dark:from-orange-400 dark:to-yellow-500' },
+            { name: 'Docker', color: 'from-blue-600 to-indigo-700 dark:from-blue-400 dark:to-indigo-500' },
+            { name: 'PostgreSQL', color: 'from-blue-700 to-blue-900 dark:from-blue-500 dark:to-blue-700' }
           ].map((tech, index) => (
             <span 
               key={index}

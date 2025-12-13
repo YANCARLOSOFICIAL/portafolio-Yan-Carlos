@@ -4,8 +4,10 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/react/Navbar.jsx';
 import Hero from '../components/react/Hero.jsx';
 import About from '../components/react/About.jsx';
+import Experience from '../components/react/Experience.jsx';
 import Projects from '../components/react/Projects.jsx';
 import Skills from '../components/react/Skills.jsx';
+import Education from '../components/react/Education.jsx';
 import Contact from '../components/react/Contact.jsx';
 ---
 
@@ -17,8 +19,10 @@ import Contact from '../components/react/Contact.jsx';
   <main class="pt-20 bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900 min-h-screen font-sans">
     <Hero client:load />
     <About client:load />
+    <Experience client:load />
     <Projects client:load />
     <Skills client:load />
+    <Education client:load />
     <Contact client:load />
   </main>
 </Layout>

@@ -66,6 +66,24 @@ portafolio-fullstack/
 - ✅ Actualizadas dependencias con vulnerabilidades de seguridad
 - ✅ Mejorado alt text descriptivo en imágenes
 
+## 📈 Mejoras Implementadas (Diciembre 2025)
+
+### Funcionalidades Nuevas:
+- ✅ **Menú hamburguesa móvil** - Navegación responsive con animaciones
+- ✅ **Enlaces reales en proyectos** - Botones "Ver Demo" y "GitHub"
+- ✅ **Formulario de contacto funcional** - Con validación en tiempo real
+- ✅ **Sección de Experiencia Laboral** - Full-stack Developer en Kamila Innovation
+- ✅ **Sección de Educación** - Ingeniería de Sistemas (9º semestre) + Tecnólogo
+- ✅ **Certificaciones** - SENA Ciberseguridad
+
+### Información Actualizada desde LinkedIn:
+- ✅ Bio profesional completa de Yan Carlos Guerra
+- ✅ Stack tecnológico real: React, Vue, Laravel, Django, Spring Boot, Node.js
+- ✅ Habilidades actualizadas con niveles reales
+- ✅ Experiencia actual en Kamila Innovation S.A.S
+- ✅ Educación: ITP - 9º semestre Ingeniería de Sistemas
+- ✅ Ubicación: Putumayo, Colombia
+
 ## 📈 Mejoras Implementadas
 
 - ⚡ Carga diferida de fuentes con `media="print" onload`
