@@ -1,0 +1,322 @@
+{
+  "es": {
+    "nav": {
+      "home": "Inicio",
+      "about": "Sobre mí",
+      "experience": "Experiencia",
+      "projects": "Proyectos",
+      "skills": "Habilidades",
+      "education": "Educación",
+      "contact": "Contacto"
+    },
+    "hero": {
+      "greeting": "HOLA, MI NOMBRE ES",
+      "name": "Yan Carlos Guerra",
+      "typewriter": [
+        "Desarrollador Full Stack",
+        "Construyendo apps web modernas",
+        "Transformando ideas en código",
+        "Creando experiencias digitales"
+      ],
+      "description": "Estudiante de Ingeniería en Sistemas especializado en desarrollo full-stack. Transformando ideas en soluciones tecnológicas con React, Node.js y arquitecturas modernas.",
+      "cta1": "Ver Proyectos",
+      "cta2": "Contáctame",
+      "technologies": "Tecnologías"
+    },
+    "about": {
+      "tag": "SOBRE MÍ",
+      "title": "Construyendo el futuro",
+      "intro": "Soy <strong>Yan Carlos Guerra</strong>, estudiante de noveno semestre de Ingeniería en Sistemas con sólida formación en desarrollo de software full-stack y arquitectura de aplicaciones.",
+      "description": "Experiencia práctica en la implementación de soluciones tecnológicas utilizando múltiples lenguajes y frameworks modernos. Orientado a resultados con capacidad demostrada para adaptarme rápidamente a nuevas tecnologías.",
+      "frontend": {
+        "title": "Frontend",
+        "items": [
+          "UI/UX moderno y accesible",
+          "React, Astro, animaciones",
+          "Diseño responsivo mobile-first",
+          "Performance y SEO optimizado"
+        ]
+      },
+      "backend": {
+        "title": "Backend",
+        "items": [
+          "APIs robustas (REST, GraphQL)",
+          "Node.js, bases de datos SQL/NoSQL",
+          "Autenticación y escalabilidad",
+          "DevOps, CI/CD y cloud"
+        ]
+      }
+    },
+    "experience": {
+      "tag": "EXPERIENCIA",
+      "title": "Trayectoria profesional",
+      "positions": [
+        {
+          "title": "Desarrollador Full-stack",
+          "company": "Kamila Innovation S.A.S",
+          "location": "Sibundoy, Putumayo, Colombia",
+          "type": "Remoto",
+          "period": "Marzo 2025 - Actualidad",
+          "duration": "10 meses",
+          "description": [
+            "Desarrollo de aplicaciones web con Laravel y Vue",
+            "Implementación de APIs RESTful",
+            "Integración con sistemas de facturación electrónica y ecommerce"
+          ],
+          "skills": ["Laravel", "Vue.js", "APIs REST", "Desarrollo Full Stack"]
+        }
+      ]
+    },
+    "projects": {
+      "tag": "PORTAFOLIO",
+      "title": "Proyectos destacados",
+      "live": "Ver demo",
+      "repo": "Repositorio",
+      "items": [
+        {
+          "title": "E-Commerce Moderno",
+          "description": "Plataforma de comercio electrónico con panel de administración y pagos integrados.",
+          "tech": ["React", "Node.js", "PostgreSQL"]
+        },
+        {
+          "title": "Gestor de Tareas",
+          "description": "App colaborativa para gestión de tareas en tiempo real.",
+          "tech": ["Astro", "MongoDB", "Socket.io"]
+        },
+        {
+          "title": "Dashboard Social",
+          "description": "Dashboard analítico para redes sociales y métricas en tiempo real.",
+          "tech": ["Astro", "React", "D3.js"]
+        }
+      ]
+    },
+    "skills": {
+      "tag": "HABILIDADES",
+      "title": "Tecnologías y Herramientas"
+    },
+    "education": {
+      "tag": "FORMACIÓN",
+      "title": "Formación Académica",
+      "degrees": [
+        {
+          "title": "Ingeniería de Sistemas",
+          "institution": "Institución Universitaria del Putumayo",
+          "period": "En curso - 9º Semestre",
+          "description": "Programación orientada a objetos (POO), Arquitectura de la información"
+        },
+        {
+          "title": "Tecnólogo en Desarrollo de Software",
+          "institution": "Institución Universitaria del Putumayo",
+          "period": "2021 - 2024",
+          "description": "Informática, comunicaciones y servicios de asistencia"
+        }
+      ],
+      "certifications": [
+        {
+          "title": "Apropiación de conceptos de ciberseguridad",
+          "issuer": "Servicio Nacional de Aprendizaje (SENA)",
+          "date": "Mayo 2025",
+          "credential": "9209003184764CC1123321738C"
+        }
+      ]
+    },
+    "contact": {
+      "tag": "CONTACTO",
+      "title": "Hablemos de tu proyecto",
+      "description": "Disponible para nuevos proyectos, consultorías y colaboraciones.",
+      "form": {
+        "name": "Nombre",
+        "email": "Email",
+        "message": "Mensaje",
+        "submit": "Enviar Mensaje",
+        "sending": "Enviando...",
+        "success": "¡Mensaje enviado con éxito! Te responderé pronto.",
+        "error": "Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.",
+        "errors": {
+          "nameRequired": "El nombre es requerido",
+          "nameMin": "El nombre debe tener al menos 2 caracteres",
+          "emailRequired": "El email es requerido",
+          "emailInvalid": "Email inválido",
+          "messageRequired": "El mensaje es requerido",
+          "messageMin": "El mensaje debe tener al menos 10 caracteres"
+        },
+        "placeholders": {
+          "name": "Tu nombre",
+          "email": "tu@email.com",
+          "message": "Cuéntame sobre tu proyecto..."
+        }
+      },
+      "or": "O escríbeme directamente a:"
+    },
+    "ui": {
+      "whatsapp": {
+        "title": "Enviar mensaje por WhatsApp",
+        "cancel": "Cancelar",
+        "send": "Enviar"
+      },
+      "footer": {
+        "copyright": "© 2025 Yan Carlos Guerra. Todos los derechos reservados."
+      }
+    }
+  },
+  "en": {
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "experience": "Experience",
+      "projects": "Projects",
+      "skills": "Skills",
+      "education": "Education",
+      "contact": "Contact"
+    },
+    "hero": {
+      "greeting": "HI, MY NAME IS",
+      "name": "Yan Carlos Guerra",
+      "typewriter": [
+        "Full Stack Developer",
+        "Building modern web apps",
+        "Transforming ideas into code",
+        "Creating digital experiences"
+      ],
+      "description": "Systems Engineering student specialized in full-stack development. Transforming ideas into technological solutions with React, Node.js and modern architectures.",
+      "cta1": "View Projects",
+      "cta2": "Contact Me",
+      "technologies": "Technologies"
+    },
+    "about": {
+      "tag": "ABOUT ME",
+      "title": "Building the future",
+      "intro": "I'm <strong>Yan Carlos Guerra</strong>, a ninth-semester Systems Engineering student with solid training in full-stack software development and application architecture.",
+      "description": "Practical experience in implementing technological solutions using multiple modern languages and frameworks. Results-oriented with demonstrated ability to quickly adapt to new technologies.",
+      "frontend": {
+        "title": "Frontend",
+        "items": [
+          "Modern and accessible UI/UX",
+          "React, Astro, animations",
+          "Mobile-first responsive design",
+          "Optimized performance and SEO"
+        ]
+      },
+      "backend": {
+        "title": "Backend",
+        "items": [
+          "Robust APIs (REST, GraphQL)",
+          "Node.js, SQL/NoSQL databases",
+          "Authentication and scalability",
+          "DevOps, CI/CD and cloud"
+        ]
+      }
+    },
+    "experience": {
+      "tag": "EXPERIENCE",
+      "title": "Work History",
+      "positions": [
+        {
+          "title": "Full-stack Developer",
+          "company": "Kamila Innovation S.A.S",
+          "location": "Sibundoy, Putumayo, Colombia",
+          "type": "Remote",
+          "period": "March 2025 - Present",
+          "duration": "10 months",
+          "description": [
+            "Web application development with Laravel and Vue",
+            "RESTful API implementation",
+            "Integration with electronic billing and ecommerce systems"
+          ],
+          "skills": ["Laravel", "Vue.js", "REST APIs", "Full Stack Development"]
+        }
+      ]
+    },
+    "projects": {
+      "tag": "PORTFOLIO",
+      "title": "Featured Projects",
+      "live": "Live Demo",
+      "repo": "Repository",
+      "items": [
+        {
+          "title": "Modern E-Commerce",
+          "description": "E-commerce platform with admin panel and integrated payments.",
+          "tech": ["React", "Node.js", "PostgreSQL"]
+        },
+        {
+          "title": "Task Manager",
+          "description": "Collaborative app for real-time task management.",
+          "tech": ["Astro", "MongoDB", "Socket.io"]
+        },
+        {
+          "title": "Social Dashboard",
+          "description": "Analytics dashboard for social media and real-time metrics.",
+          "tech": ["Astro", "React", "D3.js"]
+        }
+      ]
+    },
+    "skills": {
+      "tag": "SKILLS",
+      "title": "Technologies & Tools"
+    },
+    "education": {
+      "tag": "EDUCATION",
+      "title": "Academic Background",
+      "degrees": [
+        {
+          "title": "Systems Engineering",
+          "institution": "Institución Universitaria del Putumayo",
+          "period": "In progress - 9th Semester",
+          "description": "Object-Oriented Programming (OOP), Information Architecture"
+        },
+        {
+          "title": "Software Development Technologist",
+          "institution": "Institución Universitaria del Putumayo",
+          "period": "2021 - 2024",
+          "description": "Information technology, communications and support services"
+        }
+      ],
+      "certifications": [
+        {
+          "title": "Cybersecurity Concepts Appropriation",
+          "issuer": "National Learning Service (SENA)",
+          "date": "May 2025",
+          "credential": "9209003184764CC1123321738C"
+        }
+      ]
+    },
+    "contact": {
+      "tag": "CONTACT",
+      "title": "Get In Touch",
+      "description": "Available for new projects, consulting and collaborations.",
+      "form": {
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "submit": "Send Message",
+        "sending": "Sending...",
+        "success": "Message sent successfully! I'll get back to you soon.",
+        "error": "There was an error sending the message. Please try again.",
+        "errors": {
+          "nameRequired": "Name is required",
+          "nameMin": "Name must be at least 2 characters",
+          "emailRequired": "Email is required",
+          "emailInvalid": "Invalid email",
+          "messageRequired": "Message is required",
+          "messageMin": "Message must be at least 10 characters"
+        },
+        "placeholders": {
+          "name": "Your name",
+          "email": "your@email.com",
+          "message": "Tell me about your project..."
+        }
+      },
+      "or": "Or email me directly at:"
+    },
+    "ui": {
+      "whatsapp": {
+        "title": "Send message via WhatsApp",
+        "cancel": "Cancel",
+        "send": "Send"
+      },
+      "footer": {
+        "copyright": "© 2025 Yan Carlos Guerra. All rights reserved."
+      }
+    }
+  }
+}

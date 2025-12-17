@@ -8,31 +8,45 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Dark-first tech palette
+        dark: {
+          DEFAULT: '#000000',
+          950: '#0a0a0a',
+          900: '#0f0f0f',
+          800: '#1a1a1a',
+          700: '#262626',
+        },
+        // Primary neutrals and semantic tokens
         primary: {
-          light: '#7dd3fc', // azul claro vibrante
-          DEFAULT: '#2563eb', // azul principal
-          dark: '#1e293b', // azul oscuro
+          50: '#f5f7fb',
+          100: '#eef2ff',
+          200: '#e0e7ff',
+          300: '#c7d2fe',
+          400: '#a78bfa',
+          500: '#7c3aed',
+          600: '#6d28d9',
+          700: '#5b21b6',
+          800: '#4c1d95',
+          900: '#3b0f78',
         },
         accent: {
-          light: '#fbbf24', // amarillo vibrante
-          DEFAULT: '#f59e42', // naranja
-          dark: '#ea580c', // naranja oscuro
+          blue: '#60a5fa',
+          purple: '#7c3aed',
+          cyan: '#06b6d4',
         },
-        highlight: {
-          light: '#f472b6', // rosa claro
-          DEFAULT: '#db2777', // rosa fuerte
-          dark: '#a21caf', // violeta oscuro
-        },
-        dark: {
-          DEFAULT: '#18181b', // fondo principal
-          light: '#27272a',
-        },
-        white: '#fff',
-        black: '#000',
       },
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui'],
         display: ['Poppins', 'ui-sans-serif', 'system-ui'],
+      },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '1.5rem',
+          sm: '2rem',
+          lg: '4rem',
+          xl: '6rem',
+        },
       },
       keyframes: {
         fadeInUp: {

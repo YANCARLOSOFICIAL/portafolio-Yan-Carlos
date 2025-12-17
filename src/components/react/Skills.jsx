@@ -1,54 +1,41 @@
-const frontend = [
-  { name: 'React.js', level: 'Avanzado' },
-  { name: 'Vue.js', level: 'Avanzado' },
-  { name: 'Astro', level: 'Intermedio' },
-  { name: 'Angular', level: 'Intermedio' },
-  { name: 'Tailwind CSS', level: 'Avanzado' },
-  { name: 'TypeScript', level: 'Intermedio' },
-];
-const backend = [
-  { name: 'Node.js', level: 'Avanzado' },
-  { name: 'Laravel', level: 'Avanzado' },
-  { name: 'Django', level: 'Intermedio' },
-  { name: 'Spring Boot', level: 'Intermedio' },
-  { name: 'FastAPI', level: 'Intermedio' },
-  { name: 'PostgreSQL', level: 'Avanzado' },
-  { name: 'MongoDB', level: 'Intermedio' },
-  { name: 'APIs REST', level: 'Avanzado' },
-  { name: 'Docker', level: 'Intermedio' },
-  { name: 'AWS', level: 'Intermedio' },
+const skillsData = [
+  { name: 'React', level: 95 },
+  { name: 'Vue.js', level: 90 },
+  { name: 'Node.js', level: 92 },
+  { name: 'Laravel', level: 88 },
+  { name: 'TypeScript', level: 85 },
+  { name: 'PostgreSQL', level: 90 },
+  { name: 'Tailwind', level: 95 },
+  { name: 'Docker', level: 80 },
+  { name: 'AWS', level: 78 },
+  { name: 'APIs REST', level: 92 },
 ];
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 px-6 bg-gradient-to-br from-white via-slate-100 to-purple-100 dark:from-slate-900 dark:via-primary-dark dark:to-accent-dark transition-colors duration-500">
-      <div className="max-w-6xl mx-auto">
-  <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-16 bg-gradient-to-r from-primary-light to-highlight bg-clip-text text-transparent tracking-tight dark:from-primary-light dark:to-highlight">
-          Habilidades Técnicas
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 border border-primary/20 dark:border-primary-dark shadow-lg animate-fadeInUp">
-            <h3 className="text-2xl font-bold text-blue-700 dark:text-blue-400 mb-4">Frontend</h3>
-            <ul className="space-y-3">
-              {frontend.map((skill, idx) => (
-                <li key={idx} className="flex justify-between items-center text-slate-800 dark:text-white font-medium">
-                  <span>{skill.name}</span>
-                  <span className="text-purple-700 dark:text-purple-300 font-semibold">{skill.level}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="bg-white dark:bg-purple-700 rounded-2xl p-8 border border-purple-300 dark:border-purple-500 shadow-lg animate-fadeInUp">
-            <h3 className="text-2xl font-bold text-purple-700 dark:text-white mb-4">Backend</h3>
-            <ul className="space-y-3">
-              {backend.map((skill, idx) => (
-                <li key={idx} className="flex justify-between items-center text-slate-800 dark:text-white font-medium">
-                  <span>{skill.name}</span>
-                  <span className="text-blue-700 dark:text-blue-200 font-semibold">{skill.level}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+    <section id="skills" className="py-24">
+      <div className="container">
+        <div className="text-center mb-12">
+          <p className="text-sm text-primary-300 font-medium tracking-wider mb-2">SKILLS</p>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white">Technologies & Tools</h2>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          {skillsData.map((skill, idx) => (
+            <div key={idx} className="card text-center hover-lift reveal reveal-delay-100">
+              <div className="relative w-20 h-20 mx-auto mb-4">
+                <svg className="transform -rotate-90 w-20 h-20">
+                  <circle cx="40" cy="40" r="36" stroke="currentColor" strokeWidth="8" fill="transparent" className="text-white/10" />
+                  <circle cx="40" cy="40" r="36" stroke="currentColor" strokeWidth="8" fill="transparent" strokeDasharray={`${2 * Math.PI * 36}`} strokeDashoffset={`${2 * Math.PI * 36 * (1 - skill.level / 100)}`} className="text-accent-blue transition-all duration-1000" />
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-sm font-bold text-white">{skill.level}%</span>
+                </div>
+              </div>
+
+              <h3 className="text-sm font-bold text-white">{skill.name}</h3>
+            </div>
+          ))}
         </div>
       </div>
     </section>

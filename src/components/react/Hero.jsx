@@ -1,101 +1,86 @@
+import TypewriterEffect from './TypewriterEffect';
+import { useLanguage } from './LanguageContext';
+
 export default function Hero() {
+  const { t } = useLanguage();
+
+  const techStack = [
+    'React',
+    'Node.js',
+    'TypeScript',
+    'Laravel',
+    'Vue.js',
+    'PostgreSQL',
+    'Docker',
+    'AWS'
+  ];
+
   return (
-  <section id="hero" className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden font-display px-4 bg-gradient-to-br from-white via-blue-50 to-purple-100 dark:from-slate-900 dark:via-purple-950 dark:to-indigo-950 transition-colors duration-500">
-      {/* Fondo animado épico mejorado */}
-  <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-950 to-indigo-950 dark:from-slate-900 dark:via-purple-950 dark:to-indigo-950 -z-20"></div>
-  {/* Fondo para modo claro */}
-  <div className="absolute inset-0 bg-gradient-to-br from-white via-blue-50 to-purple-100 dark:hidden -z-20"></div>
-  {/* El fondo ya responde a dark */}
-      
-      {/* Partículas flotantes mejoradas */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none -z-10">
-        <div className="absolute w-96 h-96 bg-purple-500/20 rounded-full blur-3xl left-1/4 top-1/4 animate-float" style={{ animationDelay: '0s' }}></div>
-        <div className="absolute w-72 h-72 bg-pink-500/15 rounded-full blur-2xl right-10 top-10 animate-float" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute w-60 h-60 bg-blue-500/10 rounded-full blur-2xl left-10 bottom-10 animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute w-48 h-48 bg-cyan-500/15 rounded-full blur-2xl right-1/3 bottom-1/4 animate-float" style={{ animationDelay: '1.5s' }}></div>
-        
-        {/* Estrellas brillantes */}
-        <div className="absolute w-2 h-2 bg-white rounded-full top-20 left-20 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-        <div className="absolute w-1 h-1 bg-purple-300 rounded-full top-40 right-40 animate-pulse" style={{ animationDelay: '1.2s' }}></div>
-        <div className="absolute w-1.5 h-1.5 bg-pink-300 rounded-full bottom-40 left-40 animate-pulse" style={{ animationDelay: '2.1s' }}></div>
-        <div className="absolute w-1 h-1 bg-blue-300 rounded-full bottom-20 right-20 animate-pulse" style={{ animationDelay: '0.8s' }}></div>
-      </div>
-      
-      <div className="text-center z-10 animate-fadeInUp max-w-5xl mx-auto">
-        {/* Avatar mejorado */}
-        <div className="mb-12">
-          <div className="w-44 h-44 mx-auto mb-8 rounded-full bg-gradient-to-tr from-purple-400 via-pink-400 to-blue-400 p-1.5 shadow-2xl animate-float relative">
-            <div className="w-full h-full rounded-full bg-white dark:bg-slate-800 flex items-center justify-center relative overflow-hidden">
-              <span className="text-7xl md:text-8xl font-black bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 bg-clip-text text-transparent drop-shadow-lg" aria-label="Yan Carlos">YC</span>
-              {/* Efecto de brillo */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent dark:via-yellow-100/10 transform -skew-x-12 -translate-x-full animate-shimmer"></div>
+    <section id="hero" className="relative min-h-screen flex items-center py-20">
+      <div className="container">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+          {/* Left - Text */}
+          <div className="space-y-6 reveal reveal-delay-100">
+            <p className="text-primary-300 text-sm font-medium tracking-wider">
+              {t.hero.greeting}
+            </p>
+
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight">
+              <span className="block text-white">{t.hero.name}</span>
+              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-accent-blue mt-2">{t.hero.subtitle}</span>
+            </h1>
+
+            <div className="text-2xl md:text-3xl font-semibold text-gray-300 min-h-[3rem] reveal reveal-delay-200">
+              <TypewriterEffect texts={t.hero.typewriter} />
+            </div>
+
+            <p className="text-base md:text-lg text-gray-400 max-w-2xl leading-relaxed">
+              {t.hero.description}
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4 pt-2 reveal reveal-delay-300">
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-primary-500 to-accent-blue text-white rounded-xl shadow-lg hover:scale-[1.02] transform transition"
+              >
+                {t.hero.cta1}
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-3 px-6 py-3 border border-white/10 text-white rounded-xl hover:border-primary-400 transition"
+              >
+                {t.hero.cta2}
+              </a>
+            </div>
+
+            <div className="pt-8">
+              <p className="text-sm uppercase text-gray-400 tracking-wider mb-4">{t.hero.technologies}</p>
+              <div className="flex flex-wrap gap-3">
+                {techStack.map((tech, idx) => (
+                  <span key={idx} className="px-3 py-2 bg-white/5 border border-white/10 text-gray-300 rounded-lg text-xs font-medium">{tech}</span>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-        
-        {/* Título mejorado */}
-        <h1 className="text-5xl sm:text-6xl md:text-8xl font-black mb-8 bg-gradient-to-r from-purple-300 via-pink-300 to-blue-300 bg-clip-text text-transparent drop-shadow-2xl tracking-tight animate-fadeInUp leading-tight">
-          Yan Carlos Guerra
-        </h1>
-        
-        {/* Subtitulo con efectos */}
-        <div className="relative mb-10">
-          <p className="text-xl sm:text-2xl md:text-3xl text-slate-800 dark:text-white max-w-4xl mx-auto font-medium leading-relaxed animate-fadeInUp">
-            Soy un{' '}
-            <span className="relative inline-block">
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent font-bold">
-                <span className="bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent font-bold">Desarrollador Full Stack</span>
-              </span>
-              <span className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-            </span>
-            {' '}apasionado por crear
-            <br className="hidden md:block" />
-            experiencias digitales únicas y funcionales.
-          </p>
-        </div>
-        
-        {/* Descripción mejorada */}
-        <p className="text-lg sm:text-xl max-w-3xl mx-auto mb-12 font-normal leading-relaxed animate-fadeInUp px-4">
-          <span className="text-slate-700 dark:text-white">Estudiante de Ingeniería en Sistemas especializado en{' '}</span>
-          <span className="text-blue-700 dark:text-blue-400 font-semibold">Frontend</span> <span className="text-slate-700 dark:text-white">(React, Vue, Angular, Astro)</span> y{' '}
-          <span className="text-purple-700 dark:text-purple-400 font-semibold">Backend</span> <span className="text-slate-700 dark:text-white">(Node.js, Laravel, Django, Spring Boot).</span>
-          <br className="hidden md:block" />
-          <span className="text-slate-700 dark:text-white">Full-stack Developer en Kamila Innovation S.A.S. Transformo ideas en soluciones tecnológicas de alto impacto.</span>
-        </p>
-        
-        {/* Tecnologías con efectos mejorados */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12 animate-fadeInUp">
-          {[
-            { name: 'React', color: 'from-cyan-600 to-blue-700 dark:from-cyan-400 dark:to-blue-500' },
-            { name: 'Vue.js', color: 'from-green-600 to-teal-700 dark:from-green-400 dark:to-teal-500' },
-            { name: 'Laravel', color: 'from-red-600 to-orange-700 dark:from-red-400 dark:to-orange-500' },
-            { name: 'Node.js', color: 'from-green-600 to-emerald-700 dark:from-green-400 dark:to-emerald-500' },
-            { name: 'Django', color: 'from-green-700 to-green-900 dark:from-green-500 dark:to-green-700' },
-            { name: 'AWS', color: 'from-orange-600 to-yellow-700 dark:from-orange-400 dark:to-yellow-500' },
-            { name: 'Docker', color: 'from-blue-600 to-indigo-700 dark:from-blue-400 dark:to-indigo-500' },
-            { name: 'PostgreSQL', color: 'from-blue-700 to-blue-900 dark:from-blue-500 dark:to-blue-700' }
-          ].map((tech, index) => (
-            <span 
-              key={index}
-              className={`px-6 py-3 rounded-full bg-gradient-to-r ${tech.color} text-white font-semibold shadow-lg hover:scale-110 transition-all duration-300 cursor-pointer hover:shadow-xl transform hover:rotate-1`}
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              {tech.name}
-            </span>
-          ))}
-        </div>
-        
-        {/* Botón de acción mejorado */}
-        <div className="animate-fadeInUp">
-          <a 
-            href="#contact" 
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-700 to-pink-700 dark:from-purple-500 dark:to-pink-500 rounded-full text-white font-bold text-lg shadow-2xl hover:from-purple-800 hover:to-pink-800 dark:hover:from-purple-600 dark:hover:to-pink-600 transition-all duration-300 transform hover:scale-105 hover:shadow-purple-500/25 group"
-          >
-            <span>¡Trabajemos juntos!</span>
-            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
+
+          {/* Right - Illustrative card */}
+          <div className="card h-80 flex items-center justify-center hover-lift reveal reveal-delay-200">
+            <div className="w-full h-full rounded-2xl flex flex-col items-center justify-center gap-4 p-6 relative overflow-hidden">
+              <div className="absolute -left-16 -top-16 w-48 h-48 rounded-full bg-gradient-to-r from-primary-500 to-accent-blue opacity-20 blur-2xl animate-float"></div>
+              <div className="absolute -right-16 -bottom-16 w-56 h-56 rounded-full bg-gradient-to-r from-accent-blue to-primary-400 opacity-20 blur-2xl animate-float"></div>
+
+              <h3 className="text-xl font-bold text-white">Tech stack</h3>
+              <p className="text-sm text-gray-300">Tools and technologies I work with daily</p>
+
+              <div className="mt-4 grid grid-cols-3 gap-3 w-full">
+                {techStack.slice(0,6).map((tech, i) => (
+                  <div key={i} className="px-3 py-2 bg-white/6 border border-white/8 rounded-lg text-xs text-gray-200 text-center">{tech}</div>
+                ))}
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

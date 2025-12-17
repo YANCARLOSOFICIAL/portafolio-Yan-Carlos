@@ -128,23 +128,11 @@ const { title = 'Yan Carlos Guerra - Desarrollador Full Stack', description = 'P
 
 			<!-- Animaciones suaves para el slot principal -->
 			<style>
-				.fade-in {
-					animation: fadeInUp 1s cubic-bezier(.39,.575,.565,1) both;
-				}
-				@keyframes fadeInUp {
-					0% { opacity: 0; transform: translateY(40px); }
-					100% { opacity: 1; transform: translateY(0); }
-				}
-			</style>
-
-			<script>
-				window.addEventListener('DOMContentLoaded', () => {
-					const main = document.querySelector('main');
-					if (main) main.classList.add('fade-in');
-				});
-			</script>
-
-			<!-- Integración con redes sociales -->
+			@keyframes fadeInUp {
+				0% { opacity: 0; transform: translateY(40px); }
+				100% { opacity: 1; transform: translateY(0); }
+			}
+		</style>
 			<div class="fixed left-6 bottom-6 z-50 flex flex-col space-y-3">
 				<a href="https://github.com/YANCARLOSOFICIAL" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="bg-slate-800 text-white p-2 rounded-full shadow hover:bg-slate-700 transition flex items-center justify-center">
 					<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6" aria-hidden="true">

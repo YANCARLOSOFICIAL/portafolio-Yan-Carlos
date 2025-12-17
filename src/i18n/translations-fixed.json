@@ -1,0 +1,12 @@
+{
+  "es": {
+    "nav": {"home": "Inicio", "about": "Sobre mí", "experience": "Experiencia", "projects": "Proyectos", "skills": "Habilidades", "education": "Educación", "contact": "Contacto"},
+    "hero": {"greeting": "HOLA, MI NOMBRE ES", "name": "Yan Carlos Guerra", "typewriter": ["Desarrollador Full Stack", "Construyendo apps web modernas", "Transformando ideas en código", "Creando experiencias digitales"], "description": "Estudiante de Ingeniería en Sistemas especializado en desarrollo full-stack.", "cta1": "Ver Proyectos", "cta2": "Contáctame", "technologies": "Tecnologías"},
+    "ui": {"whatsapp": {"title": "Enviar mensaje por WhatsApp", "cancel": "Cancelar", "send": "Enviar"}, "footer": {"copyright": "© 2025 Yan Carlos Guerra. Todos los derechos reservados."}}
+  },
+  "en": {
+    "nav": {"home": "Home", "about": "About", "experience": "Experience", "projects": "Projects", "skills": "Skills", "education": "Education", "contact": "Contact"},
+    "hero": {"greeting": "HI, MY NAME IS", "name": "Yan Carlos Guerra", "typewriter": ["Full Stack Developer", "Building modern web apps", "Transforming ideas into code", "Creating digital experiences"], "description": "Systems Engineering student specialized in full-stack development.", "cta1": "View Projects", "cta2": "Contact Me", "technologies": "Technologies"},
+    "ui": {"whatsapp": {"title": "Send message via WhatsApp", "cancel": "Cancel", "send": "Send"}, "footer": {"copyright": "© 2025 Yan Carlos Guerra. All rights reserved."}}
+  }
+}

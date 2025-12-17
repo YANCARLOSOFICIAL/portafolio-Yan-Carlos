@@ -17,51 +17,42 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 px-6 bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900 dark:from-slate-900 dark:via-purple-950 dark:to-indigo-950 transition-colors duration-500">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-16 bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent tracking-tight animate-fadeInUp">
-          Experiencia Profesional
-        </h2>
+    <section id="experience" className="py-24">
+      <div className="container">
 
-        <div className="space-y-8">
+        {/* Section Header */}
+        <div className="mb-16">
+          <p className="text-sm font-semibold text-primary-600 dark:text-primary-400 uppercase tracking-wider mb-2">Experiencia</p>
+          <h2 className="text-4xl md:text-6xl font-black text-primary-900 dark:text-white tracking-tight">
+            Trayectoria profesional
+          </h2>
+        </div>
+
+        {/* Experience Timeline */}
+        <div className="space-y-6">
           {experiences.map((exp, idx) => (
-            <div
-              key={idx}
-              className="bg-white/5 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/20 hover:border-purple-400/40 shadow-xl transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10 animate-fadeInUp"
-              style={{ animationDelay: `${idx * 0.1}s` }}
-            >
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+            <article key={idx} className="card hover-lift reveal reveal-delay-100">
+              <div className="md:flex md:items-start md:justify-between gap-6">
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-white mb-2">{exp.position}</h3>
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-purple-300 mb-2">
-                    <span className="font-semibold text-lg">{exp.company}</span>
-                    <span className="hidden sm:inline text-purple-500">•</span>
-                    <span className="text-sm">{exp.type}</span>
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-1">{exp.position}</h3>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
+                    <span className="text-lg font-semibold text-primary-300">{exp.company}</span>
+                    <span className="hidden sm:inline text-gray-500">•</span>
+                    <span className="text-sm text-gray-400">{exp.type}</span>
                   </div>
-                  <p className="text-slate-400 text-sm">{exp.location}</p>
+                  <p className="text-sm text-gray-400">{exp.location}</p>
                 </div>
+
                 <div className="mt-4 md:mt-0 md:text-right">
-                  <p className="text-purple-400 font-semibold">{exp.period}</p>
-                  <p className="text-slate-400 text-sm">{exp.duration}</p>
+                  <p className="font-semibold text-white">{exp.period}</p>
+                  <p className="text-sm text-gray-400">{exp.duration}</p>
                 </div>
               </div>
 
-              <ul className="space-y-2 mb-6">
+              <ul className="space-y-3 mb-6 mt-4">
                 {exp.description.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-slate-300">
-                    <svg
-                      className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
+                  <li key={i} className="flex items-start gap-3 text-gray-300">
+                    <span className="text-accent mt-1">✓</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -69,15 +60,10 @@ export default function Experience() {
 
               <div className="flex flex-wrap gap-2">
                 {exp.skills.map((skill, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm border border-purple-500/30 font-medium"
-                  >
-                    {skill}
-                  </span>
+                  <span key={i} className="px-3 py-1 bg-white/6 text-gray-200 rounded-full text-xs font-semibold">{skill}</span>
                 ))}
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

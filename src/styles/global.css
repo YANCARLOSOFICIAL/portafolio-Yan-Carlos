@@ -1,3 +1,63 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	html {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	body {
+		@apply bg-dark text-white antialiased;
+		font-feature-settings: "kern" 1, "liga" 1;
+		line-height: 1.6;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		@apply font-display;
+	}
+
+	a {
+		@apply text-accent-blue hover:text-white transition-colors duration-200;
+	}
+
+	.container {
+		@apply max-w-7xl mx-auto px-6;
+	}
+
+	/* Small utility tweaks for hero and cards */
+	.card {
+		@apply bg-white/5 border border-white/10 rounded-2xl p-6;
+	}
+}
+
+/* Reveal animation helpers */
+@layer components {
+	/* Initially hidden; animation triggers when .reveal--active is added */
+	.reveal {
+		opacity: 0;
+		transform: translateY(18px);
+		transition: opacity 420ms ease-out, transform 420ms ease-out;
+	}
+
+	.reveal.reveal--active {
+		animation: fadeInUp 0.7s ease-out forwards;
+	}
+
+	.reveal-delay-100 { animation-delay: 0.1s; }
+	.reveal-delay-200 { animation-delay: 0.2s; }
+	.reveal-delay-300 { animation-delay: 0.3s; }
+	.reveal-delay-400 { animation-delay: 0.4s; }
+
+	.focus-ring:focus {
+		outline: none;
+		box-shadow: 0 0 0 4px rgba(124,58,237,0.12), 0 0 0 1px rgba(124,58,237,0.24);
+		border-radius: 0.5rem;
+	}
+
+	.hover-lift:hover {
+		transform: translateY(-6px) scale(1.01);
+		transition: transform 220ms cubic-bezier(.2,.8,.2,1);
+	}
+}
