@@ -24,7 +24,7 @@ export default function App() {
       <Stars />
       <BlurOrbs />
       <Navbar />
-      <main className="relative pt-0 bg-black min-h-screen font-sans antialiased" suppressHydrationWarning>
+      <main className="relative pt-0 bg-transparent min-h-screen font-sans antialiased" suppressHydrationWarning>
         <Hero />
         <About />
         <Experience />
