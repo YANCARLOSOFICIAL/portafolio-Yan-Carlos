@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useLanguage } from './LanguageContext';
 
 export default function Contact() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,21 +16,21 @@ export default function Contact() {
     const newErrors = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = 'El nombre es requerido';
+      newErrors.name = t.contact.errors.nameRequired;
     } else if (formData.name.trim().length < 2) {
-      newErrors.name = 'El nombre debe tener al menos 2 caracteres';
+      newErrors.name = t.contact.errors.nameMin;
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = 'El email es requerido';
+      newErrors.email = t.contact.errors.emailRequired;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Email inválido';
+      newErrors.email = t.contact.errors.emailInvalid;
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = 'El mensaje es requerido';
+      newErrors.message = t.contact.errors.messageRequired;
     } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'El mensaje debe tener al menos 10 caracteres';
+      newErrors.message = t.contact.errors.messageMin;
     }
 
     setErrors(newErrors);
@@ -70,12 +72,12 @@ export default function Contact() {
     <section id="contact" className="py-24">
       <div className="container max-w-2xl">
         <div className="text-center mb-16">
-          <p className="text-accent-cyan text-sm font-medium tracking-wider mb-4">CONTACT</p>
+          <p className="text-accent-cyan text-sm font-medium tracking-wider mb-4">{t.contact.tag}</p>
           <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight mb-6">
-            Get In Touch
+            {t.contact.title}
           </h2>
           <p className="text-lg text-gray-400">
-            Disponible para nuevos proyectos, consultorías y colaboraciones.
+            {t.contact.subtitle}
           </p>
         </div>
 
@@ -84,7 +86,7 @@ export default function Contact() {
             {/* Name */}
             <div>
               <label htmlFor="name" className="block text-sm font-semibold text-white mb-2">
-                Name *
+                {t.contact.form.name} *
               </label>
               <input
                 type="text"
@@ -97,7 +99,7 @@ export default function Contact() {
                     ? 'border-red-500 focus:ring-red-500'
                     : 'border-white/10 focus:ring-accent-blue'
                 } bg-white/5 text-white focus:ring-2 focus:outline-none transition-all duration-200`}
-                placeholder="Your name"
+                placeholder={t.contact.form.namePlaceholder}
                 suppressHydrationWarning
               />
               {errors.name && (
@@ -108,7 +110,7 @@ export default function Contact() {
             {/* Email */}
             <div>
               <label htmlFor="email" className="block text-sm font-semibold text-white mb-2">
-                Email *
+                {t.contact.form.email} *
               </label>
               <input
                 type="email"
@@ -122,7 +124,7 @@ export default function Contact() {
                     ? 'border-red-500 focus:ring-red-500'
                     : 'border-white/10 focus:ring-accent-blue'
                 } bg-white/5 text-white focus:ring-2 focus:outline-none transition-all duration-200`}
-                placeholder="your@email.com"
+                placeholder={t.contact.form.emailPlaceholder}
               />
               {errors.email && (
                 <p className="mt-1 text-sm text-red-500">{errors.email}</p>
@@ -132,7 +134,7 @@ export default function Contact() {
             {/* Message */}
             <div>
               <label htmlFor="message" className="block text-sm font-semibold text-white mb-2">
-                Message *
+                {t.contact.form.message} *
               </label>
               <textarea
                 id="message"
@@ -146,7 +148,7 @@ export default function Contact() {
                     ? 'border-red-500 focus:ring-red-500'
                     : 'border-white/10 focus:ring-accent-blue'
                 } bg-white/5 text-white focus:ring-2 focus:outline-none transition-all duration-200 resize-none`}
-                placeholder="Tell me about your project..."
+                placeholder={t.contact.form.messagePlaceholder}
               ></textarea>
               {errors.message && (
                 <p className="mt-1 text-sm text-red-500">{errors.message}</p>
@@ -166,11 +168,11 @@ export default function Contact() {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  Sending...
+                  {t.contact.form.sending}
                 </>
               ) : (
                 <>
-                  Send Message
+                  {t.contact.form.submit}
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
@@ -181,19 +183,19 @@ export default function Contact() {
             {/* Status Messages */}
             {submitStatus === 'success' && (
               <div className="p-4 bg-green-500/10 border border-green-500/50 rounded-lg text-green-400 text-center">
-                ¡Mensaje enviado con éxito! Te responderé pronto.
+                {t.contact.success}
               </div>
             )}
             {submitStatus === 'error' && (
               <div className="p-4 bg-red-500/10 border border-red-500/50 rounded-lg text-red-400 text-center">
-                Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.
+                {t.contact.error}
               </div>
             )}
           </form>
 
           {/* Direct Email */}
           <div className="mt-8 pt-6 border-t border-white/10 text-center">
-            <p className="text-sm text-gray-400 mb-2">Or email me directly at:</p>
+            <p className="text-sm text-gray-400 mb-2">{t.contact.directEmail}</p>
             <a href="mailto:yancarlospinchao2021@itp.edu.co" className="text-primary-100 font-semibold hover:text-white transition-colors">yancarlospinchao2021@itp.edu.co</a>
           </div>
         </div>

@@ -28,7 +28,7 @@ export function LanguageProvider({ children }) {
     }
   };
 
-  const t = translations[language];
+  const t = translations[language] || translations['es'];
 
   return (
     <LanguageContext.Provider value={{ language, changeLanguage, t }}>

@@ -28,7 +28,6 @@ export default function Hero() {
 
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight">
               <span className="block text-white">{t.hero.name}</span>
-              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-accent-blue mt-2">{t.hero.subtitle}</span>
             </h1>
 
             <div className="text-2xl md:text-3xl font-semibold text-gray-300 min-h-[3rem] reveal reveal-delay-200">

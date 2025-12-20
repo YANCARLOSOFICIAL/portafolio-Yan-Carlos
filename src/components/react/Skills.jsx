@@ -1,3 +1,5 @@
+import { useLanguage } from './LanguageContext';
+
 const skillsData = [
   { name: 'React', level: 95 },
   { name: 'Vue.js', level: 90 },
@@ -12,12 +14,14 @@ const skillsData = [
 ];
 
 export default function Skills() {
+  const { t } = useLanguage();
+
   return (
     <section id="skills" className="py-24">
       <div className="container">
         <div className="text-center mb-12">
-          <p className="text-sm text-primary-300 font-medium tracking-wider mb-2">SKILLS</p>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white">Technologies & Tools</h2>
+          <p className="text-sm text-primary-300 font-medium tracking-wider mb-2">{t.skills.tag}</p>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white">{t.skills.title}</h2>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
