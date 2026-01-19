@@ -76,13 +76,13 @@ export default function Contact() {
           <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight mb-6">
             {t.contact.title}
           </h2>
-          <p className="text-lg text-gray-400">
-            {t.contact.subtitle}
-          </p>
+          {t.contact.description && (
+            <p className="text-lg text-gray-400">{t.contact.description}</p>
+          )}
         </div>
 
         <div className="card">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6" noValidate>
             {/* Name */}
             <div>
               <label htmlFor="name" className="block text-sm font-semibold text-white mb-2">
@@ -94,16 +94,18 @@ export default function Contact() {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
+                aria-invalid={!!errors.name}
+                aria-describedby={errors.name ? 'name-error' : undefined}
                 className={`w-full px-4 py-3 rounded-lg border ${
                   errors.name
                     ? 'border-red-500 focus:ring-red-500'
                     : 'border-white/10 focus:ring-accent-blue'
                 } bg-white/5 text-white focus:ring-2 focus:outline-none transition-all duration-200`}
-                placeholder={t.contact.form.namePlaceholder}
+                placeholder={t.contact.form.placeholders?.name || ''}
                 suppressHydrationWarning
               />
               {errors.name && (
-                <p className="mt-1 text-sm text-red-500">{errors.name}</p>
+                <p id="name-error" className="mt-1 text-sm text-red-500">{errors.name}</p>
               )}
             </div>
 
@@ -118,16 +120,18 @@ export default function Contact() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                aria-invalid={!!errors.email}
+                aria-describedby={errors.email ? 'email-error' : undefined}
                 suppressHydrationWarning
                 className={`w-full px-4 py-3 rounded-lg border ${
                   errors.email
                     ? 'border-red-500 focus:ring-red-500'
                     : 'border-white/10 focus:ring-accent-blue'
                 } bg-white/5 text-white focus:ring-2 focus:outline-none transition-all duration-200`}
-                placeholder={t.contact.form.emailPlaceholder}
+                placeholder={t.contact.form.placeholders?.email || ''}
               />
               {errors.email && (
-                <p className="mt-1 text-sm text-red-500">{errors.email}</p>
+                <p id="email-error" className="mt-1 text-sm text-red-500">{errors.email}</p>
               )}
             </div>
 
@@ -142,16 +146,18 @@ export default function Contact() {
                 value={formData.message}
                 onChange={handleChange}
                 rows="5"
+                aria-invalid={!!errors.message}
+                aria-describedby={errors.message ? 'message-error' : undefined}
                 suppressHydrationWarning
                 className={`w-full px-4 py-3 rounded-lg border ${
                   errors.message
                     ? 'border-red-500 focus:ring-red-500'
                     : 'border-white/10 focus:ring-accent-blue'
                 } bg-white/5 text-white focus:ring-2 focus:outline-none transition-all duration-200 resize-none`}
-                placeholder={t.contact.form.messagePlaceholder}
+                placeholder={t.contact.form.placeholders?.message || ''}
               ></textarea>
               {errors.message && (
-                <p className="mt-1 text-sm text-red-500">{errors.message}</p>
+                <p id="message-error" className="mt-1 text-sm text-red-500">{errors.message}</p>
               )}
             </div>
 
@@ -183,19 +189,19 @@ export default function Contact() {
             {/* Status Messages */}
             {submitStatus === 'success' && (
               <div className="p-4 bg-green-500/10 border border-green-500/50 rounded-lg text-green-400 text-center">
-                {t.contact.success}
+                {t.contact.form.success}
               </div>
             )}
             {submitStatus === 'error' && (
               <div className="p-4 bg-red-500/10 border border-red-500/50 rounded-lg text-red-400 text-center">
-                {t.contact.error}
+                {t.contact.form.error}
               </div>
             )}
           </form>
 
           {/* Direct Email */}
           <div className="mt-8 pt-6 border-t border-white/10 text-center">
-            <p className="text-sm text-gray-400 mb-2">{t.contact.directEmail}</p>
+            <p className="text-sm text-gray-400 mb-2">{t.contact.or}</p>
             <a href="mailto:yancarlospinchao2021@itp.edu.co" className="text-primary-100 font-semibold hover:text-white transition-colors">yancarlospinchao2021@itp.edu.co</a>
           </div>
         </div>

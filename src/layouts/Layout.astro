@@ -55,12 +55,26 @@ const { title = 'Yan Carlos Guerra - Desarrollador Full Stack', description = 'P
 			</div>
 
 			<div id="whatsapp-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" role="dialog" aria-labelledby="whatsapp-modal-title" aria-modal="true">
-				<div class="bg-white rounded-lg p-6 w-80 shadow-lg">
-					<h2 id="whatsapp-modal-title" class="text-lg font-bold mb-4 text-center">Enviar mensaje por WhatsApp</h2>
-					<textarea id="whatsapp-message" class="w-full border border-gray-300 rounded-lg p-2 mb-4" rows="4" placeholder="Escribe tu mensaje aquí..." aria-label="Mensaje de WhatsApp"></textarea>
-					<div class="flex justify-between">
-						<button onclick="toggleModal()" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400">Cancelar</button>
-						<a id="send-whatsapp" href="#" target="_blank" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">Enviar</a>
+				<div class="bg-white dark:bg-slate-800 rounded-2xl p-0 w-96 max-w-full shadow-2xl flex flex-col overflow-hidden">
+					<div class="bg-green-500 dark:bg-green-600 px-4 py-3 flex items-center gap-3">
+						<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+							<img src="/favicon.svg" alt="Avatar" class="w-8 h-8" />
+						</div>
+						<div>
+							<div class="font-bold text-white text-base">Yan Carlos Guerra</div>
+							<div class="text-xs text-green-100">Desarrollador de Software</div>
+						</div>
+					</div>
+					<div class="flex-1 px-4 py-5 bg-gray-100 dark:bg-slate-900 flex flex-col gap-3 min-h-[180px] max-h-72 overflow-y-auto border-b border-gray-200 dark:border-slate-700">
+						<div class="self-start max-w-[80%] bg-green-100 dark:bg-green-900 text-green-900 dark:text-green-100 rounded-xl rounded-bl-none px-4 py-2 text-sm shadow-md mb-1">
+							¡Hola! Soy Yan Carlos Guerra, desarrollador de software especializado en soluciones web modernas. Si tienes alguna consulta, proyecto o colaboración en mente, escríbeme tu mensaje y te responderé personalmente por WhatsApp.
+						</div>
+						<div id="user-bubble" class="hidden self-end max-w-[80%] bg-white dark:bg-slate-700 text-slate-900 dark:text-white rounded-xl rounded-br-none px-4 py-2 text-sm shadow-md border border-gray-200 dark:border-slate-600"></div>
+					</div>
+					<div class="px-4 py-4 bg-gray-50 dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700 flex items-center gap-2">
+						<textarea id="whatsapp-message" class="flex-1 border border-gray-300 dark:border-slate-600 rounded-lg px-3 py-2 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-400 resize-none focus:ring-2 focus:ring-green-400 focus:outline-none transition-all" rows="1" placeholder="Escribe tu mensaje..." aria-label="Mensaje de WhatsApp" style="min-height:36px;max-height:80px;"></textarea>
+						<a id="send-whatsapp" href="#" target="_blank" class="bg-green-500 text-white px-5 py-2 rounded-lg font-semibold hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700 transition-colors shadow">Enviar</a>
+						<button onclick="toggleModal()" class="ml-1 bg-gray-300 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-400 dark:bg-slate-700 dark:text-white dark:hover:bg-slate-600 transition-colors">✕</button>
 					</div>
 				</div>
 			</div>
@@ -79,12 +93,25 @@ const { title = 'Yan Carlos Guerra - Desarrollador Full Stack', description = 'P
 					modal.classList.toggle('hidden');
 				};
 
-				document.getElementById('send-whatsapp').addEventListener('click', function () {
-					const message = document.getElementById('whatsapp-message').value;
+				const sendBtn = document.getElementById('send-whatsapp');
+				const textarea = document.getElementById('whatsapp-message');
+				const userBubble = document.getElementById('user-bubble');
+				sendBtn.addEventListener('click', function () {
+					const message = textarea.value;
 					if (message.trim() !== '') {
+						userBubble.textContent = message;
+						userBubble.classList.remove('hidden');
 						this.href = `https://wa.me/573229369995?text=${encodeURIComponent(message)}`;
 					} else {
 						alert('Por favor, escribe un mensaje antes de enviar.');
+					}
+				});
+				textarea.addEventListener('input', function () {
+					if (textarea.value.trim() === '') {
+						userBubble.classList.add('hidden');
+					} else {
+						userBubble.textContent = textarea.value;
+						userBubble.classList.remove('hidden');
 					}
 				});
 
