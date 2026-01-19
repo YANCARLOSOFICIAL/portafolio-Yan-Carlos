@@ -5,7 +5,7 @@ const experiences = [
     location: 'Sibundoy, Putumayo, Colombia',
     type: 'Remoto',
     period: 'Marzo 2025 - Actualidad',
-    duration: '10 meses',
+    duration: '11 meses',
     description: [
       'Desarrollo de aplicaciones web con Laravel y Vue',
       'Implementación de APIs RESTful',

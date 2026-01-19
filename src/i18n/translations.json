@@ -26,7 +26,7 @@
     "about": {
       "tag": "SOBRE MÍ",
       "title": "Construyendo el futuro",
-      "intro": "Soy <strong>Yan Carlos Guerra</strong>, estudiante de noveno semestre de Ingeniería en Sistemas con sólida formación en desarrollo de software full-stack y arquitectura de aplicaciones.",
+      "intro": "Soy <strong>Yan Carlos Guerra</strong>, estudiante de Ingeniería en Sistemas con sólida formación en desarrollo de software full-stack y arquitectura de aplicaciones.",
       "description": "Experiencia práctica en la implementación de soluciones tecnológicas utilizando múltiples lenguajes y frameworks modernos. Orientado a resultados con capacidad demostrada para adaptarme rápidamente a nuevas tecnologías.",
       "frontend": {
         "title": "Frontend",
@@ -57,7 +57,7 @@
           "location": "Sibundoy, Putumayo, Colombia",
           "type": "Remoto",
           "period": "Marzo 2025 - Actualidad",
-          "duration": "10 meses",
+          "duration": "11 meses",
           "description": [
             "Desarrollo de aplicaciones web con Laravel y Vue",
             "Implementación de APIs RESTful",
@@ -101,7 +101,7 @@
         {
           "title": "Ingeniería de Sistemas",
           "institution": "Institución Universitaria del Putumayo",
-          "period": "En curso - 9º Semestre",
+          "period": "En curso - 10º Semestre",
           "description": "Programación orientada a objetos (POO), Arquitectura de la información"
         },
         {
@@ -155,7 +155,7 @@
         "send": "Enviar"
       },
       "footer": {
-        "copyright": "© 2025 Yan Carlos Guerra. Todos los derechos reservados."
+        "copyright": "© 2026 Yan Carlos Guerra. Todos los derechos reservados."
       }
     }
   },
@@ -217,7 +217,7 @@
           "location": "Sibundoy, Putumayo, Colombia",
           "type": "Remote",
           "period": "March 2025 - Present",
-          "duration": "10 months",
+          "duration": "11 months",
           "description": [
             "Web application development with Laravel and Vue",
             "RESTful API implementation",

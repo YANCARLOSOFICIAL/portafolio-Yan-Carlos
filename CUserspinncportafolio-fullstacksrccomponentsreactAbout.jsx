@@ -8,7 +8,7 @@ export default function About() {
             Building the future
           </h2>
           <p className="text-lg text-gray-400 leading-relaxed max-w-3xl mx-auto">
-            Soy <span className="font-bold text-white">Yan Carlos Guerra</span>, estudiante de noveno semestre de Ingeniería en Sistemas con sólida formación en desarrollo de software full-stack y arquitectura de aplicaciones.
+            Soy <span className="font-bold text-white">Yan Carlos Guerra</span>, estudiante de Ingeniería en Sistemas con sólida formación en desarrollo de software full-stack y arquitectura de aplicaciones.
           </p>
           <p className="text-base text-gray-500 leading-relaxed max-w-3xl mx-auto mt-4">
             Experiencia práctica en la implementación de soluciones tecnológicas utilizando múltiples lenguajes y frameworks modernos. Orientado a resultados con capacidad demostrada para adaptarme rápidamente a nuevas tecnologías.
