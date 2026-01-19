@@ -9,6 +9,7 @@ import About from './About';
 import Experience from './Experience';
 import Projects from './Projects';
 import Skills from './Skills';
+import Testimonials from './Testimonials';
 import Education from './Education';
 import Contact from './Contact';
 import Footer from './Footer';
@@ -31,6 +32,7 @@ export default function App() {
         <Experience />
         <Projects />
         <Skills />
+        <Testimonials />
         <Education />
         <Contact />
       </main>
