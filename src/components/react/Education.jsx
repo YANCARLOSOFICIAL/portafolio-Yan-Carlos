@@ -37,7 +37,7 @@ export default function Education() {
                   <p className="text-primary-300 font-semibold mb-3">{cert.issuer}</p>
                   <p className="text-gray-400 text-sm mb-2">{cert.date}</p>
                   {cert.credential && (
-                    <p className="text-xs text-gray-600 font-mono">ID: {cert.credential}</p>
+                    <p className="text-xs text-gray-400 font-mono">ID: {cert.credential}</p>
                   )}
                 </div>
               </div>
