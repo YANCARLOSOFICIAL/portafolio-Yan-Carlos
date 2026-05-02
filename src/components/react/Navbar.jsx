@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLanguage } from './LanguageContext';
 import LanguageSelector from './LanguageSelector';
+import DarkModeToggle from './DarkModeToggle';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,78 +29,79 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 ${scrolled ? 'bg-black/95' : 'bg-black/80'} backdrop-blur-md transition-all duration-300 border-b border-white/10`}>
+    <nav 
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled 
+          ? 'bg-black/80 dark:bg-black/90 backdrop-blur-xl border-b border-white/10' 
+          : 'bg-transparent'
+      }`}
+    >
       <div className="container py-4 flex justify-between items-center">
-        <span className="text-xl font-bold text-white tracking-tight">
+        <a 
+          href="#hero" 
+          className="text-xl font-bold text-white tracking-tight hover:text-accent-blue transition-colors"
+        >
           YCG
-        </span>
+        </a>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-semibold text-gray-400 hover:text-white transition-colors duration-200 relative group focus-ring"
+              className="text-sm font-medium text-gray-400 hover:text-white transition-colors duration-200 relative group"
             >
               {link.label}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-blue group-hover:w-full transition-all duration-300"></span>
             </a>
           ))}
-          <LanguageSelector />
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors duration-200 focus-ring"
-          aria-label="Toggle menu"
-          aria-expanded={isMenuOpen}
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
+        <div className="flex items-center gap-3">
+          <div className="hidden md:block">
+            <LanguageSelector />
+          </div>
+          <DarkModeToggle />
+
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-colors duration-200"
+            aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
           >
-            {isMenuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
-        </button>
+            <div className="relative w-6 h-5 flex flex-col justify-between">
+              <span className={`w-full h-0.5 bg-current rounded-full transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+              <span className={`w-full h-0.5 bg-current rounded-full transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`w-full h-0.5 bg-current rounded-full transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+            </div>
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`md:hidden fixed inset-0 top-[73px] bg-black backdrop-blur-lg transform transition-transform duration-300 ease-in-out ${
-          isMenuOpen ? 'translate-x-0 pointer-events-auto' : 'translate-x-full pointer-events-none'
+      <div 
+        className={`lg:hidden fixed inset-0 top-[72px] bg-black/95 backdrop-blur-xl transform transition-all duration-300 ease-in-out ${
+          isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
         }`}
+        style={{ pointerEvents: isMenuOpen ? 'auto' : 'none' }}
       >
-        <div className="flex flex-col items-center justify-center h-full space-y-8 px-6">
+        <div className="flex flex-col items-center justify-center h-full space-y-2 px-6">
           {navLinks.map((link, index) => (
             <a
               key={link.href}
               href={link.href}
               onClick={closeMenu}
-              className="text-2xl font-bold text-white hover:text-accent-blue transition-all duration-300 transform hover:scale-110"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="text-2xl font-bold text-white hover:text-accent-blue transition-all duration-300 py-3 px-8 rounded-lg hover:bg-white/5 w-full text-center"
+              style={{ animationDelay: `${index * 0.05}s` }}
             >
               {link.label}
             </a>
           ))}
+          
+          <div className="pt-8 flex flex-col items-center gap-4 w-full max-w-xs">
+            <div className="md:hidden w-full">
+              <LanguageSelector />
+            </div>
+          </div>
         </div>
       </div>
     </nav>

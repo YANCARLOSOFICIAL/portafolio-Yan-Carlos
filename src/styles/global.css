@@ -3,61 +3,139 @@
 @tailwind utilities;
 
 @layer base {
-	html {
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-	}
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-	body {
-		@apply bg-dark text-white antialiased;
-		font-feature-settings: "kern" 1, "liga" 1;
-		line-height: 1.6;
-	}
+  body {
+    @apply bg-dark text-white antialiased;
+    font-feature-settings: "kern" 1, "liga" 1;
+    line-height: 1.6;
+  }
 
-	h1, h2, h3, h4, h5, h6 {
-		@apply font-display;
-	}
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
 
-	a {
-		@apply text-accent-blue hover:text-white transition-colors duration-200;
-	}
+  a {
+    @apply text-accent-blue hover:text-white transition-colors duration-200;
+  }
 
-	.container {
-		@apply max-w-7xl mx-auto px-6;
-	}
-
-	/* Small utility tweaks for hero and cards */
-	.card {
-		@apply bg-white/5 border border-white/10 rounded-2xl p-6;
-	}
+  .container {
+    @apply max-w-7xl mx-auto px-4 md:px-6;
+  }
 }
 
-/* Reveal animation helpers */
 @layer components {
-	/* Initially hidden; animation triggers when .reveal--active is added */
-	.reveal {
-		opacity: 0;
-		transform: translateY(18px);
-		transition: opacity 420ms ease-out, transform 420ms ease-out;
-	}
+  .card {
+    @apply bg-white/5 border border-white/10 rounded-2xl p-6;
+  }
 
-	.reveal.reveal--active {
-		animation: fadeInUp 0.7s ease-out forwards;
-	}
+  .glassmorphism {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
 
-	.reveal-delay-100 { animation-delay: 0.1s; }
-	.reveal-delay-200 { animation-delay: 0.2s; }
-	.reveal-delay-300 { animation-delay: 0.3s; }
-	.reveal-delay-400 { animation-delay: 0.4s; }
+  .dot-pattern {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
 
-	.focus-ring:focus {
-		outline: none;
-		box-shadow: 0 0 0 4px rgba(124,58,237,0.12), 0 0 0 1px rgba(124,58,237,0.24);
-		border-radius: 0.5rem;
-	}
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
 
-	.hover-lift:hover {
-		transform: translateY(-6px) scale(1.01);
-		transition: transform 220ms cubic-bezier(.2,.8,.2,1);
-	}
+  .reveal.reveal--active {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .reveal-delay-100 { animation-delay: 0.1s; }
+  .reveal-delay-200 { animation-delay: 0.2s; }
+  .reveal-delay-300 { animation-delay: 0.3s; }
+  .reveal-delay-400 { animation-delay: 0.4s; }
+  .reveal-delay-500 { animation-delay: 0.5s; }
+
+  .focus-ring:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(124,58,237,0.12), 0 0 0 1px rgba(124,58,237,0.24);
+    border-radius: 0.5rem;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-6px) scale(1.01);
+    transition: transform 220ms cubic-bezier(.2,.8,.2,1);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-accent-blue;
+  }
+
+  .border-gradient {
+    border-image: linear-gradient(to right, #a78bfa, #60a5fa) 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: rgba(124, 58, 237, 0.3);
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #404040;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

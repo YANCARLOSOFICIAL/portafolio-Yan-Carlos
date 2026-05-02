@@ -75,6 +75,7 @@
     "projects": {
       "tag": "PORTAFOLIO",
       "title": "Proyectos destacados",
+      "filterAll": "Todos",
       "live": "Ver demo",
       "repo": "Repositorio",
       "items": [
@@ -240,6 +241,7 @@
     "projects": {
       "tag": "PORTFOLIO",
       "title": "Featured Projects",
+      "filterAll": "All",
       "live": "Live Demo",
       "repo": "Repository",
       "items": [

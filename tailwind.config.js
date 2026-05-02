@@ -5,10 +5,10 @@ module.exports = {
     "./src/pages/**/*.{astro,js,jsx,ts,tsx}",
     "./src/components/**/*.{astro,js,jsx,ts,tsx}"
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        // Dark-first tech palette
         dark: {
           DEFAULT: '#000000',
           950: '#0a0a0a',
@@ -16,7 +16,6 @@ module.exports = {
           800: '#1a1a1a',
           700: '#262626',
         },
-        // Primary neutrals and semantic tokens
         primary: {
           50: '#f5f7fb',
           100: '#eef2ff',
@@ -36,8 +35,9 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
-        display: ['Poppins', 'ui-sans-serif', 'system-ui'],
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       container: {
         center: true,
@@ -48,10 +48,16 @@ module.exports = {
           xl: '6rem',
         },
       },
+      borderRadius: {
+        'DEFAULT': '1rem',
+      },
+      backdropBlur: {
+        xs: '2px',
+      },
       keyframes: {
         fadeInUp: {
-          '0%': { opacity: 0, transform: 'translateY(40px)' },
-          '100%': { opacity: 1, transform: 'translateY(0)' },
+          '0%': { opacity: '0', transform: 'translateY(40px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
@@ -60,14 +66,21 @@ module.exports = {
         shimmer: {
           '100%': { transform: 'translateX(100%)' },
         },
+        pulse: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.5' },
+        },
       },
       animation: {
         fadeInUp: 'fadeInUp 0.8s ease-out',
         float: 'float 3s ease-in-out infinite',
         shimmer: 'shimmer 2s linear infinite',
+        pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
     },
   },
-  darkMode: 'class',
   plugins: [],
 };

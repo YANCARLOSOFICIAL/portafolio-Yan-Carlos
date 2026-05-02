@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useLanguage } from './LanguageContext';
 
 export default function Contact() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,6 +11,19 @@ export default function Contact() {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [copied, setCopied] = useState(false);
+
+  const email = 'yancarlospinchao2021@itp.edu.co';
+
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
 
   const validateForm = () => {
     const newErrors = {};
@@ -258,9 +271,39 @@ export default function Contact() {
           </form>
 
           {/* Direct Email */}
-          <div className="mt-8 pt-6 border-t border-white/10 text-center">
-            <p className="text-sm text-gray-400 mb-2">{t.contact.or}</p>
-            <a href="mailto:yancarlospinchao2021@itp.edu.co" className="text-primary-100 font-semibold hover:text-white transition-colors">yancarlospinchao2021@itp.edu.co</a>
+          <div className="mt-8 pt-6 border-t border-white/10">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <p className="text-sm text-gray-400">{t.contact.or}</p>
+              <div className="flex items-center gap-2">
+                <a 
+                  href={`mailto:${email}`} 
+                  className="text-primary-100 font-semibold hover:text-white transition-colors font-mono text-sm"
+                >
+                  {email}
+                </a>
+                <button
+                  onClick={copyToClipboard}
+                  className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-gray-400 hover:text-white hover:border-primary-400/50 transition-all duration-200 flex items-center gap-1.5 text-sm"
+                  aria-label={copied ? (lang === 'es' ? 'Email copiado' : 'Email copied') : (lang === 'es' ? 'Copiar email' : 'Copy email')}
+                >
+                  {copied ? (
+                    <>
+                      <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className="text-green-400">{lang === 'es' ? 'Copiado' : 'Copied'}</span>
+                    </>
+                  ) : (
+                    <>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                      </svg>
+                      <span>{lang === 'es' ? 'Copiar' : 'Copy'}</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
