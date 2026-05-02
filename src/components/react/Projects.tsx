@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Code2 } from 'lucide-react';
+import { ExternalLink, Code2 } from 'lucide-react';
 
 interface Project {
   title: string;
@@ -20,7 +20,7 @@ const projects: Project[] = [
     category: 'fullstack',
     demo: 'https://ejemplo-ecommerce.com',
     github: 'https://github.com/YANCARLOSOFICIAL/ecommerce-moderno',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
   },
   {
     title: 'Gestor de Tareas',
@@ -29,7 +29,7 @@ const projects: Project[] = [
     category: 'fullstack',
     demo: 'https://ejemplo-tareas.com',
     github: 'https://github.com/YANCARLOSOFICIAL/gestor-tareas',
-    image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=250&fit=crop',
+    image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
   },
   {
     title: 'Dashboard Social',
@@ -38,7 +38,7 @@ const projects: Project[] = [
     category: 'frontend',
     demo: 'https://ejemplo-dashboard.com',
     github: 'https://github.com/YANCARLOSOFICIAL/dashboard-social',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
   },
 ];
 
@@ -55,41 +55,33 @@ export default function Projects() {
 
   const handleFilterChange = (filterId: string) => {
     setActiveFilter(filterId);
-    
-    if (filterId === 'all') {
-      setFilteredProjects(projects);
-    } else {
-      setFilteredProjects(projects.filter(p => p.category === filterId));
-    }
+    setFilteredProjects(filterId === 'all' ? projects : projects.filter(p => p.category === filterId));
   };
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case 'fullstack':
-        return 'bg-purple-500/20 text-purple-300 border-purple-500/30';
-      case 'frontend':
-        return 'bg-blue-500/20 text-blue-300 border-blue-500/30';
-      case 'backend':
-        return 'bg-green-500/20 text-green-300 border-green-500/30';
-      default:
-        return 'bg-gray-500/20 text-gray-300 border-gray-500/30';
+      case 'fullstack': return 'bg-neon-purple/20 text-neon-purpleLight border-neon-purple/30';
+      case 'frontend': return 'bg-neon-cyan/20 text-neon-cyan border-neon-cyan/30';
+      case 'backend': return 'bg-neon-pink/20 text-neon-pink border-neon-pink/30';
+      default: return 'bg-white/5 text-text-secondary border-white/10';
     }
   };
 
   return (
     <section id="projects" className="py-24 relative">
-      <div className="dot-pattern absolute inset-0 opacity-20 pointer-events-none" />
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="absolute inset-0 pattern-dots opacity-30" />
+      <div className="absolute top-0 left-1/4 w-64 h-64 bg-neon-purple/10 rounded-full blur-[100px]" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-neon-cyan/10 rounded-full blur-[100px]" />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
           className="mb-10"
         >
-          <p className="text-purple-400 text-sm font-mono tracking-wider uppercase mb-2">PORTAFOLIO</p>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white">Proyectos destacados</h2>
+          <p className="section-title">PORTAFOLIO</p>
+          <h2 className="section-heading">Proyectos destacados</h2>
         </motion.div>
 
         <div className="flex flex-wrap gap-2 mb-10">
@@ -97,10 +89,10 @@ export default function Projects() {
             <motion.button
               key={filter.id}
               onClick={() => handleFilterChange(filter.id)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+              className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
                 activeFilter === filter.id
-                  ? 'bg-purple-600 text-white shadow-lg shadow-purple-600/25'
-                  : 'bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-purple-400/50'
+                  ? 'bg-neon-purple text-white shadow-glow-purple-sm'
+                  : 'bg-surface border border-white/5 text-text-secondary hover:text-white hover:border-neon-purple/30'
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -110,10 +102,7 @@ export default function Projects() {
           ))}
         </div>
 
-        <motion.div 
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, index) => (
               <motion.article
@@ -123,22 +112,22 @@ export default function Projects() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
-                className="group bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden hover:scale-[1.02] hover:border-purple-500/30 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300"
+                className="group card-neon overflow-hidden"
               >
-                <div className="relative h-44 overflow-hidden">
+                <div className="relative h-48 overflow-hidden rounded-xl mb-4">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
                   
                   <div className="absolute top-3 right-3 flex gap-2">
                     <a
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-3 py-1 bg-purple-600/90 text-white text-xs rounded-md backdrop-blur-sm hover:bg-purple-600 transition-colors flex items-center gap-1"
+                      className="px-3 py-1.5 bg-neon-purple/90 text-white text-xs rounded-lg flex items-center gap-1 hover:bg-neon-purple transition-colors"
                     >
                       <ExternalLink className="w-3 h-3" />
                       Demo
@@ -147,7 +136,7 @@ export default function Projects() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-3 py-1 bg-white/10 backdrop-blur-sm text-white text-xs rounded-md border border-white/20 hover:bg-white/20 transition-colors flex items-center gap-1"
+                      className="px-3 py-1.5 bg-surface/80 backdrop-blur-sm text-white text-xs rounded-lg border border-white/10 flex items-center gap-1 hover:bg-surface hover:border-white/20 transition-colors"
                     >
                       <Code2 className="w-3 h-3" />
                       Code
@@ -161,38 +150,23 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <div className="p-5">
-                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-gray-400 mb-4 leading-relaxed">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="text-xs px-2 py-1 bg-white/5 rounded-md text-gray-300 font-mono border border-white/5"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-neon-purple transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-text-secondary text-sm mb-4 leading-relaxed">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((tech) => (
+                    <span key={tech} className="tech-badge text-xs">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </motion.article>
             ))}
           </AnimatePresence>
         </motion.div>
-
-        {filteredProjects.length === 0 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center py-12"
-          >
-            <p className="text-gray-500">No hay proyectos en esta categoría</p>
-          </motion.div>
-        )}
       </div>
     </section>
   );

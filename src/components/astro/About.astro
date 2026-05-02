@@ -1,44 +1,65 @@
 ---
-import { siteConfig } from '../../config/siteConfig';
+const metrics = [
+  { value: '500+', label: 'Empresas atendidas' },
+  { value: '10+', label: 'Proyectos completados' },
+  { value: '30%', label: 'Reducción en facturación' },
+];
 
-const { about } = siteConfig;
+const frontendItems = [
+  'UI/UX moderno y accesible',
+  'React, Astro, animaciones',
+  'Diseño responsive mobile-first',
+  'Performance y SEO optimizado',
+];
+
+const backendItems = [
+  'APIs robustas (REST, GraphQL)',
+  'Node.js, bases de datos SQL/NoSQL',
+  'Autenticación y escalabilidad',
+  'DevOps, CI/CD y cloud',
+];
 ---
 
 <section id="about" class="py-24 relative">
-  <div class="dot-pattern absolute inset-0 opacity-20 pointer-events-none"></div>
+  <div class="absolute inset-0 pattern-dots opacity-30"></div>
+  <div class="absolute top-0 right-0 w-64 h-64 bg-neon-purple/10 rounded-full blur-[100px]"></div>
   
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
     <div class="mb-10">
-      <p class="text-purple-400 text-sm font-mono tracking-wider uppercase mb-2">{about.tag}</p>
-      <h2 class="text-3xl md:text-5xl font-extrabold text-white">{about.title}</h2>
+      <p class="section-title">SOBRE MÍ</p>
+      <h2 class="section-heading">Construyendo el futuro</h2>
     </div>
 
-    <div class="grid lg:grid-cols-2 gap-12">
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
       <div class="space-y-6">
-        <p class="text-lg text-gray-300 leading-relaxed" set:html={about.intro}></p>
-        <p class="text-gray-400 leading-relaxed">{about.description}</p>
+        <p class="text-lg text-text-secondary leading-relaxed">
+          Soy <span class="text-neon-purple font-semibold">Yan Carlos Guerra</span>, estudiante de Ingeniería en Sistemas con +1 año de experiencia en desarrollo full-stack. Me especializo en crear soluciones tecnológicas que generan resultados medibles.
+        </p>
+        <p class="text-text-secondary leading-relaxed">
+          En <span class="text-neon-cyan font-semibold">Kamila Innovation S.A.S</span>, participé en el desarrollo de sistemas que sirven a más de 500 empresas. Me apasiona aprender nuevas tecnologías y adaptarme rápidamente a los requerimientos del equipo.
+        </p>
       </div>
 
       <div class="grid grid-cols-3 gap-4">
-        {about.metrics.map((metric) => (
-          <div class="text-center p-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl hover:border-purple-500/30 transition-colors group">
-            <p class="text-3xl font-bold text-purple-400 group-hover:scale-110 transition-transform">{metric.value}</p>
-            <p class="text-xs text-gray-400 mt-1">{metric.label}</p>
+        {metrics.map((metric) => (
+          <div class="metric-card group">
+            <p class="text-3xl font-bold text-gradient group-hover:scale-110 transition-transform">{metric.value}</p>
+            <p class="text-text-muted text-xs mt-1">{metric.label}</p>
           </div>
         ))}
       </div>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-8 mt-12">
-      <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-purple-500/30 transition-colors">
+    <div class="grid md:grid-cols-2 gap-6 mt-12">
+      <div class="glass-hover rounded-2xl p-6">
         <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
-          <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
-          {about.frontend.title}
+          <span class="w-2 h-2 bg-neon-cyan rounded-full"></span>
+          Frontend
         </h3>
         <ul class="space-y-3">
-          {about.frontend.items.map((item) => (
-            <li class="flex items-center gap-2 text-gray-400">
-              <svg class="w-4 h-4 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          {frontendItems.map((item) => (
+            <li class="flex items-center gap-2 text-text-secondary">
+              <svg class="w-4 h-4 text-neon-cyan flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
               </svg>
               {item}
@@ -47,15 +68,15 @@ const { about } = siteConfig;
         </ul>
       </div>
 
-      <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-purple-500/30 transition-colors">
+      <div class="glass-hover rounded-2xl p-6">
         <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
-          <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-          {about.backend.title}
+          <span class="w-2 h-2 bg-neon-pink rounded-full"></span>
+          Backend
         </h3>
         <ul class="space-y-3">
-          {about.backend.items.map((item) => (
-            <li class="flex items-center gap-2 text-gray-400">
-              <svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          {backendItems.map((item) => (
+            <li class="flex items-center gap-2 text-text-secondary">
+              <svg class="w-4 h-4 text-neon-pink flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
               </svg>
               {item}

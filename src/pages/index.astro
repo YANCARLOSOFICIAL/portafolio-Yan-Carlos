@@ -7,12 +7,9 @@ import TechStack from '../components/astro/TechStack.astro';
 import Testimonials from '../components/astro/Testimonials.astro';
 import Education from '../components/astro/Education.astro';
 import Footer from '../components/astro/Footer.astro';
-
-const title = 'Yan Carlos Guerra - Full Stack Developer';
-const description = '10th semester student with +1 year of experience in production. Full Stack Developer specializing in React, Node.js, Laravel, and modern web technologies.';
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title="Yan Carlos Guerra - Full Stack Developer" description="10th semester student with +1 year of experience in production.">
   <App client:load />
   
   <About />
@@ -24,33 +21,8 @@ const description = '10th semester student with +1 year of experience in product
   <Footer />
   
   <style is:global>
-    * {
-      cursor: none !important;
-    }
-
-    @media (hover: none) and (pointer: coarse) {
-      * {
-        cursor: auto !important;
-      }
-    }
-
     html {
       scroll-behavior: smooth;
-    }
-
-    .animate-in {
-      animation: fadeInUp 0.6s ease-out forwards;
-    }
-
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
   </style>
 </BaseLayout>

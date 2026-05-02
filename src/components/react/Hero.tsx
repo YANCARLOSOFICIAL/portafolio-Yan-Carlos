@@ -1,37 +1,20 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail, Sparkles } from 'lucide-react';
 
-const typewriterWords = [
-  'Full Stack Developer',
-  'React Developer', 
-  'Laravel Developer',
-  'Node.js Developer',
-];
+const typewriterWords = ['Full Stack Developer', 'React Developer', 'Laravel Developer', 'Node.js Developer'];
 
-const techIcons = [
-  { name: 'React', color: '#61DAFB' },
-  { name: 'Node.js', color: '#339933' },
-  { name: 'Laravel', color: '#FF2D20' },
-  { name: 'Vue', color: '#42b883' },
-  { name: 'TypeScript', color: '#3178C6' },
-  { name: 'Astro', color: '#FF5C03' },
-];
+const techStack = ['React', 'Node.js', 'Laravel', 'Vue.js', 'TypeScript', 'PostgreSQL', 'Docker', 'AWS'];
 
 const stats = [
-  { value: '2+', label: 'Años de experiencia' },
-  { value: '10+', label: 'Proyectos completados' },
-  { value: '500+', label: 'Empresas atendidas' },
+  { value: '2+', label: 'años experiencia' },
+  { value: '10+', label: 'proyectos' },
+  { value: '500+', label: 'empresas' },
 ];
 
 export default function Hero() {
   const [currentWord, setCurrentWord] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -44,227 +27,215 @@ export default function Hero() {
       } else {
         if (currentWord === 0) {
           setIsDeleting(false);
-          setCurrentWord(0);
         } else {
           setCurrentWord((prev) => prev - 1);
         }
       }
-    }, isDeleting ? 50 : 100);
-
+    }, isDeleting ? 50 : 120);
     return () => clearTimeout(timeout);
   }, [currentWord, isDeleting]);
 
-  const scrollToSection = (id: string) => {
-    const element = document.querySelector(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center pt-16 overflow-hidden">
-      <div className="dot-pattern absolute inset-0 opacity-30 pointer-events-none" />
+    <section id="hero" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 pattern-dots opacity-50" />
       
-      <div className="absolute top-20 right-10 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-20 left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      {/* Gradient Orbs */}
+      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-neon-purple/20 rounded-full blur-[128px]" />
+      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-neon-cyan/10 rounded-full blur-[128px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-neon-purple/5 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <motion.p
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left Content */}
+          <div className="space-y-8">
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-purple-400 text-sm font-mono tracking-wider uppercase"
+              className="flex items-center gap-3"
             >
-              HOLA, MI NOMBRE ES
-            </motion.p>
+              <span className="w-12 h-[1px] bg-neon-purple" />
+              <span className="text-neon-purple font-mono text-sm tracking-widest uppercase">Portfolio 2025</span>
+            </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight"
+              transition={{ delay: 0.1 }}
+              className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1]"
             >
-              <span className="block bg-gradient-to-r from-white via-purple-200 to-purple-400 bg-clip-text text-transparent">
-                Yan Carlos
-              </span>
-              <span className="block text-white">Guerra</span>
+              <span className="block text-text-primary">Yan Carlos</span>
+              <span className="block text-gradient">Guerra</span>
             </motion.h1>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ delay: 0.2 }}
               className="flex items-center gap-3"
             >
-              <span className="text-2xl md:text-3xl font-semibold text-gray-300">
+              <span className="text-2xl md:text-3xl font-semibold text-text-primary">
                 {typewriterWords[currentWord]}
               </span>
-              <span className="w-1 h-8 bg-purple-500 animate-pulse" />
+              <span className="w-[2px] h-8 bg-neon-purple animate-pulse" />
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.25 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-500/10 border border-green-500/30 rounded-full"
+              transition={{ delay: 0.25 }}
+              className="flex items-center gap-2"
             >
-              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-              <span className="text-green-400 text-sm font-medium">Disponible para trabajar</span>
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500" />
+              </span>
+              <span className="text-green-400 font-medium">Disponible para trabajar</span>
             </motion.div>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-base md:text-lg text-gray-400 max-w-xl leading-relaxed"
+              transition={{ delay: 0.3 }}
+              className="text-lg text-text-secondary max-w-lg leading-relaxed"
             >
-              Estudiante de 10° semestre con +1 año de experiencia en producción. Transformo ideas en soluciones tecnológicas con React, Node.js y arquitecturas modernas.
+              Estudiante de 10° semestre con +1 año de experiencia en producción. 
+              Transformo ideas en soluciones tecnológicas con código limpio y moderno.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.35 }}
+              transition={{ delay: 0.35 }}
               className="flex flex-wrap gap-4"
             >
-              <motion.button
-                onClick={() => scrollToSection('#projects')}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-500 text-white rounded-xl shadow-lg hover:shadow-purple-500/25 hover:scale-105 transition-all duration-200"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <button onClick={() => scrollTo('projects')} className="btn-primary flex items-center gap-2 group">
                 Ver proyectos
-                <ArrowRight className="w-4 h-4" />
-              </motion.button>
-              
-              <motion.button
-                onClick={() => window.open('https://wa.me/573105374074', '_blank')}
-                className="inline-flex items-center gap-2 px-6 py-3 border border-white/20 text-white rounded-xl hover:border-green-500/50 hover:bg-green-500/10 transition-all duration-200"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <button onClick={() => window.open('https://wa.me/573105374074', '_blank')} className="btn-secondary">
                 Contactar
-              </motion.button>
+              </button>
             </motion.div>
 
+            {/* Social Links */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex items-center gap-4 pt-2"
+              transition={{ delay: 0.4 }}
+              className="flex items-center gap-4"
             >
-              <span className="text-sm text-gray-500">Conecta:</span>
+              <span className="text-text-muted text-sm">Conecta:</span>
               <div className="flex gap-2">
                 {[
                   { icon: Github, url: 'https://github.com/YANCARLOSOFICIAL', label: 'GitHub' },
                   { icon: Linkedin, url: 'https://www.linkedin.com/in/yancarlos-pinchao-guerra-0b928a196', label: 'LinkedIn' },
                   { icon: Mail, url: 'mailto:yancarlospinchao2021@itp.edu.co', label: 'Email' },
-                ].map((social, i) => (
-                  <motion.a
+                ].map((social) => (
+                  <a
                     key={social.label}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 flex items-center justify-center rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 hover:border-purple-400/50 transition-all duration-200"
+                    className="w-10 h-10 flex items-center justify-center rounded-xl bg-surface border border-white/5 text-text-secondary hover:text-neon-purple hover:border-neon-purple/30 hover:shadow-glow-purple-sm transition-all duration-300"
                     aria-label={social.label}
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
                   >
                     <social.icon className="w-5 h-5" />
-                  </motion.a>
+                  </a>
                 ))}
               </div>
             </motion.div>
 
+            {/* Tech Stack */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.45 }}
-              className="pt-4"
+              transition={{ delay: 0.45 }}
+              className="flex flex-wrap gap-2"
             >
-              <p className="text-xs text-gray-500 uppercase tracking-wider mb-3 font-mono">Tech Stack</p>
-              <div className="flex flex-wrap gap-2">
-                {techIcons.map((tech, i) => (
-                  <motion.span
-                    key={tech.name}
-                    className="px-3 py-1.5 bg-white/5 border border-white/10 text-gray-300 rounded-lg text-xs font-mono hover:border-purple-400/50 hover:text-white transition-colors cursor-default"
-                    whileHover={{ scale: 1.05 }}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.5 + i * 0.05 }}
-                  >
-                    {tech.name}
-                  </motion.span>
-                ))}
-              </div>
+              {techStack.map((tech, i) => (
+                <span key={tech} className="tech-badge">
+                  {tech}
+                </span>
+              ))}
             </motion.div>
           </div>
 
-          <div className="hidden lg:block relative">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-3xl blur-3xl" />
+          {/* Right - Stats Card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3 }}
+            className="hidden lg:block"
+          >
+            <div className="relative">
+              {/* Glow Effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/20 via-transparent to-neon-cyan/20 rounded-3xl blur-2xl" />
               
-              <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8">
-                <div className="grid grid-cols-3 gap-4">
+              <div className="relative glass rounded-3xl p-8 border border-white/5">
+                {/* Header */}
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-neon-purple to-neon-pink flex items-center justify-center">
+                    <Sparkles className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold text-lg">Logros destacados</h3>
+                    <p className="text-text-muted text-sm">Kamila Innovation S.A.S</p>
+                  </div>
+                </div>
+
+                {/* Stats Grid */}
+                <div className="grid grid-cols-3 gap-4 mb-6">
                   {stats.map((stat, i) => (
-                    <motion.div
-                      key={stat.label}
-                      className="text-center p-4 bg-white/5 rounded-xl border border-white/10"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.3 + i * 0.1 }}
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      <p className="text-3xl font-bold text-purple-400">{stat.value}</p>
-                      <p className="text-xs text-gray-400 mt-1">{stat.label}</p>
-                    </motion.div>
+                    <div key={stat.label} className="metric-card group">
+                      <p className="text-3xl font-bold text-gradient group-hover:scale-110 transition-transform">
+                        {stat.value}
+                      </p>
+                      <p className="text-text-muted text-xs mt-1">{stat.label}</p>
+                    </div>
                   ))}
                 </div>
 
-                <div className="mt-6 p-4 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-xl border border-purple-500/20">
-                  <p className="text-sm text-gray-300 text-center">
-                    <span className="text-purple-400 font-semibold">30%</span> de reducción en tiempos de facturación en Kamila Innovation
-                  </p>
+                {/* Achievement */}
+                <div className="p-4 bg-gradient-to-r from-neon-purple/10 to-neon-cyan/10 rounded-xl border border-neon-purple/20">
+                  <div className="flex items-center justify-between">
+                    <span className="text-text-secondary text-sm">Reducción en tiempos de facturación</span>
+                    <span className="text-2xl font-bold text-neon-purple">30%</span>
+                  </div>
                 </div>
 
-                <div className="mt-6 grid grid-cols-2 gap-3">
-                  {['React', 'Node.js', 'Laravel', 'Vue.js', 'TypeScript', 'PostgreSQL'].map((tech, i) => (
-                    <motion.div
-                      key={tech}
-                      className="px-3 py-2 bg-white/5 rounded-lg text-xs text-gray-300 text-center font-mono border border-white/5"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.5 + i * 0.05 }}
-                      whileHover={{ scale: 1.02, borderColor: 'rgba(168, 85, 247, 0.5)' }}
-                    >
+                {/* Technologies */}
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {['Laravel', 'Vue.js', 'REST APIs', 'PostgreSQL'].map((tech) => (
+                    <span key={tech} className="px-3 py-1 bg-white/5 rounded-lg text-xs text-text-secondary font-mono border border-white/5">
                       {tech}
-                    </motion.div>
+                    </span>
                   ))}
                 </div>
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
 
+        {/* Mobile Stats */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-          className="lg:hidden mt-8 grid grid-cols-3 gap-4"
+          transition={{ delay: 0.5 }}
+          className="lg:hidden mt-12"
         >
-          {stats.map((stat, i) => (
-            <div key={stat.label} className="text-center p-4 bg-white/5 rounded-xl border border-white/10">
-              <p className="text-2xl font-bold text-purple-400">{stat.value}</p>
-              <p className="text-xs text-gray-400 mt-1">{stat.label}</p>
-            </div>
-          ))}
+          <div className="grid grid-cols-3 gap-4">
+            {stats.map((stat) => (
+              <div key={stat.label} className="text-center p-4 glass rounded-xl">
+                <p className="text-2xl font-bold text-neon-purple">{stat.value}</p>
+                <p className="text-text-muted text-xs mt-1">{stat.label}</p>
+              </div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

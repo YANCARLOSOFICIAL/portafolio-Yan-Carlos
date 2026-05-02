@@ -1,38 +1,56 @@
 ---
-import { siteConfig } from '../../config/siteConfig';
-
-const { testimonials } = siteConfig;
+const testimonials = [
+  {
+    name: 'María Rodríguez',
+    role: 'CEO, Tech Solutions',
+    content: 'Excelente trabajo. Entregó el proyecto antes de lo esperado y con una calidad excepcional. Recomendado.',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Maria&backgroundColor=7c3aed',
+  },
+  {
+    name: 'Juan Pérez',
+    role: 'CTO, Startup Innovadora',
+    content: 'Gran profesional. Siempre abierto a sugerencias y con gran capacidad de resolución de problemas.',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Juan&backgroundColor=22d3ee',
+  },
+  {
+    name: 'Laura Gómez',
+    role: 'Directora de Proyecto',
+    content: 'Comunicación excelente y código muy limpio. Fue un placer trabajar con él en nuestro proyecto.',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Laura&backgroundColor=f472b6',
+  },
+];
 ---
 
 <section id="testimonials" class="py-24 relative">
-  <div class="dot-pattern absolute inset-0 opacity-20 pointer-events-none"></div>
+  <div class="absolute inset-0 pattern-dots opacity-30"></div>
+  <div class="absolute bottom-0 left-1/4 w-64 h-64 bg-neon-purple/10 rounded-full blur-[100px]"></div>
   
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
     <div class="text-center mb-12">
-      <p class="text-purple-400 text-sm font-mono tracking-wider uppercase mb-2">{testimonials.tag}</p>
-      <h2 class="text-3xl md:text-5xl font-extrabold text-white">{testimonials.title}</h2>
+      <p class="section-title">TESTIMONIOS</p>
+      <h2 class="section-heading">Lo que dicen</h2>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {testimonials.items.map((testimonial, index) => (
-        <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-purple-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10 group">
+      {testimonials.map((testimonial, index) => (
+        <div class="glass-hover rounded-2xl p-6 group" style={`animation-delay: ${index * 0.1}s`}>
           <div class="flex items-center gap-4 mb-4">
             <img 
               src={testimonial.avatar} 
               alt={testimonial.name}
-              class="w-12 h-12 rounded-full bg-white/10 border border-white/20"
+              class="w-12 h-12 rounded-full bg-surface border border-white/10"
             />
             <div>
               <h4 class="font-semibold text-white">{testimonial.name}</h4>
-              <p class="text-sm text-gray-400">{testimonial.role}</p>
+              <p class="text-sm text-text-muted">{testimonial.role}</p>
             </div>
           </div>
           
           <div class="relative">
-            <svg class="absolute -top-2 -left-1 w-8 h-8 text-purple-500/30" fill="currentColor" viewBox="0 0 24 24">
+            <svg class="absolute -top-2 -left-1 w-8 h-8 text-neon-purple/30" fill="currentColor" viewBox="0 0 24 24">
               <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
             </svg>
-            <p class="text-gray-300 leading-relaxed pl-6">{testimonial.content}</p>
+            <p class="text-text-secondary leading-relaxed pl-6">{testimonial.content}</p>
           </div>
         </div>
       ))}

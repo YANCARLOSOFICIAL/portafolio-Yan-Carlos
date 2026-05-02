@@ -1,62 +1,74 @@
 ---
-import { siteConfig } from '../../config/siteConfig';
-import { Calendar, MapPin, Briefcase } from 'lucide-react';
-
-const { experience } = siteConfig;
+const positions = [
+  {
+    title: 'Full-stack Developer',
+    company: 'Kamila Innovation S.A.S',
+    location: 'Sibundoy, Putumayo, Colombia',
+    type: 'Remoto',
+    period: 'Marzo 2025 - Actualidad',
+    duration: '11 meses',
+    description: [
+      'Desarrollo de aplicaciones web con Laravel y Vue',
+      'Implementación de APIs RESTful',
+      'Integración con sistemas de facturación electrónica y ecommerce',
+    ],
+    skills: ['Laravel', 'Vue.js', 'APIs REST', 'Full Stack'],
+    achievements: [
+      { value: '500+', label: 'Empresas' },
+      { value: '30%', label: 'Reducción' },
+      { value: '10+', label: 'Proyectos' },
+    ],
+  },
+];
 ---
 
 <section id="experience" class="py-24 relative">
-  <div class="dot-pattern absolute inset-0 opacity-20 pointer-events-none"></div>
+  <div class="absolute inset-0 pattern-dots opacity-30"></div>
+  <div class="absolute bottom-0 left-1/4 w-64 h-64 bg-neon-pink/10 rounded-full blur-[100px]"></div>
   
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
     <div class="mb-10">
-      <p class="text-purple-400 text-sm font-mono tracking-wider uppercase mb-2">{experience.tag}</p>
-      <h2 class="text-3xl md:text-5xl font-extrabold text-white">{experience.title}</h2>
+      <p class="section-title">EXPERIENCIA</p>
+      <h2 class="section-heading">Trayectoria profesional</h2>
     </div>
 
     <div class="relative">
-      <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-purple-500 via-purple-500/50 to-transparent"></div>
+      <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-neon-purple via-neon-purple/50 to-transparent"></div>
 
-      {experience.positions.map((position, index) => (
+      {positions.map((position, index) => (
         <div class={`relative flex items-center mb-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-          <div class="absolute left-4 md:left-1/2 w-3 h-3 bg-purple-500 rounded-full transform -translate-x-1/2 z-10 ring-4 ring-black"></div>
+          <div class="absolute left-4 md:left-1/2 w-3 h-3 bg-neon-purple rounded-full transform -translate-x-1/2 z-10 ring-4 ring-background"></div>
           
           <div class="ml-12 md:ml-0 md:w-1/2 md:px-8">
-            <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-purple-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10 group">
+            <div class="glass-hover rounded-2xl p-6 group">
               <div class="flex flex-wrap items-center gap-3 mb-4">
-                <span class="px-3 py-1 bg-purple-500/20 text-purple-300 text-xs rounded-full font-mono border border-purple-500/30">
+                <span class="px-3 py-1 bg-neon-purple/20 text-neon-purpleLight text-xs rounded-full font-mono border border-neon-purple/30">
                   {position.duration}
                 </span>
-                <span class="flex items-center gap-1 text-xs text-gray-400">
-                  <Briefcase class="w-3 h-3" />
-                  {position.type}
-                </span>
+                <span class="text-xs text-text-muted">{position.type}</span>
               </div>
 
-              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-purple-400 transition-colors">{position.title}</h3>
-              <p class="text-purple-400 font-medium mb-2">{position.company}</p>
-              <p class="flex items-center gap-1 text-sm text-gray-400 mb-4">
-                <MapPin class="w-4 h-4" />
-                {position.location}
-              </p>
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-neon-purple transition-colors">{position.title}</h3>
+              <p class="text-neon-cyan font-medium mb-2">{position.company}</p>
+              <p class="text-text-muted text-sm mb-4">{position.location}</p>
 
               <ul class="space-y-2 mb-4">
                 {position.description.map((desc) => (
-                  <li class="flex items-start gap-2 text-gray-400 text-sm">
-                    <span class="w-1.5 h-1.5 bg-purple-500 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <li class="flex items-start gap-2 text-text-secondary text-sm">
+                    <span class="w-1.5 h-1.5 bg-neon-purple rounded-full mt-1.5 flex-shrink-0"></span>
                     {desc}
                   </li>
                 ))}
               </ul>
 
               {position.achievements && (
-                <div class="pt-4 border-t border-white/10">
-                  <p class="text-xs text-gray-500 uppercase tracking-wider mb-3">Logros destacados</p>
+                <div class="pt-4 border-t border-white/5">
+                  <p class="text-xs text-text-muted uppercase tracking-wider mb-3">Logros</p>
                   <div class="grid grid-cols-3 gap-2">
                     {position.achievements.map((achievement) => (
-                      <div class="text-center p-2 bg-purple-500/10 rounded-lg border border-purple-500/20">
-                        <p class="text-lg font-bold text-purple-400">{achievement.value}</p>
-                        <p class="text-xs text-gray-400">{achievement.label}</p>
+                      <div class="text-center p-2 bg-neon-purple/10 rounded-lg border border-neon-purple/20">
+                        <p class="text-lg font-bold text-neon-purple">{achievement.value}</p>
+                        <p class="text-xs text-text-muted">{achievement.label}</p>
                       </div>
                     ))}
                   </div>
@@ -65,7 +77,7 @@ const { experience } = siteConfig;
 
               <div class="flex flex-wrap gap-2 mt-4">
                 {position.skills.map((skill) => (
-                  <span class="px-2 py-1 bg-white/5 text-gray-300 text-xs rounded-md font-mono border border-white/5">
+                  <span class="px-2 py-1 bg-white/5 text-text-secondary text-xs rounded-md font-mono border border-white/5">
                     {skill}
                   </span>
                 ))}

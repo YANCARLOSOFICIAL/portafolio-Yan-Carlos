@@ -1,74 +1,45 @@
 ---
-import { siteConfig } from '../../config/siteConfig';
+const categories = [
+  { name: 'Frontend', color: 'neon-cyan', items: ['React', 'Vue', 'Astro', 'TypeScript', 'Tailwind'] },
+  { name: 'Backend', color: 'neon-purple', items: ['Node.js', 'Laravel', 'Express', 'GraphQL', 'REST APIs'] },
+  { name: 'Database', color: 'neon-orange', items: ['PostgreSQL', 'MongoDB'] },
+  { name: 'DevOps', color: 'neon-pink', items: ['Docker', 'AWS', 'Git'] },
+];
 
-const { skills, hero } = siteConfig;
+const colorMap: Record<string, string> = {
+  'neon-cyan': 'text-neon-cyan border-neon-cyan/30 bg-neon-cyan/10',
+  'neon-purple': 'text-neon-purple border-neon-purple/30 bg-neon-purple/10',
+  'neon-orange': 'text-orange-400 border-orange-400/30 bg-orange-400/10',
+  'neon-pink': 'text-neon-pink border-neon-pink/30 bg-neon-pink/10',
+};
 ---
 
 <section id="skills" class="py-24 relative">
-  <div class="dot-pattern absolute inset-0 opacity-20 pointer-events-none"></div>
+  <div class="absolute inset-0 pattern-dots opacity-30"></div>
+  <div class="absolute top-1/4 right-0 w-64 h-64 bg-neon-cyan/10 rounded-full blur-[100px]"></div>
   
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
     <div class="text-center mb-12">
-      <p class="text-purple-400 text-sm font-mono tracking-wider uppercase mb-2">{skills.tag}</p>
-      <h2 class="text-3xl md:text-5xl font-extrabold text-white">{skills.title}</h2>
+      <p class="section-title">HABILIDADES</p>
+      <h2 class="section-heading">Tecnologías</h2>
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-purple-500/30 transition-colors">
-        <div class="flex items-center gap-2 mb-4">
-          <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
-          <h3 class="text-sm font-semibold text-blue-400 uppercase tracking-wider">Frontend</h3>
+      {categories.map((category) => (
+        <div class="glass-hover rounded-2xl p-6">
+          <div class="flex items-center gap-2 mb-4">
+            <span class={`w-2 h-2 rounded-full bg-${category.color}`}></span>
+            <h3 class={`text-sm font-semibold uppercase tracking-wider text-${category.color}`}>{category.name}</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            {category.items.map((tech) => (
+              <span class="px-3 py-1.5 bg-white/5 text-text-secondary text-sm rounded-lg font-mono border border-white/5 hover:border-neon-purple/30 hover:text-white transition-colors cursor-default">
+                {tech}
+              </span>
+            ))}
+          </div>
         </div>
-        <div class="flex flex-wrap gap-2">
-          {['React', 'Vue', 'Astro', 'TypeScript', 'Tailwind'].map((tech) => (
-            <span class="px-3 py-1.5 bg-white/5 text-gray-300 text-sm rounded-lg font-mono border border-white/5 hover:border-blue-500/50 hover:text-white transition-colors cursor-default">
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-purple-500/30 transition-colors">
-        <div class="flex items-center gap-2 mb-4">
-          <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-          <h3 class="text-sm font-semibold text-green-400 uppercase tracking-wider">Backend</h3>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          {['Node.js', 'Laravel', 'Express', 'GraphQL', 'REST APIs'].map((tech) => (
-            <span class="px-3 py-1.5 bg-white/5 text-gray-300 text-sm rounded-lg font-mono border border-white/5 hover:border-green-500/50 hover:text-white transition-colors cursor-default">
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-purple-500/30 transition-colors">
-        <div class="flex items-center gap-2 mb-4">
-          <span class="w-2 h-2 bg-yellow-500 rounded-full"></span>
-          <h3 class="text-sm font-semibold text-yellow-400 uppercase tracking-wider">Database</h3>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          {['PostgreSQL', 'MongoDB'].map((tech) => (
-            <span class="px-3 py-1.5 bg-white/5 text-gray-300 text-sm rounded-lg font-mono border border-white/5 hover:border-yellow-500/50 hover:text-white transition-colors cursor-default">
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-purple-500/30 transition-colors">
-        <div class="flex items-center gap-2 mb-4">
-          <span class="w-2 h-2 bg-orange-500 rounded-full"></span>
-          <h3 class="text-sm font-semibold text-orange-400 uppercase tracking-wider">DevOps</h3>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          {['Docker', 'AWS', 'Git'].map((tech) => (
-            <span class="px-3 py-1.5 bg-white/5 text-gray-300 text-sm rounded-lg font-mono border border-white/5 hover:border-orange-500/50 hover:text-white transition-colors cursor-default">
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
+      ))}
     </div>
   </div>
 </section>
