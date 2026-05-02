@@ -55,11 +55,11 @@ export default function Testimonials() {
         <h2 className="text-3xl md:text-5xl font-black text-center text-accent-cyan mb-10">Testimonios</h2>
         <div className="flex flex-wrap justify-center gap-8">
           {testimonials.map((t, i) => (
-            <div key={i} className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl p-8 flex flex-col items-center text-center max-w-xs w-full animate-fadeIn">
+            <div key={i} className="bg-white/5 border border-white/10 rounded-2xl shadow-2xl p-8 flex flex-col items-center text-center max-w-xs w-full animate-fadeIn">
               <img src={t.avatar} alt={t.name} className="w-20 h-20 rounded-full mb-4 object-cover border-4 border-accent-cyan shadow-lg" />
-              <p className="text-base text-gray-700 dark:text-gray-300 mb-4 italic">“{t.text}”</p>
+              <p className="text-base text-gray-300 mb-4 italic">“{t.text}”</p>
               <div className="font-bold text-accent-cyan text-lg mb-1">{t.name}</div>
-              <div className="text-sm text-gray-500 dark:text-gray-400">{t.role}</div>
+              <div className="text-sm text-gray-400">{t.role}</div>
             </div>
           ))}
         </div>
