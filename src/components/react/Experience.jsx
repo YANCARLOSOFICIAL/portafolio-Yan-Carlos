@@ -9,8 +9,8 @@ export default function Experience() {
 
         {/* Section Header */}
         <div className="mb-16">
-          <p className="text-sm font-semibold text-primary-600 dark:text-primary-400 uppercase tracking-wider mb-2">{t.experience.tag}</p>
-          <h2 className="text-4xl md:text-6xl font-black text-primary-900 dark:text-white tracking-tight">
+          <p className="text-sm font-semibold text-primary-300 uppercase tracking-wider mb-2">{t.experience.tag}</p>
+          <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight">
             {t.experience.title}
           </h2>
         </div>
@@ -39,7 +39,7 @@ export default function Experience() {
               <ul className="space-y-3 mb-6 mt-4">
                 {exp.description.map((item, i) => (
                   <li key={i} className="flex items-start gap-3 text-gray-300">
-                    <span className="text-accent mt-1">✓</span>
+                    <span className="text-accent-blue mt-1">✓</span>
                     <span>{item}</span>
                   </li>
                 ))}
