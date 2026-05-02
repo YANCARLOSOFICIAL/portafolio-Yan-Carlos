@@ -1,16 +1,28 @@
-
 ---
-import Layout from '../layouts/Layout.astro';
-import App from '../components/react/App.jsx';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import App from '../components/react/App';
+import About from '../components/astro/About.astro';
+import Experience from '../components/astro/Experience.astro';
+import TechStack from '../components/astro/TechStack.astro';
+import Testimonials from '../components/astro/Testimonials.astro';
+import Education from '../components/astro/Education.astro';
+import Footer from '../components/astro/Footer.astro';
+
+const title = 'Yan Carlos Guerra - Full Stack Developer';
+const description = '10th semester student with +1 year of experience in production. Full Stack Developer specializing in React, Node.js, Laravel, and modern web technologies.';
 ---
 
-<Layout
-  title="Yan Carlos Guerra - Desarrollador Full Stack"
-  description="Portafolio profesional de Yan Carlos Guerra. Especialista en desarrollo full stack con React, Astro, Node.js y tecnologías modernas. Creando experiencias digitales únicas."
->
+<BaseLayout title={title} description={description}>
   <App client:load />
-
-  <!-- Global cursor hide style -->
+  
+  <About />
+  <Experience />
+  <TechStack />
+  <Testimonials />
+  <Education />
+  
+  <Footer />
+  
   <style is:global>
     * {
       cursor: none !important;
@@ -22,9 +34,23 @@ import App from '../components/react/App.jsx';
       }
     }
 
-    /* Smooth scroll */
     html {
       scroll-behavior: smooth;
     }
+
+    .animate-in {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
-</Layout>
+</BaseLayout>

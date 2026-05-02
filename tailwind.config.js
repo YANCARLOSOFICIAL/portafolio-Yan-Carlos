@@ -16,22 +16,17 @@ module.exports = {
           800: '#1a1a1a',
           700: '#262626',
         },
-        primary: {
-          50: '#f5f7fb',
-          100: '#eef2ff',
-          200: '#e0e7ff',
-          300: '#c7d2fe',
-          400: '#a78bfa',
-          500: '#7c3aed',
-          600: '#6d28d9',
-          700: '#5b21b6',
-          800: '#4c1d95',
-          900: '#3b0f78',
-        },
-        accent: {
-          blue: '#60a5fa',
-          purple: '#7c3aed',
-          cyan: '#06b6d4',
+        purple: {
+          50: '#faf5ff',
+          100: '#f3e8ff',
+          200: '#e9d5ff',
+          300: '#d8b4fe',
+          400: '#c084fc',
+          500: '#a855f7',
+          600: '#9333ea',
+          700: '#7e22ce',
+          800: '#6b21a8',
+          900: '#581c87',
         },
       },
       fontFamily: {
@@ -42,7 +37,7 @@ module.exports = {
       container: {
         center: true,
         padding: {
-          DEFAULT: '1.5rem',
+          DEFAULT: '1rem',
           sm: '2rem',
           lg: '4rem',
           xl: '6rem',
@@ -50,6 +45,8 @@ module.exports = {
       },
       borderRadius: {
         'DEFAULT': '1rem',
+        '2xl': '1.5rem',
+        '3xl': '2rem',
       },
       backdropBlur: {
         xs: '2px',

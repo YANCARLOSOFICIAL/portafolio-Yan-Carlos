@@ -1,0 +1,68 @@
+---
+import { siteConfig } from '../../config/siteConfig';
+
+const { about } = siteConfig;
+---
+
+<section id="about" class="py-24 relative">
+  <div class="dot-pattern absolute inset-0 opacity-20 pointer-events-none"></div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="mb-10">
+      <p class="text-purple-400 text-sm font-mono tracking-wider uppercase mb-2">{about.tag}</p>
+      <h2 class="text-3xl md:text-5xl font-extrabold text-white">{about.title}</h2>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12">
+      <div class="space-y-6">
+        <p class="text-lg text-gray-300 leading-relaxed" set:html={about.intro}></p>
+        <p class="text-gray-400 leading-relaxed">{about.description}</p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-4">
+        {about.metrics.map((metric) => (
+          <div class="text-center p-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl hover:border-purple-500/30 transition-colors group">
+            <p class="text-3xl font-bold text-purple-400 group-hover:scale-110 transition-transform">{metric.value}</p>
+            <p class="text-xs text-gray-400 mt-1">{metric.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 mt-12">
+      <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-purple-500/30 transition-colors">
+        <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+          <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+          {about.frontend.title}
+        </h3>
+        <ul class="space-y-3">
+          {about.frontend.items.map((item) => (
+            <li class="flex items-center gap-2 text-gray-400">
+              <svg class="w-4 h-4 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-purple-500/30 transition-colors">
+        <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+          <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+          {about.backend.title}
+        </h3>
+        <ul class="space-y-3">
+          {about.backend.items.map((item) => (
+            <li class="flex items-center gap-2 text-gray-400">
+              <svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
