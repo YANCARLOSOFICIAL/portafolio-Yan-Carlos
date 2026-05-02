@@ -26,8 +26,13 @@
     "about": {
       "tag": "SOBRE MÍ",
       "title": "Construyendo el futuro",
-      "intro": "Soy <strong>Yan Carlos Guerra</strong>, estudiante de Ingeniería en Sistemas con sólida formación en desarrollo de software full-stack y arquitectura de aplicaciones.",
-      "description": "Experiencia práctica en la implementación de soluciones tecnológicas utilizando múltiples lenguajes y frameworks modernos. Orientado a resultados con capacidad demostrada para adaptarme rápidamente a nuevas tecnologías.",
+      "intro": "Soy <strong>Yan Carlos Guerra</strong>, estudiante de Ingeniería en Sistemas con +1 año de experiencia en desarrollo full-stack. Me especializo en crear soluciones tecnológicas que generan resultados medibles.",
+      "description": "He desarrollado soluciones para empresas que necesitan transformar sus procesos digitales. En Kamila Innovation S.A.S, participé en el desarrollo de sistemas que sirven a más de 500 empresas. Me apasiona aprender nuevas tecnologías y adaptarme rápidamente a los requerimientos del equipo.",
+      "metrics": [
+        "500+ empresas atendidas",
+        "10+ proyectos completados",
+        "30% reducción en tiempos de facturación"
+      ],
       "frontend": {
         "title": "Frontend",
         "items": [
@@ -186,8 +191,13 @@
     "about": {
       "tag": "ABOUT ME",
       "title": "Building the future",
-      "intro": "I'm <strong>Yan Carlos Guerra</strong>, a ninth-semester Systems Engineering student with solid training in full-stack software development and application architecture.",
-      "description": "Practical experience in implementing technological solutions using multiple modern languages and frameworks. Results-oriented with demonstrated ability to quickly adapt to new technologies.",
+      "intro": "I'm <strong>Yan Carlos Guerra</strong>, a Systems Engineering student with +1 year of experience in full-stack development. I specialize in creating technological solutions that generate measurable results.",
+      "description": "I've developed solutions for companies that need to transform their digital processes. At Kamila Innovation S.A.S, I participated in developing systems that serve more than 500 companies. I'm passionate about learning new technologies and quickly adapting to team requirements.",
+      "metrics": [
+        "500+ companies served",
+        "10+ completed projects",
+        "30% reduction in billing times"
+      ],
       "frontend": {
         "title": "Frontend",
         "items": [

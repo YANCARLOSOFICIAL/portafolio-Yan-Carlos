@@ -35,6 +35,17 @@ export default function About() {
                 <p className="text-base text-gray-300 leading-relaxed">{t.about.description}</p>
               </div>
 
+              {/* Metrics */}
+              {t.about.metrics && (
+                <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  {t.about.metrics.map((metric, idx) => (
+                    <div key={idx} className="p-4 bg-gradient-to-br from-primary-500/10 to-accent-blue/10 rounded-lg border border-primary-500/20 text-center">
+                      <p className="text-sm text-white font-semibold">{metric}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="p-4 bg-white/3 rounded-lg">
                   <h4 className="text-sm font-semibold text-white">Frontend</h4>
