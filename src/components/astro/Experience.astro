@@ -1,91 +1,127 @@
 ---
-const positions = [
-  {
+const es = {
+  tag: 'EXPERIENCIA',
+  title: 'Trayectoria profesional',
+  logros: 'Logros',
+  position: {
     title: 'Full-stack Developer',
     company: 'Kamila Innovation S.A.S',
     location: 'Sibundoy, Putumayo, Colombia',
     type: 'Remoto',
-    period: 'Marzo 2025 - Actualidad',
     duration: '11 meses',
-    description: [
-      'Desarrollo de aplicaciones web con Laravel y Vue',
-      'Implementación de APIs RESTful',
-      'Integración con sistemas de facturación electrónica y ecommerce',
-    ],
-    skills: ['Laravel', 'Vue.js', 'APIs REST', 'Full Stack'],
+    period: 'Marzo 2025 - Actualidad',
+    desc1: 'Desarrollo de aplicaciones web con Laravel y Vue',
+    desc2: 'Implementación de APIs RESTful',
+    desc3: 'Integración con sistemas de facturación electrónica y ecommerce',
     achievements: [
       { value: '500+', label: 'Empresas' },
       { value: '30%', label: 'Reducción' },
       { value: '10+', label: 'Proyectos' },
     ],
+    skills: ['Laravel', 'Vue.js', 'APIs REST', 'Full Stack'],
   },
-];
+};
+
+const en = {
+  tag: 'EXPERIENCE',
+  title: 'Professional journey',
+  logros: 'Achievements',
+  position: {
+    title: 'Full-stack Developer',
+    company: 'Kamila Innovation S.A.S',
+    location: 'Sibundoy, Putumayo, Colombia',
+    type: 'Remote',
+    duration: '11 months',
+    period: 'March 2025 - Present',
+    desc1: 'Web application development with Laravel and Vue',
+    desc2: 'RESTful API implementation',
+    desc3: 'Integration with electronic invoicing and ecommerce systems',
+    achievements: [
+      { value: '500+', label: 'Companies' },
+      { value: '30%', label: 'Reduction' },
+      { value: '10+', label: 'Projects' },
+    ],
+    skills: ['Laravel', 'Vue.js', 'REST APIs', 'Full Stack'],
+  },
+};
 ---
 
 <section id="experience" class="py-24 relative">
-  <div class="absolute inset-0 pattern-dots opacity-30"></div>
-  <div class="absolute bottom-0 left-1/4 w-64 h-64 bg-neon-pink/10 rounded-full blur-[100px]"></div>
-  
+  <div class="absolute inset-0 pattern-grid-accent opacity-20"></div>
+
   <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <div class="mb-10">
-      <p class="section-title">EXPERIENCIA</p>
-      <h2 class="section-heading">Trayectoria profesional</h2>
+    <div class="flex items-start gap-6 mb-12">
+      <span class="section-number">02</span>
+      <div>
+        <p class="section-tag" data-lang-content="es">{es.tag}</p>
+        <p class="section-tag" data-lang-content="en">{en.tag}</p>
+        <h2 class="section-title" data-lang-content="es">{es.title}</h2>
+        <h2 class="section-title" data-lang-content="en">{en.title}</h2>
+      </div>
     </div>
 
     <div class="relative">
-      <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-neon-purple via-neon-purple/50 to-transparent"></div>
+      <div class="absolute left-4 md:left-12 top-0 bottom-0 w-0.5 bg-accent"></div>
 
-      {positions.map((position, index) => (
-        <div class={`relative flex items-center mb-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-          <div class="absolute left-4 md:left-1/2 w-3 h-3 bg-neon-purple rounded-full transform -translate-x-1/2 z-10 ring-4 ring-background"></div>
-          
-          <div class="ml-12 md:ml-0 md:w-1/2 md:px-8">
-            <div class="glass-hover rounded-2xl p-6 group">
-              <div class="flex flex-wrap items-center gap-3 mb-4">
-                <span class="px-3 py-1 bg-neon-purple/20 text-neon-purpleLight text-xs rounded-full font-mono border border-neon-purple/30">
-                  {position.duration}
-                </span>
-                <span class="text-xs text-text-muted">{position.type}</span>
-              </div>
+      <div class="relative flex items-start mb-8">
+        <div class="absolute left-4 md:left-12 w-4 h-4 bg-accent transform -translate-x-1/2 z-10 border-2 border-background"></div>
 
-              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-neon-purple transition-colors">{position.title}</h3>
-              <p class="text-neon-cyan font-medium mb-2">{position.company}</p>
-              <p class="text-text-muted text-sm mb-4">{position.location}</p>
+        <div class="ml-12 md:ml-24 w-full">
+          <div class="brutal-card p-6 group">
+            <div class="flex flex-wrap items-center gap-3 mb-4">
+              <span class="px-3 py-1 bg-accent/10 border-2 border-accent text-accent font-display text-xs uppercase tracking-wider">
+                <span data-lang-content="es">{es.position.duration}</span>
+                <span data-lang-content="en">{en.position.duration}</span>
+              </span>
+              <span class="font-display text-text-muted text-xs uppercase tracking-wider">
+                <span data-lang-content="es">{es.position.type}</span>
+                <span data-lang-content="en">{en.position.type}</span>
+              </span>
+            </div>
 
-              <ul class="space-y-2 mb-4">
-                {position.description.map((desc) => (
-                  <li class="flex items-start gap-2 text-text-secondary text-sm">
-                    <span class="w-1.5 h-1.5 bg-neon-purple rounded-full mt-1.5 flex-shrink-0"></span>
-                    {desc}
-                  </li>
-                ))}
-              </ul>
+            <h3 class="font-display text-xl font-bold text-text-primary mb-1 group-hover:text-accent transition-colors">{es.position.title}</h3>
+            <p class="font-display text-cyber font-bold text-sm uppercase tracking-wider mb-2">{es.position.company}</p>
+            <p class="font-display text-text-muted text-xs uppercase tracking-wide mb-4">{es.position.location}</p>
 
-              {position.achievements && (
-                <div class="pt-4 border-t border-white/5">
-                  <p class="text-xs text-text-muted uppercase tracking-wider mb-3">Logros</p>
-                  <div class="grid grid-cols-3 gap-2">
-                    {position.achievements.map((achievement) => (
-                      <div class="text-center p-2 bg-neon-purple/10 rounded-lg border border-neon-purple/20">
-                        <p class="text-lg font-bold text-neon-purple">{achievement.value}</p>
-                        <p class="text-xs text-text-muted">{achievement.label}</p>
-                      </div>
-                    ))}
+            <ul class="space-y-2 mb-4">
+              <li class="flex items-start gap-2 text-text-secondary text-sm font-sans">
+                <span class="w-2 h-2 bg-accent mt-1.5 flex-shrink-0"></span>
+                <span data-lang-content="es">{es.position.desc1}</span>
+                <span data-lang-content="en">{en.position.desc1}</span>
+              </li>
+              <li class="flex items-start gap-2 text-text-secondary text-sm font-sans">
+                <span class="w-2 h-2 bg-accent mt-1.5 flex-shrink-0"></span>
+                <span data-lang-content="es">{es.position.desc2}</span>
+                <span data-lang-content="en">{en.position.desc2}</span>
+              </li>
+              <li class="flex items-start gap-2 text-text-secondary text-sm font-sans">
+                <span class="w-2 h-2 bg-accent mt-1.5 flex-shrink-0"></span>
+                <span data-lang-content="es">{es.position.desc3}</span>
+                <span data-lang-content="en">{en.position.desc3}</span>
+              </li>
+            </ul>
+
+            <div class="pt-4 border-t-2 border-border">
+              <p class="font-display text-text-muted text-xs uppercase tracking-wider mb-3" data-lang-content="es">{es.logros}</p>
+              <p class="font-display text-text-muted text-xs uppercase tracking-wider mb-3" data-lang-content="en">{en.logros}</p>
+              <div class="grid grid-cols-3 gap-2">
+                {es.position.achievements.map((achievement) => (
+                  <div class="text-center p-3 bg-background border-2 border-border">
+                    <p class="font-display text-lg font-bold text-accent">{achievement.value}</p>
+                    <p class="font-display text-text-muted text-xs uppercase tracking-wider">{achievement.label}</p>
                   </div>
-                </div>
-              )}
-
-              <div class="flex flex-wrap gap-2 mt-4">
-                {position.skills.map((skill) => (
-                  <span class="px-2 py-1 bg-white/5 text-text-secondary text-xs rounded-md font-mono border border-white/5">
-                    {skill}
-                  </span>
                 ))}
               </div>
             </div>
+
+            <div class="flex flex-wrap gap-2 mt-4">
+              {es.position.skills.map((skill) => (
+                <span class="tech-badge text-xs">{skill}</span>
+              ))}
+            </div>
           </div>
         </div>
-      ))}
+      </div>
     </div>
   </div>
 </section>

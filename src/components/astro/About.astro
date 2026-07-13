@@ -1,9 +1,27 @@
 ---
-const metrics = [
-  { value: '500+', label: 'Empresas atendidas' },
-  { value: '10+', label: 'Proyectos completados' },
-  { value: '30%', label: 'Reducción en facturación' },
-];
+const es = {
+  tag: 'SOBRE MÍ',
+  title: 'Construyendo el futuro',
+  bio1: 'Soy **Yan Carlos Guerra**, estudiante de Ingeniería en Sistemas con +1 año de experiencia en desarrollo full-stack. Me especializo en crear soluciones tecnológicas que generan resultados medibles.',
+  bio2: 'En **Kamila Innovation S.A.S**, participé en el desarrollo de sistemas que sirven a más de 500 empresas. Me apasiona aprender nuevas tecnologías y adaptarme rápidamente a los requerimientos del equipo.',
+  metric1: 'Empresas atendidas',
+  metric2: 'Proyectos',
+  metric3: 'Reducción en facturación',
+  frontend: 'Frontend',
+  backend: 'Backend',
+};
+
+const en = {
+  tag: 'ABOUT ME',
+  title: 'Building the future',
+  bio1: "I'm **Yan Carlos Guerra**, Systems Engineering student with +1 year of full-stack development experience. I specialize in creating tech solutions that deliver measurable results.",
+  bio2: 'At **Kamila Innovation S.A.S**, I helped build systems serving 500+ companies. I\'m passionate about learning new technologies and quickly adapting to team needs.',
+  metric1: 'Companies served',
+  metric2: 'Projects',
+  metric3: 'Billing reduction',
+  frontend: 'Frontend',
+  backend: 'Backend',
+};
 
 const frontendItems = [
   'UI/UX moderno y accesible',
@@ -18,67 +36,75 @@ const backendItems = [
   'Autenticación y escalabilidad',
   'DevOps, CI/CD y cloud',
 ];
+
+const metrics = [
+  { value: '500+', labelEs: 'Empresas atendidas', labelEn: 'Companies served' },
+  { value: '10+', labelEs: 'Proyectos', labelEn: 'Projects' },
+  { value: '30%', labelEs: 'Reducción en facturación', labelEn: 'Billing reduction' },
+];
 ---
 
 <section id="about" class="py-24 relative">
-  <div class="absolute inset-0 pattern-dots opacity-30"></div>
-  <div class="absolute top-0 right-0 w-64 h-64 bg-neon-purple/10 rounded-full blur-[100px]"></div>
-  
+  <div class="absolute inset-0 pattern-grid-accent opacity-20"></div>
+  <div class="absolute inset-0 bg-noise"></div>
+
   <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <div class="mb-10">
-      <p class="section-title">SOBRE MÍ</p>
-      <h2 class="section-heading">Construyendo el futuro</h2>
+    <div class="flex items-start gap-6 mb-12">
+      <span class="section-number">01</span>
+      <div>
+        <p class="section-tag" data-lang-content="es">{es.tag}</p>
+        <p class="section-tag" data-lang-content="en">{en.tag}</p>
+        <h2 class="section-title" data-lang-content="es">{es.title}</h2>
+        <h2 class="section-title" data-lang-content="en">{en.title}</h2>
+      </div>
     </div>
 
     <div class="grid lg:grid-cols-2 gap-12 items-start">
       <div class="space-y-6">
-        <p class="text-lg text-text-secondary leading-relaxed">
-          Soy <span class="text-neon-purple font-semibold">Yan Carlos Guerra</span>, estudiante de Ingeniería en Sistemas con +1 año de experiencia en desarrollo full-stack. Me especializo en crear soluciones tecnológicas que generan resultados medibles.
-        </p>
-        <p class="text-text-secondary leading-relaxed">
-          En <span class="text-neon-cyan font-semibold">Kamila Innovation S.A.S</span>, participé en el desarrollo de sistemas que sirven a más de 500 empresas. Me apasiona aprender nuevas tecnologías y adaptarme rápidamente a los requerimientos del equipo.
-        </p>
+        <p class="text-lg text-text-secondary leading-relaxed font-sans" data-lang-content="es">{es.bio1}</p>
+        <p class="text-lg text-text-secondary leading-relaxed font-sans" data-lang-content="en">{en.bio1}</p>
+        <p class="text-text-secondary leading-relaxed font-sans" data-lang-content="es">{es.bio2}</p>
+        <p class="text-text-secondary leading-relaxed font-sans" data-lang-content="en">{en.bio2}</p>
       </div>
 
-      <div class="grid grid-cols-3 gap-4">
+      <div class="grid grid-cols-3 gap-3">
         {metrics.map((metric) => (
-          <div class="metric-card group">
-            <p class="text-3xl font-bold text-gradient group-hover:scale-110 transition-transform">{metric.value}</p>
-            <p class="text-text-muted text-xs mt-1">{metric.label}</p>
+          <div class="bg-background border-2 border-border p-4 text-center group hover:border-accent transition-colors duration-200">
+            <p class="font-display text-3xl font-bold text-accent group-hover:scale-110 transition-transform">{metric.value}</p>
+            <p class="font-display text-text-muted text-xs uppercase tracking-wider mt-1" data-lang-content="es">{metric.labelEs}</p>
+            <p class="font-display text-text-muted text-xs uppercase tracking-wider mt-1" data-lang-content="en">{metric.labelEn}</p>
           </div>
         ))}
       </div>
     </div>
 
     <div class="grid md:grid-cols-2 gap-6 mt-12">
-      <div class="glass-hover rounded-2xl p-6">
-        <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
-          <span class="w-2 h-2 bg-neon-cyan rounded-full"></span>
-          Frontend
+      <div class="brutal-card p-6">
+        <h3 class="font-display text-lg font-bold text-text-primary mb-4 flex items-center gap-2 uppercase tracking-wider">
+          <span class="w-3 h-3 bg-cyber"></span>
+          <span data-lang-content="es">{es.frontend}</span>
+          <span data-lang-content="en">{en.frontend}</span>
         </h3>
         <ul class="space-y-3">
           {frontendItems.map((item) => (
-            <li class="flex items-center gap-2 text-text-secondary">
-              <svg class="w-4 h-4 text-neon-cyan flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
+            <li class="flex items-center gap-2 text-text-secondary font-sans">
+              <span class="text-cyber font-display font-bold">&#10003;</span>
               {item}
             </li>
           ))}
         </ul>
       </div>
 
-      <div class="glass-hover rounded-2xl p-6">
-        <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
-          <span class="w-2 h-2 bg-neon-pink rounded-full"></span>
-          Backend
+      <div class="brutal-card p-6">
+        <h3 class="font-display text-lg font-bold text-text-primary mb-4 flex items-center gap-2 uppercase tracking-wider">
+          <span class="w-3 h-3 bg-depth"></span>
+          <span data-lang-content="es">{es.backend}</span>
+          <span data-lang-content="en">{en.backend}</span>
         </h3>
         <ul class="space-y-3">
           {backendItems.map((item) => (
-            <li class="flex items-center gap-2 text-text-secondary">
-              <svg class="w-4 h-4 text-neon-pink flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
+            <li class="flex items-center gap-2 text-text-secondary font-sans">
+              <span class="text-depth font-display font-bold">&#10003;</span>
               {item}
             </li>
           ))}

@@ -1,56 +1,71 @@
 ---
+const es = {
+  tag: 'TESTIMONIOS',
+  title: 'Lo que dicen',
+};
+
+const en = {
+  tag: 'TESTIMONIALS',
+  title: 'What they say',
+};
+
 const testimonials = [
   {
     name: 'María Rodríguez',
-    role: 'CEO, Tech Solutions',
-    content: 'Excelente trabajo. Entregó el proyecto antes de lo esperado y con una calidad excepcional. Recomendado.',
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Maria&backgroundColor=7c3aed',
+    roleEs: 'CEO, Tech Solutions',
+    roleEn: 'CEO, Tech Solutions',
+    contentEs: 'Excelente trabajo. Entregó el proyecto antes de lo esperado y con una calidad excepcional. Recomendado.',
+    contentEn: 'Excellent work. Delivered the project ahead of schedule with exceptional quality. Highly recommended.',
   },
   {
     name: 'Juan Pérez',
-    role: 'CTO, Startup Innovadora',
-    content: 'Gran profesional. Siempre abierto a sugerencias y con gran capacidad de resolución de problemas.',
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Juan&backgroundColor=22d3ee',
+    roleEs: 'CTO, Startup Innovadora',
+    roleEn: 'CTO, Innovative Startup',
+    contentEs: 'Gran profesional. Siempre abierto a sugerencias y con gran capacidad de resolución de problemas.',
+    contentEn: 'Great professional. Always open to suggestions with strong problem-solving skills.',
   },
   {
     name: 'Laura Gómez',
-    role: 'Directora de Proyecto',
-    content: 'Comunicación excelente y código muy limpio. Fue un placer trabajar con él en nuestro proyecto.',
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Laura&backgroundColor=f472b6',
+    roleEs: 'Directora de Proyecto',
+    roleEn: 'Project Director',
+    contentEs: 'Comunicación excelente y código muy limpio. Fue un placer trabajar con él en nuestro proyecto.',
+    contentEn: 'Excellent communication and very clean code. It was a pleasure working with him on our project.',
   },
 ];
 ---
 
 <section id="testimonials" class="py-24 relative">
-  <div class="absolute inset-0 pattern-dots opacity-30"></div>
-  <div class="absolute bottom-0 left-1/4 w-64 h-64 bg-neon-purple/10 rounded-full blur-[100px]"></div>
-  
+  <div class="absolute inset-0 pattern-grid-accent opacity-20"></div>
+
   <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-12">
-      <p class="section-title">TESTIMONIOS</p>
-      <h2 class="section-heading">Lo que dicen</h2>
+    <div class="flex items-start gap-6 mb-12">
+      <span class="section-number">05</span>
+      <div>
+        <p class="section-tag" data-lang-content="es">{es.tag}</p>
+        <p class="section-tag" data-lang-content="en">{en.tag}</p>
+        <h2 class="section-title" data-lang-content="es">{es.title}</h2>
+        <h2 class="section-title" data-lang-content="en">{en.title}</h2>
+      </div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {testimonials.map((testimonial, index) => (
-        <div class="glass-hover rounded-2xl p-6 group" style={`animation-delay: ${index * 0.1}s`}>
+      {testimonials.map((testimonial) => (
+        <div class="brutal-card p-6 group">
           <div class="flex items-center gap-4 mb-4">
-            <img 
-              src={testimonial.avatar} 
-              alt={testimonial.name}
-              class="w-12 h-12 rounded-full bg-surface border border-white/10"
-            />
+            <div class="w-12 h-12 bg-accent/10 border-2 border-accent flex items-center justify-center flex-shrink-0">
+              <span class="font-display text-accent font-bold text-lg">{testimonial.name.charAt(0)}</span>
+            </div>
             <div>
-              <h4 class="font-semibold text-white">{testimonial.name}</h4>
-              <p class="text-sm text-text-muted">{testimonial.role}</p>
+              <h4 class="font-display text-text-primary font-bold uppercase tracking-wider text-sm">{testimonial.name}</h4>
+              <p class="font-display text-text-muted text-xs uppercase tracking-wide" data-lang-content="es">{testimonial.roleEs}</p>
+              <p class="font-display text-text-muted text-xs uppercase tracking-wide" data-lang-content="en">{testimonial.roleEn}</p>
             </div>
           </div>
-          
+
           <div class="relative">
-            <svg class="absolute -top-2 -left-1 w-8 h-8 text-neon-purple/30" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-            </svg>
-            <p class="text-text-secondary leading-relaxed pl-6">{testimonial.content}</p>
+            <span class="font-display text-5xl text-accent leading-none opacity-30 absolute -top-2 -left-1 select-none">"</span>
+            <p class="text-text-secondary leading-relaxed pl-5 font-sans" data-lang-content="es">{testimonial.contentEs}</p>
+            <p class="text-text-secondary leading-relaxed pl-5 font-sans" data-lang-content="en">{testimonial.contentEn}</p>
           </div>
         </div>
       ))}

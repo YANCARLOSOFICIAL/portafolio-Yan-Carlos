@@ -1,39 +1,66 @@
 ---
+const es = {
+  tag: 'HABILIDADES',
+  title: 'Tecnologías',
+};
+
+const en = {
+  tag: 'SKILLS',
+  title: 'Technologies',
+};
+
 const categories = [
-  { name: 'Frontend', color: 'neon-cyan', items: ['React', 'Vue', 'Astro', 'TypeScript', 'Tailwind'] },
-  { name: 'Backend', color: 'neon-purple', items: ['Node.js', 'Laravel', 'Express', 'GraphQL', 'REST APIs'] },
-  { name: 'Database', color: 'neon-orange', items: ['PostgreSQL', 'MongoDB'] },
-  { name: 'DevOps', color: 'neon-pink', items: ['Docker', 'AWS', 'Git'] },
+  { nameEs: 'Frontend', nameEn: 'Frontend', accent: 'cyber', items: ['React', 'Vue', 'Astro', 'TypeScript', 'Tailwind'] },
+  { nameEs: 'Backend', nameEn: 'Backend', accent: 'accent', items: ['Node.js', 'Laravel', 'Express', 'GraphQL', 'REST APIs'] },
+  { nameEs: 'Base de Datos', nameEn: 'Database', accent: 'alert', items: ['PostgreSQL', 'MongoDB'] },
+  { nameEs: 'DevOps', nameEn: 'DevOps', accent: 'depth', items: ['Docker', 'AWS', 'Git'] },
 ];
 
 const colorMap: Record<string, string> = {
-  'neon-cyan': 'text-neon-cyan border-neon-cyan/30 bg-neon-cyan/10',
-  'neon-purple': 'text-neon-purple border-neon-purple/30 bg-neon-purple/10',
-  'neon-orange': 'text-orange-400 border-orange-400/30 bg-orange-400/10',
-  'neon-pink': 'text-neon-pink border-neon-pink/30 bg-neon-pink/10',
+  cyber: 'bg-cyber',
+  accent: 'bg-accent',
+  alert: 'bg-alert',
+  depth: 'bg-depth',
+};
+
+const textMap: Record<string, string> = {
+  cyber: 'text-cyber',
+  accent: 'text-accent',
+  alert: 'text-alert',
+  depth: 'text-depth',
 };
 ---
 
 <section id="skills" class="py-24 relative">
-  <div class="absolute inset-0 pattern-dots opacity-30"></div>
-  <div class="absolute top-1/4 right-0 w-64 h-64 bg-neon-cyan/10 rounded-full blur-[100px]"></div>
-  
+  <div class="absolute inset-0 pattern-grid-accent opacity-20"></div>
+
   <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-12">
-      <p class="section-title">HABILIDADES</p>
-      <h2 class="section-heading">Tecnologías</h2>
+    <div class="flex items-start gap-6 mb-12">
+      <span class="section-number">04</span>
+      <div>
+        <p class="section-tag" data-lang-content="es">{es.tag}</p>
+        <p class="section-tag" data-lang-content="en">{en.tag}</p>
+        <h2 class="section-title" data-lang-content="es">{es.title}</h2>
+        <h2 class="section-title" data-lang-content="en">{en.title}</h2>
+      </div>
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
       {categories.map((category) => (
-        <div class="glass-hover rounded-2xl p-6">
+        <div class="brutal-card p-6">
           <div class="flex items-center gap-2 mb-4">
-            <span class={`w-2 h-2 rounded-full bg-${category.color}`}></span>
-            <h3 class={`text-sm font-semibold uppercase tracking-wider text-${category.color}`}>{category.name}</h3>
+            <span class={`w-3 h-3 ${colorMap[category.accent] || 'bg-accent'}`}></span>
+            <h3 class={`font-display text-sm font-bold uppercase tracking-wider ${textMap[category.accent] || 'text-accent'}`}>
+              <span data-lang-content="es">{category.nameEs}</span>
+              <span data-lang-content="en">{category.nameEn}</span>
+            </h3>
           </div>
           <div class="flex flex-wrap gap-2">
             {category.items.map((tech) => (
-              <span class="px-3 py-1.5 bg-white/5 text-text-secondary text-sm rounded-lg font-mono border border-white/5 hover:border-neon-purple/30 hover:text-white transition-colors cursor-default">
+              <span class="px-3 py-1.5 bg-transparent border-2 border-border text-text-secondary
+                           font-display text-xs tracking-wide
+                           hover:border-accent hover:text-accent
+                           transition-colors duration-200 cursor-default">
                 {tech}
               </span>
             ))}

@@ -1,3 +1,4 @@
+import { LanguageProvider } from '../../i18n/LanguageContext';
 import Navbar from './Navbar';
 import Hero from './Hero';
 import Projects from './Projects';
@@ -5,13 +6,13 @@ import Contact from './Contact';
 
 export default function App() {
   return (
-    <>
+    <LanguageProvider>
       <Navbar />
-      <main className="relative bg-background min-h-screen font-sans antialiased">
+      <main>
         <Hero />
         <Projects />
         <Contact />
       </main>
-    </>
+    </LanguageProvider>
   );
 }

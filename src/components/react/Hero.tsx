@@ -1,39 +1,54 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Github, Linkedin, Mail, Sparkles } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
+import { useLanguage } from '../../i18n/LanguageContext';
 
-const typewriterWords = ['Full Stack Developer', 'React Developer', 'Laravel Developer', 'Node.js Developer'];
-
-const techStack = ['React', 'Node.js', 'Laravel', 'Vue.js', 'TypeScript', 'PostgreSQL', 'Docker', 'AWS'];
-
-const stats = [
-  { value: '2+', label: 'años experiencia' },
-  { value: '10+', label: 'proyectos' },
-  { value: '500+', label: 'empresas' },
+const typewriterWords = [
+  'Full Stack Developer',
+  'React Developer',
+  'Laravel Developer',
+  'Next.js Developer',
 ];
 
+const techStack = ['React', 'Node.js', 'Laravel', 'Astro', 'TypeScript', 'PostgreSQL', 'Docker', 'Python'];
+
 export default function Hero() {
-  const [currentWord, setCurrentWord] = useState(0);
+  const { t } = useLanguage();
+  const [wordIndex, setWordIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
+    if (isPaused) {
+      const pauseTimeout = setTimeout(() => {
+        setIsPaused(false);
+        setIsDeleting(true);
+      }, 2000);
+      return () => clearTimeout(pauseTimeout);
+    }
+
+    const currentWord = typewriterWords[wordIndex];
     const timeout = setTimeout(() => {
       if (!isDeleting) {
-        if (currentWord === typewriterWords.length - 1) {
-          setIsDeleting(true);
+        if (charIndex < currentWord.length) {
+          setCharIndex((prev) => prev + 1);
         } else {
-          setCurrentWord((prev) => prev + 1);
+          setIsPaused(true);
         }
       } else {
-        if (currentWord === 0) {
-          setIsDeleting(false);
+        if (charIndex > 0) {
+          setCharIndex((prev) => prev - 1);
         } else {
-          setCurrentWord((prev) => prev - 1);
+          setIsDeleting(false);
+          setWordIndex((prev) => (prev + 1) % typewriterWords.length);
         }
       }
-    }, isDeleting ? 50 : 120);
+    }, isDeleting ? 40 : 80);
+
     return () => clearTimeout(timeout);
-  }, [currentWord, isDeleting]);
+  }, [charIndex, isDeleting, isPaused, wordIndex]);
+
+  const displayText = typewriterWords[wordIndex].substring(0, charIndex);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -41,95 +56,59 @@ export default function Hero() {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 pattern-dots opacity-50" />
-      
-      {/* Gradient Orbs */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-neon-purple/20 rounded-full blur-[128px]" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-neon-cyan/10 rounded-full blur-[128px]" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-neon-purple/5 to-transparent" />
+      <div className="absolute inset-0 pattern-grid" />
+      <div className="absolute inset-0 bg-noise" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
-          <div className="space-y-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex items-center gap-3"
-            >
-              <span className="w-12 h-[1px] bg-neon-purple" />
-              <span className="text-neon-purple font-mono text-sm tracking-widest uppercase">Portfolio 2025</span>
-            </motion.div>
+      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+        <div className="grid lg:grid-cols-12 gap-8 items-start">
+          <div className="lg:col-span-7 space-y-6">
+            <div className="flex items-center gap-4">
+              <span className="font-display text-accent text-sm tracking-[0.2em]">01</span>
+              <span className="h-px w-12 bg-accent" />
+              <span className="font-display text-text-muted text-xs tracking-[0.2em] uppercase">{t('hero.tag')}</span>
+            </div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1]"
-            >
-              <span className="block text-text-primary">Yan Carlos</span>
-              <span className="block text-gradient">Guerra</span>
-            </motion.h1>
+            <div className="space-y-0">
+              <h1 className="font-display text-6xl md:text-7xl lg:text-8xl font-black text-text-primary leading-[0.9] tracking-tighter">
+                YAN<br />
+                <span className="text-accent">CARLOS</span>
+              </h1>
+              <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-black text-text-primary leading-[0.9] tracking-tighter mt-2">
+                GUERRA
+              </h2>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="flex items-center gap-3"
-            >
-              <span className="text-2xl md:text-3xl font-semibold text-text-primary">
-                {typewriterWords[currentWord]}
+            <div className="flex items-center gap-3 h-10">
+              <span className="font-display text-xl md:text-2xl text-text-secondary">
+                {displayText}
               </span>
-              <span className="w-[2px] h-8 bg-neon-purple animate-pulse" />
-            </motion.div>
+              <span className="w-[3px] h-8 bg-accent animate-blink" />
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25 }}
-              className="flex items-center gap-2"
-            >
+            <div className="flex items-center gap-3">
               <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500" />
+                <span className="absolute inline-flex h-full w-full bg-cyber animate-pulse-accent" />
+                <span className="relative inline-flex h-3 w-3 bg-cyber" />
               </span>
-              <span className="text-green-400 font-medium">Disponible para trabajar</span>
-            </motion.div>
+              <span className="font-display text-xs uppercase tracking-wider text-cyber">{t('hero.disponible')}</span>
+            </div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="text-lg text-text-secondary max-w-lg leading-relaxed"
-            >
-              Estudiante de 10° semestre con +1 año de experiencia en producción. 
-              Transformo ideas en soluciones tecnológicas con código limpio y moderno.
-            </motion.p>
+            <p className="text-text-secondary text-lg max-w-xl leading-relaxed font-sans">
+              {t('hero.desc')}
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35 }}
-              className="flex flex-wrap gap-4"
-            >
-              <button onClick={() => scrollTo('projects')} className="btn-primary flex items-center gap-2 group">
-                Ver proyectos
+            <div className="flex flex-wrap gap-4 pt-2">
+              <button onClick={() => scrollTo('projects')} className="btn-brutal flex items-center gap-2 group">
+                {t('hero.verproyectos')}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
-              <button onClick={() => window.open('https://wa.me/573105374074', '_blank')} className="btn-secondary">
-                Contactar
+              <button onClick={() => window.open('https://wa.me/573229369995', '_blank')} className="btn-brutal-outline">
+                {t('hero.contactar')}
               </button>
-            </motion.div>
+            </div>
 
-            {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="flex items-center gap-4"
-            >
-              <span className="text-text-muted text-sm">Conecta:</span>
+            <div className="flex items-center gap-4 pt-4">
+              <span className="font-display text-xs uppercase tracking-widest text-text-muted">{t('hero.conecta')}</span>
               <div className="flex gap-2">
                 {[
                   { icon: Github, url: 'https://github.com/YANCARLOSOFICIAL', label: 'GitHub' },
@@ -141,102 +120,80 @@ export default function Hero() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 flex items-center justify-center rounded-xl bg-surface border border-white/5 text-text-secondary hover:text-neon-purple hover:border-neon-purple/30 hover:shadow-glow-purple-sm transition-all duration-300"
+                    className="w-10 h-10 flex items-center justify-center bg-surface border-2 border-border text-text-muted hover:border-accent hover:text-accent transition-colors duration-200"
                     aria-label={social.label}
                   >
                     <social.icon className="w-5 h-5" />
                   </a>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
-            {/* Tech Stack */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45 }}
-              className="flex flex-wrap gap-2"
-            >
-              {techStack.map((tech, i) => (
+            <div className="flex flex-wrap gap-2 pt-2">
+              {techStack.map((tech) => (
                 <span key={tech} className="tech-badge">
                   {tech}
                 </span>
               ))}
-            </motion.div>
+            </div>
           </div>
 
-          {/* Right - Stats Card */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3 }}
-            className="hidden lg:block"
-          >
-            <div className="relative">
-              {/* Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/20 via-transparent to-neon-cyan/20 rounded-3xl blur-2xl" />
-              
-              <div className="relative glass rounded-3xl p-8 border border-white/5">
-                {/* Header */}
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-neon-purple to-neon-pink flex items-center justify-center">
-                    <Sparkles className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-white font-bold text-lg">Logros destacados</h3>
-                    <p className="text-text-muted text-sm">Kamila Innovation S.A.S</p>
-                  </div>
+          <div className="hidden lg:block lg:col-span-5">
+            <div className="brutal-card p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-accent flex items-center justify-center">
+                  <span className="font-display text-white text-lg font-bold">*</span>
                 </div>
-
-                {/* Stats Grid */}
-                <div className="grid grid-cols-3 gap-4 mb-6">
-                  {stats.map((stat, i) => (
-                    <div key={stat.label} className="metric-card group">
-                      <p className="text-3xl font-bold text-gradient group-hover:scale-110 transition-transform">
-                        {stat.value}
-                      </p>
-                      <p className="text-text-muted text-xs mt-1">{stat.label}</p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Achievement */}
-                <div className="p-4 bg-gradient-to-r from-neon-purple/10 to-neon-cyan/10 rounded-xl border border-neon-purple/20">
-                  <div className="flex items-center justify-between">
-                    <span className="text-text-secondary text-sm">Reducción en tiempos de facturación</span>
-                    <span className="text-2xl font-bold text-neon-purple">30%</span>
-                  </div>
-                </div>
-
-                {/* Technologies */}
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {['Laravel', 'Vue.js', 'REST APIs', 'PostgreSQL'].map((tech) => (
-                    <span key={tech} className="px-3 py-1 bg-white/5 rounded-lg text-xs text-text-secondary font-mono border border-white/5">
-                      {tech}
-                    </span>
-                  ))}
+                <div>
+                  <h3 className="font-display text-text-primary font-bold uppercase tracking-wider text-sm">{t('hero.logros')}</h3>
+                  <p className="font-display text-text-muted text-xs uppercase tracking-wide">Kamila Innovation S.A.S</p>
                 </div>
               </div>
+
+              <div className="grid grid-cols-3 gap-3 mb-6">
+                {[
+                  { value: '11 meses', labelKey: 'hero.stat.produccion' },
+                  { value: '10+', labelKey: 'hero.stat.proyectos' },
+                  { value: '30%', labelKey: 'hero.stat.tiempo' },
+                ].map((stat) => (
+                  <div key={stat.labelKey} className="bg-background border-2 border-border p-4 text-center">
+                    <p className="font-display text-3xl font-bold text-accent">{stat.value}</p>
+                    <p className="font-display text-text-muted text-xs uppercase tracking-wider mt-1">{t(stat.labelKey)}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="border-2 border-border p-4 bg-background">
+                <p className="font-display text-text-secondary text-xs uppercase tracking-wider leading-relaxed">
+                  {t('hero.reduccion')}
+                </p>
+              </div>
+
+              <div className="mt-4 flex flex-wrap gap-2">
+                {['Laravel', 'Vue.js', 'REST APIs', 'PostgreSQL'].map((tech) => (
+                  <span key={tech} className="tech-badge text-xs">
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
-        {/* Mobile Stats */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="lg:hidden mt-12"
-        >
-          <div className="grid grid-cols-3 gap-4">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center p-4 glass rounded-xl">
-                <p className="text-2xl font-bold text-neon-purple">{stat.value}</p>
-                <p className="text-text-muted text-xs mt-1">{stat.label}</p>
+        <div className="lg:hidden mt-10">
+          <div className="grid grid-cols-3 gap-3">
+            {[
+              { value: '11 meses', labelKey: 'hero.stat.produccion' },
+              { value: '10+', labelKey: 'hero.stat.proyectos' },
+              { value: '30%', labelKey: 'hero.stat.tiempo' },
+            ].map((stat) => (
+              <div key={stat.labelKey} className="bg-surface border-2 border-border p-4 text-center">
+                <p className="font-display text-2xl font-bold text-accent">{stat.value}</p>
+                <p className="font-display text-text-muted text-xs uppercase tracking-wider mt-1">{t(stat.labelKey)}</p>
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
