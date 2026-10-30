@@ -4,12 +4,11 @@ import DarkModeToggle from './DarkModeToggle';
 
 const navLinks = [
   { href: '#hero', key: 'nav.inicio' },
-  { href: '#about', key: 'nav.sobremi' },
-  { href: '#experience', key: 'nav.experiencia' },
-  { href: '#projects', key: 'nav.proyectos' },
-  { href: '#skills', key: 'nav.skills' },
-  { href: '#education', key: 'nav.educacion' },
+  { href: '#about', key: 'nav.canal' },
+  { href: '#topics', key: 'nav.temas' },
+  { href: '#formats', key: 'nav.formatos' },
   { href: '#content', key: 'nav.contenido' },
+  { href: '#lab', key: 'nav.laboratorio' },
   { href: '#contact', key: 'nav.contacto' },
 ];
 
@@ -42,7 +41,7 @@ export default function Navbar() {
             className="flex items-center gap-2 group"
           >
             <span className="w-8 h-8 rounded-full bg-accent text-background flex items-center justify-center font-display text-xs font-bold">YC</span>
-            <span className="font-display text-sm font-bold text-text-primary group-hover:text-accent transition-colors tracking-wider">YCG<span className="text-accent">.</span></span>
+            <span className="font-display text-sm font-bold text-text-primary group-hover:text-accent transition-colors tracking-wider">CÓDIGO<span className="text-accent">.</span></span>
           </button>
 
           <div className="hidden lg:flex items-center gap-8">

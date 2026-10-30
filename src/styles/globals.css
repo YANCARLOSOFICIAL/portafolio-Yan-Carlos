@@ -34,7 +34,6 @@
   body {
     @apply bg-background text-text-primary antialiased min-h-screen font-sans;
     font-feature-settings: "kern" 1, "liga" 1;
-    background-image: radial-gradient(circle at 15% 0%, rgba(199, 243, 107, 0.06), transparent 28rem);
   }
 
   button, a {
@@ -85,8 +84,7 @@
   .brutal-card {
     @apply bg-surface border border-border hover:border-accent
            transition-all duration-200;
-    border-radius: 1rem;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    border-radius: 0.35rem;
   }
 
   .section-tag {
@@ -105,21 +103,21 @@
     @apply px-6 py-3 bg-accent text-background font-display text-sm font-bold uppercase tracking-wider
            border border-accent hover:bg-accentLight
            transition-all duration-200;
-    border-radius: 999px;
+    border-radius: 0.3rem;
   }
 
   .btn-brutal-outline {
     @apply px-6 py-3 bg-transparent text-text-primary font-display text-sm uppercase tracking-wider
            border border-border hover:border-accent hover:text-accent
            transition-all duration-200;
-    border-radius: 999px;
+    border-radius: 0.3rem;
   }
 
   .tech-badge {
     @apply px-3 py-1.5 bg-surfaceHover border border-border text-text-secondary
            font-display text-xs tracking-wide
            hover:border-accent hover:text-accent transition-colors duration-200;
-    border-radius: 999px;
+    border-radius: 0.3rem;
   }
 
   .input-brutal {

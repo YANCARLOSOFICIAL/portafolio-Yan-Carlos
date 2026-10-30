@@ -1,0 +1,47 @@
+---
+const es = {
+  tag: 'SOBRE EL CANAL',
+  title: 'Tecnología explicada desde la práctica.',
+  body: 'Código Tecnológico es un espacio para aprender haciendo. Aquí encontrarás herramientas de inteligencia artificial, programación y flujos de trabajo que puedes aplicar en tus propios proyectos.',
+  item1: 'Explicaciones con contexto',
+  item2: 'Proyectos que puedes revisar',
+  item3: 'Recursos para continuar',
+};
+
+const en = {
+  tag: 'ABOUT THE CHANNEL',
+  title: 'Technology explained through practice.',
+  body: 'Código Tecnológico is a place to learn by building. You will find AI tools, programming and workflows you can apply to your own projects.',
+  item1: 'Explanations with context',
+  item2: 'Projects you can inspect',
+  item3: 'Resources to continue',
+};
+---
+
+<section id="about" class="py-24 relative">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+      <div>
+        <p class="section-tag" data-lang-content="es">{es.tag}</p>
+        <p class="section-tag" data-lang-content="en">{en.tag}</p>
+      </div>
+      <div>
+        <h2 class="section-title" data-lang-content="es">{es.title}</h2>
+        <h2 class="section-title" data-lang-content="en">{en.title}</h2>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-text-secondary">
+          <span data-lang-content="es">{es.body}</span>
+          <span data-lang-content="en">{en.body}</span>
+        </p>
+        <ul class="mt-8 grid gap-3 sm:grid-cols-3">
+          {[es.item1, es.item2, es.item3].map((item, index) => (
+            <li class="rounded-sm border border-border bg-surface p-4 font-display text-xs uppercase leading-relaxed tracking-wide text-text-secondary">
+              <span class="mb-4 block text-accent">0{index + 1}</span>
+              <span data-lang-content="es">{item}</span>
+              <span data-lang-content="en">{[en.item1, en.item2, en.item3][index]}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MessageCircle, Linkedin, Github, Mail, Copy, Check, Send } from 'lucide-react';
+import { MessageCircle, Linkedin, Github, Copy, Check, Send } from 'lucide-react';
 import { useLanguage } from '../../i18n/LanguageContext';
 
 const email = 'yancarlospinchao2021@itp.edu.co';

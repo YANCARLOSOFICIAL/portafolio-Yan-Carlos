@@ -1,0 +1,156 @@
+---
+const es = {
+  aiTitle: 'IA aplicada',
+  aiText: 'Modelos, automatización y asistentes: qué hacen, cuándo sirven y cómo llevarlos a un proyecto.',
+  webTitle: 'Programación y web',
+  webText: 'Frontend, backend, APIs y despliegue explicados desde proyectos que se pueden probar.',
+  formatsLabel: 'Cómo comparto lo que aprendo',
+  videoTitle: 'Videos largos',
+  videoText: 'Tutoriales y análisis con el contexto suficiente para entender cada decisión.',
+  shortTitle: 'Shorts y clips',
+  shortText: 'Una idea concreta, una herramienta o un descubrimiento en pocos minutos.',
+  repoTitle: 'Código abierto',
+  repoText: 'Repositorios que puedes clonar, leer y usar como punto de partida.',
+  labLabel: 'LABORATORIO',
+  labTitle: 'Chatbot Uniputumayo',
+  labText: 'Un asistente virtual con RAG, voz y chat. En este proyecto exploro cómo conectar conocimiento propio, modelos y una interfaz útil.',
+  labCta: 'Ver proyecto',
+  statsLabel: 'El proyecto detrás del contenido',
+  stat1: 'proyectos publicados',
+  stat2: 'empresas atendidas',
+  stat3: 'plataformas activas',
+  ctaTitle: '¿Tienes una idea o una duda técnica?',
+  ctaText: 'Sígueme para aprender en público o escríbeme si quieres hablar de un proyecto.',
+  cta: 'Escríbeme',
+};
+
+const en = {
+  aiTitle: 'Applied AI',
+  aiText: 'Models, automation and assistants: what they do, when they help and how to ship them.',
+  webTitle: 'Programming and web',
+  webText: 'Frontend, backend, APIs and deployment explained through projects you can try.',
+  formatsLabel: 'How I share what I learn',
+  videoTitle: 'Long-form videos',
+  videoText: 'Tutorials and analysis with enough context to understand every decision.',
+  shortTitle: 'Shorts and clips',
+  shortText: 'One concrete idea, tool or discovery in a few minutes.',
+  repoTitle: 'Open source',
+  repoText: 'Repositories you can clone, read and use as a starting point.',
+  labLabel: 'Project in the lab',
+  labTitle: 'Chatbot Uniputumayo',
+  labText: 'A virtual assistant with RAG, voice and chat. I use this project to explore how knowledge, models and a useful interface connect.',
+  labCta: 'View project',
+  statsLabel: 'What I have built so far',
+  stat1: 'published projects',
+  stat2: 'companies impacted',
+  stat3: 'learning channels',
+  ctaTitle: 'Have an idea or a technical question?',
+  ctaText: 'Follow me to learn in public or message me if you want to talk about a project.',
+  cta: 'Message me',
+};
+---
+
+<section id="topics" class="border-y border-border bg-surface/40">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border">
+    <a href="#content" class="group p-8 sm:p-12 hover:bg-surfaceHover transition-colors">
+      <span class="font-display text-xs uppercase tracking-widest text-accent">01 / AI</span>
+      <h2 class="mt-8 font-sans text-3xl font-semibold text-text-primary group-hover:text-accent transition-colors">
+        <span data-lang-content="es">{es.aiTitle}</span>
+        <span data-lang-content="en">{en.aiTitle}</span>
+      </h2>
+      <p class="mt-4 max-w-md text-text-secondary leading-relaxed">
+        <span data-lang-content="es">{es.aiText}</span>
+        <span data-lang-content="en">{en.aiText}</span>
+      </p>
+      <span class="mt-8 inline-block font-display text-xs uppercase tracking-widest text-text-muted group-hover:text-accent">Ver temas →</span>
+    </a>
+    <a href="#projects" class="group p-8 sm:p-12 hover:bg-surfaceHover transition-colors">
+      <span class="font-display text-xs uppercase tracking-widest text-accent">02 / WEB</span>
+      <h2 class="mt-8 font-sans text-3xl font-semibold text-text-primary group-hover:text-accent transition-colors">
+        <span data-lang-content="es">{es.webTitle}</span>
+        <span data-lang-content="en">{en.webTitle}</span>
+      </h2>
+      <p class="mt-4 max-w-md text-text-secondary leading-relaxed">
+        <span data-lang-content="es">{es.webText}</span>
+        <span data-lang-content="en">{en.webText}</span>
+      </p>
+      <span class="mt-8 inline-block font-display text-xs uppercase tracking-widest text-text-muted group-hover:text-accent">Ver proyectos →</span>
+    </a>
+  </div>
+</section>
+
+<section id="formats" class="py-24 border-b border-border">
+  <div class="max-w-6xl mx-auto px-6">
+    <p class="section-tag"><span data-lang-content="es">{es.formatsLabel}</span><span data-lang-content="en">{en.formatsLabel}</span></p>
+    <div class="mt-8 grid gap-px border border-border bg-border md:grid-cols-3">
+      {[
+        { esTitle: es.videoTitle, enTitle: en.videoTitle, esText: es.videoText, enText: en.videoText, href: '#content', number: '01' },
+        { esTitle: es.shortTitle, enTitle: en.shortTitle, esText: es.shortText, enText: en.shortText, href: 'https://www.tiktok.com/@yanmusic3oficial', number: '02' },
+        { esTitle: es.repoTitle, enTitle: en.repoTitle, esText: es.repoText, enText: en.repoText, href: 'https://github.com/YANCARLOSOFICIAL', number: '03' },
+      ].map((item) => (
+        <a href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined} class="group bg-background p-7 hover:bg-surfaceHover transition-colors">
+          <span class="font-display text-xs text-accent">{item.number}</span>
+          <h2 class="mt-10 font-sans text-2xl font-semibold text-text-primary group-hover:text-accent transition-colors">
+            <span data-lang-content="es">{item.esTitle}</span><span data-lang-content="en">{item.enTitle}</span>
+          </h2>
+          <p class="mt-3 text-sm leading-relaxed text-text-secondary">
+            <span data-lang-content="es">{item.esText}</span><span data-lang-content="en">{item.enText}</span>
+          </p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section id="lab" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+      <div>
+        <p class="section-tag"><span data-lang-content="es">{es.labLabel}</span><span data-lang-content="en">{en.labLabel}</span></p>
+        <h2 class="section-title mt-3"><span data-lang-content="es">{es.labTitle}</span><span data-lang-content="en">{en.labTitle}</span></h2>
+        <p class="mt-6 text-lg leading-relaxed text-text-secondary">
+          <span data-lang-content="es">{es.labText}</span>
+          <span data-lang-content="en">{en.labText}</span>
+        </p>
+        <a href="https://github.com/YANCARLOSOFICIAL/chatbot-uniputumayo" target="_blank" rel="noopener noreferrer" class="btn-brutal-outline inline-flex mt-8">
+          <span data-lang-content="es">{es.labCta}</span><span data-lang-content="en">{en.labCta}</span> ↗
+        </a>
+      </div>
+      <div class="border border-border bg-surface p-7">
+        <div class="flex items-center justify-between border-b border-border pb-4">
+          <span class="font-display text-xs uppercase tracking-widest text-text-muted">chatbot-uniputumayo</span>
+          <span class="font-display text-xs text-accent">OPEN SOURCE</span>
+        </div>
+        <dl class="mt-6 grid gap-5 sm:grid-cols-3">
+          <div><dt class="font-display text-xs uppercase tracking-widest text-text-muted">Interfaz</dt><dd class="mt-2 text-text-primary">Chat + voz</dd></div>
+          <div><dt class="font-display text-xs uppercase tracking-widest text-text-muted">Arquitectura</dt><dd class="mt-2 text-text-primary">RAG</dd></div>
+          <div><dt class="font-display text-xs uppercase tracking-widest text-text-muted">Stack</dt><dd class="mt-2 text-text-primary">Next.js + FastAPI</dd></div>
+        </dl>
+        <p class="mt-8 border-l-2 border-accent pl-4 text-sm leading-relaxed text-text-secondary">
+          <span data-lang-content="es">El código y las decisiones técnicas están disponibles en el repositorio.</span>
+          <span data-lang-content="en">The code and technical decisions are available in the repository.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 border-y border-border bg-surface/30">
+  <div class="max-w-6xl mx-auto px-6">
+    <p class="section-tag"><span data-lang-content="es">{es.statsLabel}</span><span data-lang-content="en">{en.statsLabel}</span></p>
+    <div class="mt-8 grid grid-cols-3 gap-4 sm:gap-8">
+      <div><p class="font-sans text-4xl font-semibold text-accent sm:text-6xl">10+</p><p class="mt-2 font-display text-xs uppercase tracking-widest text-text-muted"><span data-lang-content="es">{es.stat1}</span><span data-lang-content="en">{en.stat1}</span></p></div>
+      <div><p class="font-sans text-4xl font-semibold text-accent sm:text-6xl">500+</p><p class="mt-2 font-display text-xs uppercase tracking-widest text-text-muted"><span data-lang-content="es">{es.stat2}</span><span data-lang-content="en">{en.stat2}</span></p></div>
+      <div><p class="font-sans text-4xl font-semibold text-accent sm:text-6xl">3</p><p class="mt-2 font-display text-xs uppercase tracking-widest text-text-muted"><span data-lang-content="es">{es.stat3}</span><span data-lang-content="en">{en.stat3}</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section id="connect" class="py-24">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <p class="section-tag">COMUNIDAD</p>
+    <h2 class="section-title mt-3"><span data-lang-content="es">{es.ctaTitle}</span><span data-lang-content="en">{en.ctaTitle}</span></h2>
+    <p class="mx-auto mt-5 max-w-xl text-lg text-text-secondary"><span data-lang-content="es">{es.ctaText}</span><span data-lang-content="en">{en.ctaText}</span></p>
+    <a href="#contact" class="btn-brutal inline-flex mt-8"><span data-lang-content="es">{es.cta}</span><span data-lang-content="en">{en.cta}</span> →</a>
+  </div>
+</section>

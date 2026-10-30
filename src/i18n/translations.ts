@@ -4,22 +4,24 @@ export type TranslationMap = Record<string, Record<Lang, string>>;
 
 export const translations: TranslationMap = {
   'nav.inicio': { es: 'Inicio', en: 'Home' },
-  'nav.sobremi': { es: 'Sobre mí', en: 'About' },
-  'nav.experiencia': { es: 'Experiencia', en: 'Experience' },
+  'nav.canal': { es: 'El canal', en: 'The channel' },
+  'nav.temas': { es: 'Temas', en: 'Topics' },
+  'nav.formatos': { es: 'Formatos', en: 'Formats' },
+  'nav.laboratorio': { es: 'Laboratorio', en: 'Lab' },
   'nav.proyectos': { es: 'Proyectos', en: 'Projects' },
   'nav.skills': { es: 'Skills', en: 'Skills' },
   'nav.educacion': { es: 'Educación', en: 'Education' },
   'nav.contenido': { es: 'Contenido', en: 'Content' },
   'nav.contacto': { es: 'Contacto', en: 'Contact' },
 
-  'hero.tag': { es: 'Portfolio 2026', en: 'Portfolio 2026' },
-  'hero.disponible': { es: 'Disponible para trabajar', en: 'Available for work' },
+  'hero.tag': { es: 'Código Tecnológico', en: 'Código Tecnológico' },
+  'hero.disponible': { es: 'Contenido nuevo cada semana', en: 'New content every week' },
   'hero.desc': {
-    es: 'Estudiante de 10° semestre con +1 año de experiencia en producción. Transformo ideas en soluciones tecnológicas con código limpio y moderno.',
-    en: '10th semester student with +1 year of production experience. I transform ideas into tech solutions with clean, modern code.',
+    es: 'Comparto inteligencia artificial, programación y herramientas para construir proyectos reales, explicado de forma clara y práctica.',
+    en: 'I share artificial intelligence, programming and tools to build real projects, explained clearly and practically.',
   },
-  'hero.verproyectos': { es: 'Ver proyectos', en: 'View projects' },
-  'hero.contactar': { es: 'Contactar', en: 'Contact me' },
+  'hero.verproyectos': { es: 'Ver contenido', en: 'Explore content' },
+  'hero.contactar': { es: 'Visitar canal', en: 'Visit channel' },
   'hero.conecta': { es: 'Conecta:', en: 'Connect:' },
   'hero.logros': { es: 'Logros destacados', en: 'Key achievements' },
   'hero.reduccion': { es: 'Reducción en facturación', en: 'Billing time reduction' },
@@ -61,8 +63,8 @@ export const translations: TranslationMap = {
   'edu.continua.desc': { es: 'Siempre aprendiendo nuevas tecnologías y mejores prácticas.', en: 'Always learning new technologies and best practices.' },
   'edu.credencial': { es: 'Credencial:', en: 'Credential:' },
 
-  'projects.tag': { es: 'PORTAFOLIO', en: 'PORTFOLIO' },
-  'projects.title': { es: 'Proyectos destacados', en: 'Featured projects' },
+  'projects.tag': { es: 'LABORATORIO', en: 'LAB' },
+  'projects.title': { es: 'Construido mientras aprendo', en: 'Built while learning' },
   'projects.filtro.todos': { es: 'Todos', en: 'All' },
 
   'contact.tag': { es: 'CONTACTO', en: 'CONTACT' },

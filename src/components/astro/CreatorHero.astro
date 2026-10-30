@@ -1,0 +1,76 @@
+---
+const es = {
+  eyebrow: 'Código Tecnológico',
+  title: 'Aprende IA y programación construyendo cosas reales.',
+  description: 'Soy Yan Carlos Guerra. Comparto ideas, herramientas y experimentos para entender la tecnología sin complicaciones.',
+  primary: 'Ver contenido',
+  secondary: 'Conoce el canal',
+  note: 'Contenido nuevo sobre IA, desarrollo y herramientas para creadores.',
+};
+
+const en = {
+  eyebrow: 'Código Tecnológico',
+  title: 'Learn AI and programming by building real things.',
+  description: 'I am Yan Carlos Guerra. I share ideas, tools and experiments to understand technology without the unnecessary complexity.',
+  primary: 'Explore content',
+  secondary: 'Visit the channel',
+  note: 'New content about AI, development and tools for creators.',
+};
+---
+
+<section id="hero" class="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden pt-24 pb-20">
+  <div class="absolute inset-0 pattern-grid opacity-60"></div>
+
+  <div class="max-w-6xl mx-auto px-6 relative z-10 w-full">
+    <div class="max-w-4xl">
+      <div class="inline-flex items-center gap-3 border-l-2 border-accent pl-3">
+        <span class="h-2 w-2 rounded-full bg-accent animate-pulse-accent"></span>
+        <span class="font-display text-xs uppercase tracking-[0.18em] text-text-secondary">
+          <span data-lang-content="es">{es.eyebrow}</span>
+          <span data-lang-content="en">{en.eyebrow}</span>
+        </span>
+      </div>
+
+      <h1 class="mt-8 max-w-4xl font-sans text-5xl font-semibold leading-[0.98] tracking-[-0.06em] text-text-primary sm:text-7xl lg:text-8xl">
+        <span data-lang-content="es">{es.title}</span>
+        <span data-lang-content="en">{en.title}</span>
+      </h1>
+
+      <p class="mt-8 max-w-2xl text-lg leading-relaxed text-text-secondary sm:text-xl">
+        <span data-lang-content="es">{es.description}</span>
+        <span data-lang-content="en">{en.description}</span>
+      </p>
+
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a href="#content" class="btn-brutal">
+          <span data-lang-content="es">{es.primary}</span>
+          <span data-lang-content="en">{en.primary}</span>
+          <span aria-hidden="true">→</span>
+        </a>
+        <a href="https://youtube.com/@codigotecnologico10" target="_blank" rel="noopener noreferrer" class="btn-brutal-outline">
+          <span data-lang-content="es">{es.secondary}</span>
+          <span data-lang-content="en">{en.secondary}</span>
+        </a>
+      </div>
+
+      <p class="mt-10 font-display text-xs uppercase tracking-widest text-text-muted">
+        <span data-lang-content="es">{es.note}</span>
+        <span data-lang-content="en">{en.note}</span>
+      </p>
+    </div>
+
+    <div class="mt-20 grid max-w-4xl grid-cols-2 gap-px border border-border bg-border sm:grid-cols-4">
+      {[
+        ['IA aplicada', 'AI'],
+        ['Programación', 'Code'],
+        ['Tutoriales', 'Learn'],
+        ['Proyectos', 'Build'],
+      ].map(([esLabel, enLabel]) => (
+        <a href="#content" class="bg-surface p-5 transition-colors hover:bg-surfaceHover">
+          <span class="font-display text-xs uppercase tracking-widest text-accent">{enLabel}</span>
+          <span class="mt-2 block font-sans text-sm font-medium text-text-primary">{esLabel}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

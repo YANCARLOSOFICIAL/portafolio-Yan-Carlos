@@ -2,9 +2,9 @@
 import videos from '../../data/youtube-videos.json';
 
 const es = {
-  tag: 'CONTENIDO',
-  title: 'Código, ideas y proceso',
-  description: 'Además de construir productos digitales, comparto lo que voy aprendiendo: desarrollo, tecnología y proyectos reales.',
+  tag: 'CONTENIDO RECIENTE',
+  title: 'Ideas que puedes probar hoy',
+  description: 'Videos, herramientas y experimentos sobre IA y programación para pasar de la curiosidad a un proyecto funcionando.',
   follow: 'Visitar perfil',
   youtube: 'Videos y tutoriales',
   tiktok: 'Clips y contenido corto',
@@ -15,9 +15,9 @@ const es = {
 };
 
 const en = {
-  tag: 'CONTENT',
-  title: 'Code, ideas and process',
-  description: 'Besides building digital products, I share what I learn: development, technology and real-world projects.',
+  tag: 'LATEST CONTENT',
+  title: 'Ideas you can try today',
+  description: 'Videos, tools and experiments about AI and programming to move from curiosity to a working project.',
   follow: 'Visit profile',
   youtube: 'Videos and tutorials',
   tiktok: 'Short-form content',
@@ -67,7 +67,6 @@ const channels = [
 
 <section id="content" class="py-24 relative overflow-hidden">
   <div class="absolute inset-0 pattern-grid-accent opacity-20"></div>
-  <div class="absolute -right-32 top-20 h-80 w-80 rounded-full bg-accent/5 blur-3xl"></div>
 
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <div class="max-w-2xl mb-12">
@@ -85,11 +84,11 @@ const channels = [
           href={channel.url}
           target="_blank"
           rel="noopener noreferrer"
-          class="brutal-card group p-6 min-h-56 flex flex-col justify-between hover:-translate-y-1"
+          class="brutal-card group p-6 min-h-56 flex flex-col justify-between"
           aria-label={`${channel.name}: ${channel.handle}`}
         >
           <div class="flex items-start justify-between gap-4">
-            <span class={`w-12 h-12 rounded-2xl bg-surfaceHover border border-border flex items-center justify-center font-display text-sm font-bold ${channel.color}`}>
+            <span class={`w-12 h-12 rounded-sm bg-surfaceHover border border-border flex items-center justify-center font-display text-sm font-bold ${channel.color}`}>
               {channel.mark}
             </span>
             <svg class="w-5 h-5 text-text-muted group-hover:text-accent group-hover:translate-x-1 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">

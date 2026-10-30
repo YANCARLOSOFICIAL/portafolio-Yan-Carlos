@@ -1,23 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import App from '../components/react/App';
-import About from '../components/astro/About.astro';
-import Experience from '../components/astro/Experience.astro';
-import TechStack from '../components/astro/TechStack.astro';
-import Testimonials from '../components/astro/Testimonials.astro';
-import Education from '../components/astro/Education.astro';
 import Footer from '../components/astro/Footer.astro';
 import SocialContent from '../components/astro/SocialContent.astro';
+import CreatorHero from '../components/astro/CreatorHero.astro';
+import CreatorAbout from '../components/astro/CreatorAbout.astro';
+import CreatorEditorial from '../components/astro/CreatorEditorial.astro';
+import ContentSections from '../components/react/ContentSections';
 ---
 
-<BaseLayout title="Yan Carlos Guerra - Full Stack Developer" description="Estudiante de Ingeniería en Sistemas con +1 año de experiencia en producción. Full Stack Developer especializado en React, Node.js, Laravel.">
+<BaseLayout title="Código Tecnológico — IA, programación y herramientas" description="Yan Carlos Guerra comparte contenido sobre inteligencia artificial, programación y herramientas para construir proyectos reales.">
   <App client:load />
-  <About />
-  <Experience />
-  <TechStack />
-  <Testimonials />
-  <Education />
-  <SocialContent />
+  <main>
+    <CreatorHero />
+    <CreatorEditorial />
+    <CreatorAbout />
+    <SocialContent />
+    <ContentSections client:load />
+  </main>
   <Footer />
 
   <style is:global>
