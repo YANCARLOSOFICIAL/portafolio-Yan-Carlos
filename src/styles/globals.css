@@ -258,9 +258,47 @@
   }
 }
 
+/* --- Terminal del hero (typewriter CSS puro, sin JS) --- */
+@property --chars {
+  syntax: '<integer>';
+  inherits: false;
+  initial-value: 0;
+}
+
+@layer components {
+  .term-line {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation:
+      term-type calc(var(--chars) * 22ms) steps(var(--chars)) var(--delay, 0ms) forwards;
+  }
+
+  .term-caret {
+    border-right: 2px solid theme('colors.accent');
+    animation:
+      term-type calc(var(--chars) * 22ms) steps(var(--chars)) var(--delay, 0ms) forwards,
+      term-caret 0.8s step-end infinite;
+    padding-right: 2px;
+  }
+}
+
+@keyframes term-type {
+  to {
+    width: calc(var(--chars) * 1ch);
+  }
+}
+
+@keyframes term-caret {
+  50% {
+    border-right-color: transparent;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }

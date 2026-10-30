@@ -16,13 +16,33 @@ const en = {
   secondary: 'Visit the channel',
   note: 'New content about AI, development and tools for creators.',
 };
+
+// Secuencia typewriter del terminal (CSS puro: --chars y --delay por línea)
+const terminalLines = [
+  { prompt: '$', text: 'git clone git@github.com:YANCARLOSOFICIAL/portafolio.git', cls: '' },
+  { prompt: '', text: "Cloning into 'portafolio'... done.", cls: 'text-text-muted' },
+  { prompt: '$', text: 'git log --oneline -2', cls: '' },
+  { prompt: '', text: '8fbdfd4 feat(projects): fichas con README del repo', cls: 'text-text-secondary' },
+  { prompt: '', text: '7736eb2 feat(blog): content collections + /blog', cls: 'text-text-secondary' },
+  { prompt: '$', text: 'npm run aprende', cls: '' },
+  { prompt: '', text: '→ ia · web · herramientas · sin humo', cls: 'text-accent', last: true },
+];
+
+let acc = 0;
+const lines = terminalLines.map((line) => {
+  const chars = (line.prompt ? line.prompt.length + 1 : 0) + line.text.length;
+  const item = { ...line, chars, delay: acc };
+  acc += chars * 22 + 140;
+  return item;
+});
 ---
 
 <section id="hero" class="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden pt-24 pb-20">
   <div class="absolute inset-0 pattern-grid opacity-60"></div>
 
   <div class="max-w-6xl mx-auto px-6 relative z-10 w-full">
-    <div class="max-w-4xl">
+    <div class="grid lg:grid-cols-[1.1fr_0.9fr] lg:gap-12 lg:items-center">
+      <div class="max-w-4xl">
       <div class="inline-flex items-center gap-3 border-l-2 border-accent pl-3">
         <span class="h-2 w-2 rounded-full bg-accent animate-pulse-accent"></span>
         <span class="font-display text-xs uppercase tracking-[0.18em] text-text-secondary">
@@ -57,6 +77,29 @@ const en = {
         <span data-lang-content="es">{es.note}</span>
         <span data-lang-content="en">{en.note}</span>
       </p>
+      </div>
+
+      <!-- Terminal typewriter: estética git del canal -->
+      <div class="hidden lg:block">
+        <div class="brutal-card overflow-hidden">
+          <div class="flex items-center gap-2 px-4 py-3 border-b border-border bg-surfaceHover">
+            <span class="w-3 h-3 rounded-full bg-alert/70"></span>
+            <span class="w-3 h-3 rounded-full bg-accent/70"></span>
+            <span class="w-3 h-3 rounded-full bg-cyber/70"></span>
+            <span class="font-mono text-xs text-text-muted ml-2">yan@codigo:~/portafolio — zsh</span>
+          </div>
+          <div class="p-5 font-mono text-[13px] leading-6 bg-background/60 min-h-[216px]" aria-hidden="true">
+            {lines.map((line) => (
+              <div
+                class={`term-line ${line.cls} ${line.last ? 'term-caret' : ''}`}
+                style={`--chars: ${line.chars}; --delay: ${line.delay}ms`}
+              >
+                {line.prompt}{line.prompt ? ' ' : ''}{line.text}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="mt-20 grid max-w-4xl grid-cols-2 gap-px border border-border bg-border sm:grid-cols-4">

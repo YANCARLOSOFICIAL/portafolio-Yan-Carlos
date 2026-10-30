@@ -79,6 +79,7 @@ featured: true                # opcional
 - **README automático**: `scripts/fetch-project-readmes.mjs` (corre en `prebuild`) descarga el `README.md` de cada repo desde `raw.githubusercontent.com` a `src/data/readmes.json` y la ficha lo renderiza con rutas relativas reescritas. Si un repo no tiene README, la ficha lo indica.
 
 - **Sitemap**: generado automáticamente por `@astrojs/sitemap` en cada build (ya no se edita `public/sitemap.xml`).
+- **RSS**: `/rss.xml` generado desde la colección con `@astrojs/rss` (enlazado en el `<head>`, en el teaser y en `/blog`).
 
 ```bash
 npm run dev    # desarrollo con HMR

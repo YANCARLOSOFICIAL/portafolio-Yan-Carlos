@@ -54,6 +54,13 @@ const en = {
         <p class="mt-4 text-text-secondary max-w-2xl" data-lang-content="es">{es.subtitle}</p>
         <p class="mt-4 text-text-secondary max-w-2xl" data-lang-content="en">{en.subtitle}</p>
 
+        <a
+          href="/rss.xml"
+          class="mt-5 inline-block font-mono text-xs text-text-muted hover:text-accent transition-colors"
+        >
+          $ curl -L /rss.xml ↗
+        </a>
+
         <div class="mt-8 flex flex-wrap gap-2" id="blog-filters">
           <button class="filter-chip is-active" data-filter="all" data-lang-content="es">{es.all}</button>
           <button class="filter-chip is-active" data-filter="all" data-lang-content="en">{en.all}</button>
