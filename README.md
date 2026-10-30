@@ -70,6 +70,7 @@ category: fullstack     # fullstack | frontend | backend | ai
 github: https://github.com/USER/REPO
 demo: https://demo.example.com   # opcional
 featured: true                # opcional
+demoOnly: false               # true = sin ficha ni repo visible: solo enlace a la demo
 ---
 
 - **Puntos clave** del proyecto (se muestran antes del README).
@@ -193,12 +194,18 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## Actualización automática de YouTube en Cloudflare Pages
+## Actualización automática de YouTube
 
-Los videos destacados se actualizan durante cada build usando la API oficial de YouTube.
+Los 8 videos más recientes del canal se actualizan durante cada build con
+`scripts/fetch-youtube-videos.mjs`, que usa esta cadena de fuentes (nunca rompe el build):
+
+1. **YouTube Data API v3** — solo si existe la variable `YOUTUBE_API_KEY` (recomendado en CI).
+2. **Página pública del canal** (`/@codigotecnologico10/videos`) — parsea `ytInitialData`; no requiere clave.
+3. Si ambas fallan: se conserva `src/data/youtube-videos.json` sin cambios.
+
 Para activar la actualización automática:
 
-1. En GitHub abre **Settings → Secrets and variables → Actions**.
+1. En GitHub abre **Settings → Secrets and variables → Actions** (opcional, mejora la fuente 1).
 2. Crea el secreto `YOUTUBE_API_KEY` con tu clave de Google Cloud.
 3. Crea el secreto `YOUTUBE_CHANNEL_ID` con `UCwvO94g5B-22nwJDlKvwdAw`.
 4. Verifica que Cloudflare Pages esté conectado a la rama que recibe los cambios, normalmente `master`.

@@ -6,7 +6,8 @@ import App from '../../components/react/App';
 import Footer from '../../components/astro/Footer.astro';
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects');
+  // demoOnly = sin ficha: la tarjeta del home/listado lleva directo a la demo
+  const projects = (await getCollection('projects')).filter((p) => !p.data.demoOnly);
   return projects.map((project) => ({
     params: { slug: project.id },
     props: { project },

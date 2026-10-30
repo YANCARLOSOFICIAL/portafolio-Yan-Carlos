@@ -6,6 +6,7 @@ tech: [Next.js, React Three Fiber, TypeScript, Tailwind, Framer Motion]
 category: frontend
 github: https://github.com/YANCARLOSOFICIAL/Waira-Solutions
 demo: https://www.wairasolutions.com/
+demoOnly: true
 ---
 
 - **Escena 3D en el hero**: modelos cargados con React Three Fiber, optimizados con LOD y lazy loading.

@@ -26,6 +26,8 @@ const projects = defineCollection({
     demo: z.string().url().optional(),
     github: z.string().url(),
     featured: z.boolean().default(false),
+    /** true = sin ficha ni enlaces al repo: la tarjeta solo lleva a la demo */
+    demoOnly: z.boolean().default(false),
   }),
 });
 

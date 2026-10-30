@@ -11,6 +11,8 @@ export interface Project {
   category: 'fullstack' | 'frontend' | 'backend' | 'ai';
   demo: string;
   github: string;
+  /** true = sin ficha ni repo visible: la tarjeta lleva directo a la demo */
+  demoOnly?: boolean;
 }
 
 const filters = [
@@ -107,7 +109,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
                     <ExternalLink className="w-3 h-3" />
                     {project.demo.includes('github.com') ? 'Repo' : 'Demo'}
                   </a>
-                  {!project.demo.includes('github.com') && (
+                  {!project.demoOnly && !project.demo.includes('github.com') && (
                     <a
                       href={project.github}
                       target="_blank"
@@ -129,9 +131,20 @@ export default function Projects({ projects }: { projects: Project[] }) {
 
               <div className="p-5 flex-1 flex flex-col">
                 <h3 className="font-display text-lg font-bold text-text-primary mb-2 group-hover:text-accent transition-colors">
-                  <a href={`/proyectos/${project.slug}`} className="hover:text-accent transition-colors">
-                    {project.title}
-                  </a>
+                  {project.demoOnly ? (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-accent transition-colors"
+                    >
+                      {project.title}
+                    </a>
+                  ) : (
+                    <a href={`/proyectos/${project.slug}`} className="hover:text-accent transition-colors">
+                      {project.title}
+                    </a>
+                  )}
                 </h3>
                 <p className="text-text-secondary text-sm mb-4 leading-relaxed font-sans flex-1">
                   {lang === 'es' ? project.description : project.descriptionEn}
@@ -143,12 +156,18 @@ export default function Projects({ projects }: { projects: Project[] }) {
                     </span>
                   ))}
                 </div>
-                <a
-                  href={`/proyectos/${project.slug}`}
-                  className="mt-4 font-display text-xs uppercase tracking-widest text-text-muted hover:text-accent transition-colors"
-                >
-                  {t('projects.verFicha')}
-                </a>
+                {project.demoOnly ? (
+                  <span className="mt-4 font-display text-xs uppercase tracking-widest text-accent">
+                    demo ↗
+                  </span>
+                ) : (
+                  <a
+                    href={`/proyectos/${project.slug}`}
+                    className="mt-4 font-display text-xs uppercase tracking-widest text-text-muted hover:text-accent transition-colors"
+                  >
+                    {t('projects.verFicha')}
+                  </a>
+                )}
               </div>
             </article>
           ))}

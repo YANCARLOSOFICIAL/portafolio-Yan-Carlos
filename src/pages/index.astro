@@ -19,7 +19,9 @@ const projects = (await getCollection('projects')).map((p) => ({
   tech: p.data.tech,
   category: p.data.category,
   demo: p.data.demo ?? p.data.github,
-  github: p.data.github,
+  // demoOnly: no se expone el repositorio en ningún punto (solo la demo)
+  github: p.data.demoOnly ? '' : p.data.github,
+  demoOnly: p.data.demoOnly,
 }));
 ---
 
