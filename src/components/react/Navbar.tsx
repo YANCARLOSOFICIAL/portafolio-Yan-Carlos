@@ -9,6 +9,7 @@ const navLinks = [
   { href: '#projects', key: 'nav.proyectos' },
   { href: '#skills', key: 'nav.skills' },
   { href: '#education', key: 'nav.educacion' },
+  { href: '#content', key: 'nav.contenido' },
   { href: '#contact', key: 'nav.contacto' },
 ];
 
@@ -32,17 +33,16 @@ export default function Navbar() {
     <>
       <nav
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-200 ${
-          scrolled ? 'bg-background border-b-2 border-accent' : 'bg-background/80'
+          scrolled ? 'bg-background/90 backdrop-blur-xl' : 'bg-background/60 backdrop-blur-md'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           <button
             onClick={() => scrollTo('#hero')}
-            className="flex items-center gap-1 group"
+            className="flex items-center gap-2 group"
           >
-            <span className="font-display text-xl font-bold text-accent">[</span>
-            <span className="font-display text-xl font-bold text-text-primary group-hover:text-accent transition-colors">YCG</span>
-            <span className="font-display text-xl font-bold text-accent">]</span>
+            <span className="w-8 h-8 rounded-full bg-accent text-background flex items-center justify-center font-display text-xs font-bold">YC</span>
+            <span className="font-display text-sm font-bold text-text-primary group-hover:text-accent transition-colors tracking-wider">YCG<span className="text-accent">.</span></span>
           </button>
 
           <div className="hidden lg:flex items-center gap-8">
@@ -70,7 +70,7 @@ export default function Navbar() {
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden w-10 h-10 flex items-center justify-center bg-surface border-2 border-border text-text-muted hover:border-accent hover:text-accent transition-colors duration-200"
+              className="lg:hidden w-11 h-11 rounded-xl flex items-center justify-center bg-surface border border-border text-text-muted hover:border-accent hover:text-accent transition-colors duration-200"
               aria-label="Menu"
             >
               <div className="relative w-5 h-4 flex flex-col justify-between">
@@ -84,7 +84,7 @@ export default function Navbar() {
       </nav>
 
       {isOpen && (
-        <div className="lg:hidden fixed inset-0 top-14 bg-background z-40 border-t-2 border-accent">
+        <div className="lg:hidden fixed inset-0 top-16 bg-background/95 backdrop-blur-xl z-40 border-t border-border">
           <div className="flex flex-col items-center justify-center h-full space-y-2 px-6">
             {navLinks.map((link) => (
               <button

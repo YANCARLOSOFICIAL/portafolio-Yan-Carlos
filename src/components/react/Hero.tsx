@@ -69,11 +69,11 @@ export default function Hero() {
             </div>
 
             <div className="space-y-0">
-              <h1 className="font-display text-6xl md:text-7xl lg:text-8xl font-black text-text-primary leading-[0.9] tracking-tighter">
+              <h1 className="font-sans text-6xl md:text-7xl lg:text-8xl font-bold text-text-primary leading-[0.9] tracking-[-0.06em]">
                 YAN<br />
                 <span className="text-accent">CARLOS</span>
               </h1>
-              <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-black text-text-primary leading-[0.9] tracking-tighter mt-2">
+              <h2 className="font-sans text-5xl md:text-6xl lg:text-7xl font-bold text-text-primary leading-[0.9] tracking-[-0.06em] mt-2">
                 GUERRA
               </h2>
             </div>
@@ -120,7 +120,7 @@ export default function Hero() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 flex items-center justify-center bg-surface border-2 border-border text-text-muted hover:border-accent hover:text-accent transition-colors duration-200"
+                    className="w-11 h-11 rounded-xl flex items-center justify-center bg-surface border border-border text-text-muted hover:border-accent hover:text-accent transition-colors duration-200"
                     aria-label={social.label}
                   >
                     <social.icon className="w-5 h-5" />
@@ -139,7 +139,7 @@ export default function Hero() {
           </div>
 
           <div className="hidden lg:block lg:col-span-5">
-            <div className="brutal-card p-8">
+            <div className="brutal-card p-8 bg-surface/80 backdrop-blur-sm">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 bg-accent flex items-center justify-center">
                   <span className="font-display text-white text-lg font-bold">*</span>
@@ -156,14 +156,14 @@ export default function Hero() {
                   { value: '10+', labelKey: 'hero.stat.proyectos' },
                   { value: '30%', labelKey: 'hero.stat.tiempo' },
                 ].map((stat) => (
-                  <div key={stat.labelKey} className="bg-background border-2 border-border p-4 text-center">
+                  <div key={stat.labelKey} className="bg-background border border-border rounded-xl p-4 text-center">
                     <p className="font-display text-3xl font-bold text-accent">{stat.value}</p>
                     <p className="font-display text-text-muted text-xs uppercase tracking-wider mt-1">{t(stat.labelKey)}</p>
                   </div>
                 ))}
               </div>
 
-              <div className="border-2 border-border p-4 bg-background">
+              <div className="border border-border rounded-xl p-4 bg-background">
                 <p className="font-display text-text-secondary text-xs uppercase tracking-wider leading-relaxed">
                   {t('hero.reduccion')}
                 </p>
@@ -187,7 +187,7 @@ export default function Hero() {
               { value: '10+', labelKey: 'hero.stat.proyectos' },
               { value: '30%', labelKey: 'hero.stat.tiempo' },
             ].map((stat) => (
-              <div key={stat.labelKey} className="bg-surface border-2 border-border p-4 text-center">
+              <div key={stat.labelKey} className="bg-surface border border-border rounded-xl p-4 text-center">
                 <p className="font-display text-2xl font-bold text-accent">{stat.value}</p>
                 <p className="font-display text-text-muted text-xs uppercase tracking-wider mt-1">{t(stat.labelKey)}</p>
               </div>

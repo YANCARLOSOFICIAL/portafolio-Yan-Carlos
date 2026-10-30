@@ -129,6 +129,21 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## Actualización automática de YouTube en Cloudflare Pages
+
+Los videos destacados se actualizan durante cada build usando la API oficial de YouTube.
+Para activar la actualización automática:
+
+1. En GitHub abre **Settings → Secrets and variables → Actions**.
+2. Crea el secreto `YOUTUBE_API_KEY` con tu clave de Google Cloud.
+3. Crea el secreto `YOUTUBE_CHANNEL_ID` con `UCwvO94g5B-22nwJDlKvwdAw`.
+4. Verifica que Cloudflare Pages esté conectado a la rama que recibe los cambios, normalmente `master`.
+
+El workflow `.github/workflows/refresh-content.yml` consulta YouTube cada 6 horas, actualiza
+`src/data/youtube-videos.json` y hace commit únicamente cuando hay videos nuevos. Ese commit
+dispara automáticamente el build de Cloudflare Pages. También se puede lanzar manualmente
+desde la pestaña **Actions** de GitHub.
+
 ## � Autor
 
 **Yan Carlos Guerra** - Desarrollador Full Stack

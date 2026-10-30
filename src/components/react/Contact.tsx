@@ -109,6 +109,7 @@ export default function Contact() {
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="input-brutal"
                   placeholder={t('contact.nombre')}
+                  aria-label={t('contact.nombre')}
                 />
                 {errors.name && <p className="mt-1 font-display text-xs text-accent">{errors.name}</p>}
               </div>
@@ -119,6 +120,7 @@ export default function Contact() {
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="input-brutal"
                   placeholder={t('contact.email')}
+                  aria-label={t('contact.email')}
                 />
                 {errors.email && <p className="mt-1 font-display text-xs text-accent">{errors.email}</p>}
               </div>
@@ -131,6 +133,7 @@ export default function Contact() {
                 rows={4}
                 className="input-brutal resize-none"
                 placeholder={t('contact.mensaje')}
+                aria-label={t('contact.mensaje')}
               />
               {errors.message && <p className="mt-1 font-display text-xs text-accent">{errors.message}</p>}
             </div>

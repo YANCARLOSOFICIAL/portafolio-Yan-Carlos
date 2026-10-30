@@ -22,7 +22,7 @@ export default function DarkModeToggle() {
   return (
     <button
       onClick={toggle}
-      className="w-10 h-10 flex items-center justify-center bg-surface border-2 border-border text-text-muted hover:border-accent hover:text-accent transition-colors duration-200"
+      className="w-11 h-11 rounded-xl flex items-center justify-center bg-surface border border-border text-text-muted hover:border-accent hover:text-accent transition-colors duration-200"
       aria-label="Toggle theme"
     >
       {isDark ? (

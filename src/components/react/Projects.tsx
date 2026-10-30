@@ -78,10 +78,10 @@ const filters = [
 ];
 
 const categoryStyles: Record<string, string> = {
-  fullstack: 'bg-accent text-white border-accent',
-  frontend: 'bg-cyber text-black border-cyber',
-  backend: 'bg-depth text-white border-depth',
-  ai: 'bg-alert text-black border-alert',
+  fullstack: 'bg-accent text-background border-accent',
+  frontend: 'bg-cyber text-background border-cyber',
+  backend: 'bg-depth text-background border-depth',
+  ai: 'bg-alert text-background border-alert',
 };
 
 const bannerGradients: Record<string, string> = {
@@ -126,9 +126,9 @@ export default function Projects() {
             <button
               key={filter.id}
               onClick={() => handleFilterChange(filter.id)}
-              className={`px-5 py-2 font-display text-xs uppercase tracking-wider border-2 transition-colors duration-200 ${
+              className={`px-5 py-2 rounded-full font-display text-xs uppercase tracking-wider border transition-colors duration-200 ${
                 activeFilter === filter.id
-                  ? 'bg-accent text-white border-accent'
+                  ? 'bg-accent text-background border-accent'
                   : 'bg-transparent text-text-muted border-border hover:border-accent hover:text-accent'
               }`}
             >
@@ -153,7 +153,7 @@ export default function Projects() {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-3 py-1.5 bg-accent text-white text-xs font-display uppercase tracking-wider flex items-center gap-1 hover:bg-accentLight transition-colors"
+                    className="px-3 py-1.5 rounded-full bg-accent text-background text-xs font-display uppercase tracking-wider flex items-center gap-1 hover:bg-accentLight transition-colors"
                   >
                     <ExternalLink className="w-3 h-3" />
                     {project.demo.includes('github.com') ? 'Repo' : 'Demo'}
@@ -163,7 +163,7 @@ export default function Projects() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-3 py-1.5 bg-background text-text-secondary text-xs font-display uppercase tracking-wider border-2 border-border flex items-center gap-1 hover:border-accent hover:text-accent transition-colors"
+                      className="px-3 py-1.5 rounded-full bg-background text-text-secondary text-xs font-display uppercase tracking-wider border border-border flex items-center gap-1 hover:border-accent hover:text-accent transition-colors"
                     >
                       <Code2 className="w-3 h-3" />
                       Code
@@ -172,7 +172,7 @@ export default function Projects() {
                 </div>
 
                 <div className="absolute bottom-3 left-3">
-                  <span className={`px-2 py-1 text-xs font-display uppercase tracking-wider border-2 ${categoryStyles[project.category] || ''}`}>
+                  <span className={`px-2.5 py-1 rounded-full text-xs font-display uppercase tracking-wider border ${categoryStyles[project.category] || ''}`}>
                     {project.category === 'ai' ? 'AI' : project.category}
                   </span>
                 </div>

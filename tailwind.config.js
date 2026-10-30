@@ -15,13 +15,13 @@ module.exports = {
         border: 'var(--color-border)',
         borderLight: 'var(--color-border-light)',
 
-        accent: '#ff0055',
-        accentLight: '#ff3388',
-        accentDark: '#cc0044',
-        cyber: '#00ff88',
-        alert: '#ffaa00',
-        depth: '#6600ff',
-        electric: '#00ccff',
+        accent: '#c7f36b',
+        accentLight: '#ddff9a',
+        accentDark: '#9fca3f',
+        cyber: '#70f0c0',
+        alert: '#f6c177',
+        depth: '#a78bfa',
+        electric: '#7dd3fc',
 
         text: {
           primary: 'var(--color-text-primary)',
@@ -31,7 +31,7 @@ module.exports = {
       },
 
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['IBM Plex Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         display: ['JetBrains Mono', 'ui-monospace', 'monospace'],
         mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
       },

@@ -9,6 +9,7 @@ export const translations: TranslationMap = {
   'nav.proyectos': { es: 'Proyectos', en: 'Projects' },
   'nav.skills': { es: 'Skills', en: 'Skills' },
   'nav.educacion': { es: 'Educación', en: 'Education' },
+  'nav.contenido': { es: 'Contenido', en: 'Content' },
   'nav.contacto': { es: 'Contacto', en: 'Contact' },
 
   'hero.tag': { es: 'Portfolio 2026', en: 'Portfolio 2026' },
