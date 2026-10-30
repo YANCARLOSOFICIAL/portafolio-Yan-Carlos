@@ -10,6 +10,34 @@ const {
   title = 'Yan Carlos Guerra - Full Stack Developer',
   description = 'Estudiante de Ingeniería en Sistemas +1 año de experiencia en producción.'
 } = Astro.props;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      name: 'Yan Carlos Guerra',
+      jobTitle: 'Full Stack Developer',
+      description,
+      url: Astro.url.href,
+      sameAs: [
+        'https://github.com/YANCARLOSOFICIAL',
+        'https://www.linkedin.com/in/yancarlos-pinchao-guerra-0b928a196',
+        'https://youtube.com/@codigotecnologico10',
+        'https://www.tiktok.com/@yanmusic3oficial',
+        'https://www.instagram.com/yancarlos45_oficial/',
+      ],
+      knowsAbout: ['React', 'Node.js', 'Laravel', 'Astro', 'TypeScript', 'PostgreSQL'],
+    },
+    {
+      '@type': 'WebSite',
+      name: 'Yan Carlos Guerra',
+      description,
+      url: Astro.url.href,
+      inLanguage: ['es', 'en'],
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -20,15 +48,21 @@ const {
     <meta name="description" content={description} />
     <meta name="author" content="Yan Carlos Guerra" />
     <meta name="keywords" content="full stack developer, React, Node.js, Laravel, Astro, TypeScript, Putumayo, Colombia" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#0b100e" />
+    <link rel="canonical" href={Astro.url.href} />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="Yan Carlos Guerra" />
+    <meta property="og:url" content={Astro.url.href} />
     <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale:alternate" content="en_US" />
 
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
@@ -38,6 +72,7 @@ const {
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
 
     <script is:inline>
       (function() {
