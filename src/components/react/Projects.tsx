@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { ExternalLink, Code2 } from 'lucide-react';
 import { useLanguage } from '../../i18n/LanguageContext';
 
-interface Project {
+export interface Project {
+  slug: string;
   title: string;
   description: string;
   descriptionEn: string;
@@ -11,63 +12,6 @@ interface Project {
   demo: string;
   github: string;
 }
-
-const projects: Project[] = [
-  {
-    title: 'Chatbot Uniputumayo',
-    description: 'Asistente virtual "Guaca" con IA para la Universidad del Putumayo. Sistema RAG con soporte de voz y chat.',
-    descriptionEn: '"Guaca" AI virtual assistant for Universidad del Putumayo. RAG system with voice and chat support.',
-    tech: ['Next.js', 'FastAPI', 'Python', 'PostgreSQL', 'Docker', 'Ollama'],
-    category: 'fullstack',
-    demo: 'https://github.com/YANCARLOSOFICIAL/chatbot-uniputumayo',
-    github: 'https://github.com/YANCARLOSOFICIAL/chatbot-uniputumayo',
-  },
-  {
-    title: 'Waira Solutions',
-    description: 'Sitio corporativo con escena 3D interactiva, diseño responsivo y sistema de contacto.',
-    descriptionEn: 'Corporate website with interactive 3D scene, responsive design, and contact system.',
-    tech: ['Next.js', 'React Three Fiber', 'TypeScript', 'Tailwind', 'Framer Motion'],
-    category: 'frontend',
-    demo: 'https://www.wairasolutions.com/',
-    github: 'https://github.com/YANCARLOSOFICIAL/Waira-Solutions',
-  },
-  {
-    title: 'Plataforma Educativa IA',
-    description: 'Plataforma educativa que genera exámenes, resúmenes, rúbricas y más usando IA.',
-    descriptionEn: 'Educational platform that generates exams, summaries, rubrics and more using AI.',
-    tech: ['Next.js', 'FastAPI', 'Python', 'PostgreSQL', 'Ollama', 'Gemini'],
-    category: 'ai',
-    demo: 'https://github.com/YANCARLOSOFICIAL/plataforma-educativa-con-IA',
-    github: 'https://github.com/YANCARLOSOFICIAL/plataforma-educativa-con-IA',
-  },
-  {
-    title: 'Sistema Solar 3D',
-    description: 'Aplicación interactiva 3D con modelos de la NASA, realidad aumentada y modo juego.',
-    descriptionEn: 'Interactive 3D app with NASA models, augmented reality, and game mode.',
-    tech: ['Three.js', 'JavaScript', 'NASA GLB', 'WebXR'],
-    category: 'frontend',
-    demo: 'https://github.com/YANCARLOSOFICIAL/Sistema-Solar-3D',
-    github: 'https://github.com/YANCARLOSOFICIAL/Sistema-Solar-3D',
-  },
-  {
-    title: 'API Facturas IA',
-    description: 'Extracción de datos estructurados de facturas PDF usando GPT-4o y FastAPI.',
-    descriptionEn: 'Structured data extraction from PDF invoices using GPT-4o and FastAPI.',
-    tech: ['FastAPI', 'Python', 'OpenAI', 'Docker', 'JWT'],
-    category: 'backend',
-    demo: 'https://github.com/YANCARLOSOFICIAL/api-facturas-2',
-    github: 'https://github.com/YANCARLOSOFICIAL/api-facturas-2',
-  },
-  {
-    title: 'Tienda Microservicios',
-    description: 'Plataforma e-commerce con arquitectura de microservicios y autenticación JWT.',
-    descriptionEn: 'E-commerce platform with microservices architecture and JWT authentication.',
-    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT'],
-    category: 'fullstack',
-    demo: 'https://github.com/YANCARLOSOFICIAL/tienda-microservicios',
-    github: 'https://github.com/YANCARLOSOFICIAL/tienda-microservicios',
-  },
-];
 
 const filters = [
   { id: 'all', labelKey: 'projects.filtro.todos' },
@@ -98,7 +42,7 @@ const bannerPatterns: Record<string, string> = {
   ai: 'bg-[radial-gradient(circle_at_50%_70%,rgba(255,170,0,0.08)_0%,transparent_50%)]',
 };
 
-export default function Projects() {
+export default function Projects({ projects }: { projects: Project[] }) {
   const { t, lang } = useLanguage();
   const [activeFilter, setActiveFilter] = useState('all');
   const [filteredProjects, setFilteredProjects] = useState(projects);
@@ -113,12 +57,17 @@ export default function Projects() {
       <div className="absolute inset-0 pattern-grid-accent opacity-30" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="flex items-start gap-6 mb-12">
-          <span className="section-number">04</span>
-          <div>
-            <p className="section-tag">{t('projects.tag')}</p>
-            <h2 className="section-title">{t('projects.title')}</h2>
+        <div className="flex items-start justify-between gap-6 mb-12">
+          <div className="flex items-start gap-6">
+            <span className="section-number">04</span>
+            <div>
+              <p className="section-tag">{t('projects.tag')}</p>
+              <h2 className="section-title">{t('projects.title')}</h2>
+            </div>
           </div>
+          <a href="/proyectos" className="nav-link-brutal hidden md:block mt-4 shrink-0">
+            {t('projects.verTodas')}
+          </a>
         </div>
 
         <div className="flex flex-wrap gap-2 mb-10">
@@ -180,7 +129,9 @@ export default function Projects() {
 
               <div className="p-5 flex-1 flex flex-col">
                 <h3 className="font-display text-lg font-bold text-text-primary mb-2 group-hover:text-accent transition-colors">
-                  {project.title}
+                  <a href={`/proyectos/${project.slug}`} className="hover:text-accent transition-colors">
+                    {project.title}
+                  </a>
                 </h3>
                 <p className="text-text-secondary text-sm mb-4 leading-relaxed font-sans flex-1">
                   {lang === 'es' ? project.description : project.descriptionEn}
@@ -192,6 +143,12 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
+                <a
+                  href={`/proyectos/${project.slug}`}
+                  className="mt-4 font-display text-xs uppercase tracking-widest text-text-muted hover:text-accent transition-colors"
+                >
+                  {t('projects.verFicha')}
+                </a>
               </div>
             </article>
           ))}

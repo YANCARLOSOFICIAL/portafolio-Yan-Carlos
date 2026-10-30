@@ -1,0 +1,193 @@
+---
+import { getCollection, render } from 'astro:content';
+import { marked } from 'marked';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import App from '../../components/react/App';
+import Footer from '../../components/astro/Footer.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+
+const all = (await getCollection('projects')).sort(
+  (a, b) => Number(b.data.featured) - Number(a.data.featured)
+);
+const index = all.findIndex((p) => p.id === project.id);
+const newer = index > 0 ? all[index - 1] : null;
+const older = index < all.length - 1 ? all[index + 1] : null;
+
+// README descargado del repositorio en prebuild (scripts/fetch-project-readmes.mjs)
+const readmeMod = (await import('../../data/readmes.json')) as unknown as {
+  default?: Record<string, string>;
+} & Record<string, string>;
+const readmes: Record<string, string> = readmeMod.default ?? readmeMod;
+const readme: string | undefined = readmes[project.id];
+
+const repoMatch = /github\.com\/([^/\s]+)\/([^/\s]+?)(?:\.git)?(?:\/|$)/.exec(project.data.github);
+const repoBase = repoMatch ? `https://raw.githubusercontent.com/${repoMatch[1]}/${repoMatch[2]}/HEAD/` : '';
+
+let readmeHtml = '';
+if (readme) {
+  readmeHtml = await marked.parse(readme);
+  // Rutas relativas del README (imágenes, enlaces) → raw de GitHub
+  if (repoBase) {
+    readmeHtml = readmeHtml.replace(
+      /(src|href)="(?!https?:|data:|#|\/)([^"]+)"/g,
+      `$1="${repoBase}$2"`
+    );
+  }
+}
+
+const hasDemo = project.data.demo && project.data.demo !== project.data.github;
+
+const catStyle: Record<string, string> = {
+  fullstack: 'bg-accent text-background border-accent',
+  frontend: 'bg-cyber text-background border-cyber',
+  backend: 'bg-depth text-background border-depth',
+  ai: 'bg-alert text-background border-alert',
+};
+
+const es = {
+  back: '← volver a /proyectos',
+  highlights: '// puntos clave',
+  readme: '// README.md del repositorio',
+  readmeNote: 'Descargado del repositorio en cada build.',
+  repoBtn: 'Ver repositorio',
+  demoBtn: 'Ver demo',
+  clone: 'clonar',
+  prev: 'proyecto anterior',
+  next: 'proyecto siguiente',
+  noReadme: 'Este repositorio no incluye README.md — el código habla por sí solo.',
+};
+const en = {
+  back: '← back to /proyectos',
+  highlights: '// key points',
+  readme: '// repository README.md',
+  readmeNote: 'Downloaded from the repository on every build.',
+  repoBtn: 'View repository',
+  demoBtn: 'View demo',
+  clone: 'clone',
+  prev: 'previous project',
+  next: 'next project',
+  noReadme: 'This repository has no README.md — the code speaks for itself.',
+};
+---
+
+<BaseLayout title={`${project.data.title} — Proyectos`} description={project.data.description}>
+  <App client:load />
+
+  <main class="pt-16 pattern-grid min-h-screen">
+    <article class="max-w-4xl mx-auto px-6 py-14 md:py-20">
+      <a href="/proyectos" class="font-mono text-xs text-text-muted hover:text-accent transition-colors" data-lang-content="es">{es.back}</a>
+      <a href="/proyectos" class="font-mono text-xs text-text-muted hover:text-accent transition-colors" data-lang-content="en">{en.back}</a>
+
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <span class={`px-2.5 py-1 rounded-full text-xs font-display uppercase tracking-wider border ${catStyle[project.data.category]}`}>
+          {project.data.category === 'ai' ? 'AI' : project.data.category}
+        </span>
+        <span class="font-mono text-xs text-text-muted">{project.data.github.replace('https://github.com/', '')}</span>
+      </div>
+
+      <h1 class="section-title mt-4">{project.data.title}</h1>
+
+      <p class="mt-4 text-text-secondary text-lg" data-lang-content="es">{project.data.description}</p>
+      <p class="mt-4 text-text-secondary text-lg" data-lang-content="en">{project.data.descriptionEn}</p>
+
+      <div class="mt-6 flex flex-wrap gap-2">
+        {project.data.tech.map((tech) => (
+          <span class="tech-badge">{tech}</span>
+        ))}
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href={project.data.github} target="_blank" rel="noopener noreferrer" class="btn-brutal">
+          {es.repoBtn} ↗
+        </a>
+        {hasDemo && (
+          <a href={project.data.demo} target="_blank" rel="noopener noreferrer" class="btn-brutal-outline">
+            {es.demoBtn} ↗
+          </a>
+        )}
+      </div>
+
+      <!-- Bloque estilo terminal: clonar el repo -->
+      <div class="mt-8 brutal-card overflow-hidden">
+        <div class="flex items-center gap-2 px-4 py-2.5 border-b border-border bg-surfaceHover">
+          <span class="w-2.5 h-2.5 rounded-full bg-alert/70"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-accent/70"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-cyber/70"></span>
+          <span class="font-mono text-xs text-text-muted ml-2">terminal — {es.clone}</span>
+        </div>
+        <div class="p-4 md:p-5 font-mono text-xs md:text-sm overflow-x-auto">
+          <p class="text-accent">
+            $ <span class="text-text-primary">git clone {project.data.github}.git</span>
+          </p>
+          <p class="text-text-muted mt-1">
+            $ <span class="text-text-secondary">cd {project.data.github.split('/').pop()}</span>
+          </p>
+        </div>
+      </div>
+
+      <hr class="my-10 border-border" />
+
+      <p class="section-tag mb-4" data-lang-content="es">{es.highlights}</p>
+      <p class="section-tag mb-4" data-lang-content="en">{en.highlights}</p>
+      <div class="prose-brutal">
+        <Content />
+      </div>
+
+      {readmeHtml && (
+        <section class="mt-14">
+          <div class="flex flex-wrap items-baseline justify-between gap-2 mb-4">
+            <p class="section-tag">{es.readme}</p>
+            <span class="font-mono text-xs text-text-muted" data-lang-content="es">{es.readmeNote}</span>
+            <span class="font-mono text-xs text-text-muted" data-lang-content="en">{en.readmeNote}</span>
+          </div>
+          <div class="brutal-card p-6 md:p-8 prose-brutal" set:html={readmeHtml} />
+        </section>
+      )}
+
+      {!readmeHtml && (
+        <section class="mt-14">
+          <p class="section-tag mb-4">{es.readme}</p>
+          <div class="brutal-card p-6 font-mono text-sm text-text-muted">
+            <span data-lang-content="es">{es.noReadme}</span>
+            <span data-lang-content="en">{en.noReadme}</span>
+          </div>
+        </section>
+      )}
+
+      <nav class="mt-14 pt-8 border-t border-border flex flex-col sm:flex-row justify-between gap-4">
+        <div class="sm:max-w-[45%]">
+          {older && (
+            <a href={`/proyectos/${older.id}`} class="group block">
+              <span class="font-mono text-xs text-text-muted">{es.prev} ←</span>
+              <p class="text-sm text-text-secondary group-hover:text-accent transition-colors mt-1">
+                {older.data.title}
+              </p>
+            </a>
+          )}
+        </div>
+        <div class="sm:max-w-[45%] sm:text-right">
+          {newer && (
+            <a href={`/proyectos/${newer.id}`} class="group block">
+              <span class="font-mono text-xs text-text-muted">→ {es.next}</span>
+              <p class="text-sm text-text-secondary group-hover:text-accent transition-colors mt-1">
+                {newer.data.title}
+              </p>
+            </a>
+          )}
+        </div>
+      </nav>
+    </article>
+  </main>
+
+  <Footer />
+</BaseLayout>

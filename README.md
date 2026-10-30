@@ -29,11 +29,18 @@ Portafolio personal moderno y responsivo construido con **Astro**, **React** y *
 npm install
 ```
 
-## 📝 Blog (Content Collections)
+## 📝 Contenido (Content Collections)
 
-El blog se genera desde archivos Markdown en `src/content/blog/`. El schema está definido en `src/content.config.ts` (si el frontmatter no cumple el schema, el build falla en lugar de publicar contenido roto).
+El sitio se genera desde dos colecciones de Markdown:
 
-Para publicar una entrada, crea un archivo nuevo:
+| Colección | Archivos | Rutas |
+|---|---|---|
+| `blog` | `src/content/blog/*.md` | `/blog`, `/blog/[slug]` |
+| `projects` | `src/content/projects/*.md` | `/proyectos`, `/proyectos/[slug]` |
+
+El schema está en `src/content.config.ts` (si el frontmatter no cumple el schema, el build falla en lugar de publicar contenido roto).
+
+### Publicar una entrada del blog
 
 ```markdown
 ---
@@ -49,13 +56,33 @@ featured: false     # true = aparece con ★ destacado
 Contenido en Markdown…
 ```
 
-- **Rutas generadas**: `/blog` (listado con filtros por categoría) y `/blog/[slug]` (artículo).
 - **Teaser en home**: la sección `#blog` muestra las 3 entradas más recientes (`BlogTeaser.astro`).
+
+### Añadir un proyecto
+
+```markdown
+---
+title: Chatbot Uniputumayo
+description: Descripción en español (listados y meta).
+descriptionEn: Description in English.
+tech: [Next.js, FastAPI, PostgreSQL]
+category: fullstack     # fullstack | frontend | backend | ai
+github: https://github.com/USER/REPO
+demo: https://demo.example.com   # opcional
+featured: true                # opcional
+---
+
+- **Puntos clave** del proyecto (se muestran antes del README).
+```
+
+- **Fuente única**: la home (`Projects.tsx`) recibe estos datos como props desde `index.astro` — no duplicar el array en TSX.
+- **README automático**: `scripts/fetch-project-readmes.mjs` (corre en `prebuild`) descarga el `README.md` de cada repo desde `raw.githubusercontent.com` a `src/data/readmes.json` y la ficha lo renderiza con rutas relativas reescritas. Si un repo no tiene README, la ficha lo indica.
+
 - **Sitemap**: generado automáticamente por `@astrojs/sitemap` en cada build (ya no se edita `public/sitemap.xml`).
 
 ```bash
 npm run dev    # desarrollo con HMR
-npm run build  # prebuild (YouTube) + build estático + sitemap
+npm run build  # prebuild (YouTube + READMEs) + build estático + sitemap
 ```
 
 ## � Estructura del Proyecto

@@ -69,6 +69,10 @@ export const translations: TranslationMap = {
   'projects.title': { es: 'Construido mientras aprendo', en: 'Built while learning' },
   'projects.filtro.todos': { es: 'Todos', en: 'All' },
 
+  'projects.verFicha': { es: 'ver ficha →', en: 'view sheet →' },
+
+  'projects.verTodas': { es: 'todas las fichas →', en: 'all sheets →' },
+
   'contact.tag': { es: 'CONTACTO', en: 'CONTACT' },
   'contact.title': { es: '¿Trabajamos juntos?', en: 'Let\'s work together?' },
   'contact.desc': {

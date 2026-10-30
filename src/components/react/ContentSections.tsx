@@ -1,11 +1,11 @@
 import { LanguageProvider } from '../../i18n/LanguageContext';
-import Projects from './Projects';
+import Projects, { type Project } from './Projects';
 import Contact from './Contact';
 
-export default function ContentSections() {
+export default function ContentSections({ projects }: { projects: Project[] }) {
   return (
     <LanguageProvider>
-      <Projects />
+      <Projects projects={projects} />
       <Contact />
     </LanguageProvider>
   );
