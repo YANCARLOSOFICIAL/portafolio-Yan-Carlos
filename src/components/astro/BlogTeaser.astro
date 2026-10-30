@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content';
+import { CATEGORIES, gitDate } from '../../data/blog';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 3);
+
+const es = {
+  tag: '// DESDE EL REPOSITORIO',
+  title: 'Entradas recientes',
+  cta: 'ver todas →',
+  empty: 'Próximamente: notas sobre IA, web y workflow.',
+};
+
+const en = {
+  tag: '// FROM THE REPOSITORY',
+  title: 'Recent posts',
+  cta: 'see all →',
+  empty: 'Coming soon: notes on AI, web and workflow.',
+};
+---
+
+{posts.length > 0 && (
+  <section id="blog" class="py-24 border-t border-border">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+        <div>
+          <p class="section-tag" data-lang-content="es">{es.tag}</p>
+          <p class="section-tag" data-lang-content="en">{en.tag}</p>
+          <h2 class="section-title mt-3" data-lang-content="es">{es.title}</h2>
+          <h2 class="section-title mt-3" data-lang-content="en">{en.title}</h2>
+        </div>
+        <a href="/blog" class="btn-brutal-outline self-start md:self-auto" data-lang-content="es">
+          blog {es.cta}
+        </a>
+        <a href="/blog" class="btn-brutal-outline self-start md:self-auto" data-lang-content="en">
+          blog {en.cta}
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4">
+        {posts.map((post) => (
+          <a href={`/blog/${post.id}`} class="brutal-card group p-6 flex flex-col gap-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class={`section-tag border px-2 py-0.5 ${CATEGORIES[post.data.category].color}`}>
+                {CATEGORIES[post.data.category].label}
+              </span>
+              <span class="font-mono text-xs text-text-muted">{gitDate(post.data.pubDate)}</span>
+            </div>
+            <h3 class="font-sans text-lg font-semibold text-text-primary leading-snug group-hover:text-accent transition-colors">
+              {post.data.title}
+            </h3>
+            <p class="text-sm text-text-secondary flex-1">{post.data.description}</p>
+            <span class="font-display text-xs uppercase tracking-widest text-text-muted group-hover:text-accent transition-colors">
+              <span data-lang-content="es">{es.cta}</span>
+              <span data-lang-content="en">{en.cta}</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

@@ -9,6 +9,7 @@ const navLinks = [
   { href: '#formats', key: 'nav.formatos' },
   { href: '#content', key: 'nav.contenido' },
   { href: '#lab', key: 'nav.laboratorio' },
+  { href: '/blog', key: 'nav.blog' },
   { href: '#contact', key: 'nav.contacto' },
 ];
 
@@ -16,17 +17,29 @@ export default function Navbar() {
   const { lang, setLang, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [path, setPath] = useState('');
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
+    setPath(window.location.pathname);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollTo = (href: string) => {
     setIsOpen(false);
+    // Ruta real (ej. /blog): el enlace se encarga de navegar
+    if (href.startsWith('/')) return;
+    // Desde otra página, volver al home con el ancla
+    if (path && path !== '/') {
+      window.location.href = `/${href}`;
+      return;
+    }
     document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const isRouteActive = (href: string) =>
+    href.startsWith('/') && path.replace(/\/$/, '') === href.replace(/\/$/, '');
 
   return (
     <>
@@ -45,15 +58,25 @@ export default function Navbar() {
           </button>
 
           <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => scrollTo(link.href)}
-                className="nav-link-brutal"
-              >
-                {t(link.key)}
-              </button>
-            ))}
+            {navLinks.map((link) =>
+              link.href.startsWith('/') ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={`nav-link-brutal ${isRouteActive(link.href) ? '!text-accent' : ''}`}
+                >
+                  {t(link.key)}
+                </a>
+              ) : (
+                <button
+                  key={link.href}
+                  onClick={() => scrollTo(link.href)}
+                  className="nav-link-brutal"
+                >
+                  {t(link.key)}
+                </button>
+              )
+            )}
           </div>
 
           <div className="flex items-center gap-3">
@@ -85,15 +108,27 @@ export default function Navbar() {
       {isOpen && (
         <div className="lg:hidden fixed inset-0 top-16 bg-background/95 backdrop-blur-xl z-40 border-t border-border">
           <div className="flex flex-col items-center justify-center h-full space-y-2 px-6">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => scrollTo(link.href)}
-                className="font-display text-3xl font-bold text-text-primary hover:text-accent transition-colors py-4 uppercase tracking-wider"
-              >
-                {t(link.key)}
-              </button>
-            ))}
+            {navLinks.map((link) =>
+              link.href.startsWith('/') ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={`font-display text-3xl font-bold text-text-primary hover:text-accent transition-colors py-4 uppercase tracking-wider ${
+                    isRouteActive(link.href) ? 'text-accent' : ''
+                  }`}
+                >
+                  {t(link.key)}
+                </a>
+              ) : (
+                <button
+                  key={link.href}
+                  onClick={() => scrollTo(link.href)}
+                  className="font-display text-3xl font-bold text-text-primary hover:text-accent transition-colors py-4 uppercase tracking-wider"
+                >
+                  {t(link.key)}
+                </button>
+              )
+            )}
             <button
               onClick={() => setLang(lang === 'es' ? 'en' : 'es')}
               className="mt-4 lang-btn lang-btn-active"

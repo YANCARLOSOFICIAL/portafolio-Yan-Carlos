@@ -29,6 +29,35 @@ Portafolio personal moderno y responsivo construido con **Astro**, **React** y *
 npm install
 ```
 
+## 📝 Blog (Content Collections)
+
+El blog se genera desde archivos Markdown en `src/content/blog/`. El schema está definido en `src/content.config.ts` (si el frontmatter no cumple el schema, el build falla en lugar de publicar contenido roto).
+
+Para publicar una entrada, crea un archivo nuevo:
+
+```markdown
+---
+title: "Título del artículo"
+description: "Resumen que aparece en listados y meta description."
+pubDate: 2026-11-05
+category: ia        # ia | web | dev
+tags: [astro, ci]
+draft: false        # true = no se publica
+featured: false     # true = aparece con ★ destacado
+---
+
+Contenido en Markdown…
+```
+
+- **Rutas generadas**: `/blog` (listado con filtros por categoría) y `/blog/[slug]` (artículo).
+- **Teaser en home**: la sección `#blog` muestra las 3 entradas más recientes (`BlogTeaser.astro`).
+- **Sitemap**: generado automáticamente por `@astrojs/sitemap` en cada build (ya no se edita `public/sitemap.xml`).
+
+```bash
+npm run dev    # desarrollo con HMR
+npm run build  # prebuild (YouTube) + build estático + sitemap
+```
+
 ## � Estructura del Proyecto
 
 ```text

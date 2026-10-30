@@ -14,6 +14,8 @@ export const translations: TranslationMap = {
   'nav.contenido': { es: 'Contenido', en: 'Content' },
   'nav.contacto': { es: 'Contacto', en: 'Contact' },
 
+  'nav.blog': { es: 'Blog', en: 'Blog' },
+
   'hero.tag': { es: 'Código Tecnológico', en: 'Código Tecnológico' },
   'hero.disponible': { es: 'Contenido nuevo cada semana', en: 'New content every week' },
   'hero.desc': {

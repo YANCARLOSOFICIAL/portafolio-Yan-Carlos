@@ -1,0 +1,161 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import App from '../../components/react/App';
+import Footer from '../../components/astro/Footer.astro';
+import { CATEGORIES, CATEGORY_KEYS, gitDate, readingTime } from '../../data/blog';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+
+const es = {
+  title: 'Blog — Código Tecnológico',
+  description:
+    'Notas sobre inteligencia artificial, desarrollo web y herramientas: tutoriales, guías y cosas que aprendo construyendo.',
+  breadcrumb: '~/blog',
+  heading: 'git log --oneline',
+  subtitle:
+    'Entradas sobre IA, web y workflow. Escritas desde el terminal, publicadas desde el repositorio.',
+  all: 'todas',
+  read: 'leer →',
+  min: 'min de lectura',
+};
+
+const en = {
+  title: 'Blog — Código Tecnológico',
+  description:
+    'Notes on artificial intelligence, web development and tooling: tutorials, guides and things I learn while building.',
+  breadcrumb: '~/blog',
+  heading: 'git log --oneline',
+  subtitle:
+    'Posts about AI, web and workflow. Written from the terminal, published from the repository.',
+  all: 'all',
+  read: 'read →',
+  min: 'min read',
+};
+---
+
+<BaseLayout title={es.title} description={es.description}>
+  <App client:load />
+
+  <main class="pt-16 pattern-grid min-h-screen">
+    <header class="border-b border-border bg-background/80 backdrop-blur-md">
+      <div class="max-w-5xl mx-auto px-6 py-14 md:py-20">
+        <p class="font-mono text-xs text-text-muted mb-6" data-lang-content="es">$ cd {es.breadcrumb}</p>
+        <p class="font-mono text-xs text-text-muted mb-6" data-lang-content="en">$ cd {en.breadcrumb}</p>
+
+        <span class="section-tag" data-lang-content="es">// {es.heading}</span>
+        <span class="section-tag" data-lang-content="en">// {en.heading}</span>
+
+        <h1 class="section-title mt-3" data-lang-content="es">Entradas</h1>
+        <h1 class="section-title mt-3" data-lang-content="en">Posts</h1>
+
+        <p class="mt-4 text-text-secondary max-w-2xl" data-lang-content="es">{es.subtitle}</p>
+        <p class="mt-4 text-text-secondary max-w-2xl" data-lang-content="en">{en.subtitle}</p>
+
+        <div class="mt-8 flex flex-wrap gap-2" id="blog-filters">
+          <button class="filter-chip is-active" data-filter="all" data-lang-content="es">{es.all}</button>
+          <button class="filter-chip is-active" data-filter="all" data-lang-content="en">{en.all}</button>
+          {CATEGORY_KEYS.map((key) => (
+            <button class="filter-chip" data-filter={key}>
+              {CATEGORIES[key].label}
+            </button>
+          ))}
+        </div>
+      </div>
+    </header>
+
+    <section class="max-w-5xl mx-auto px-6 py-10 md:py-14">
+      <div class="flex flex-col gap-4" id="blog-list">
+        {posts.map((post) => (
+          <a
+            href={`/blog/${post.id}`}
+            class="brutal-card group block p-6 md:p-8"
+            data-category={post.data.category}
+          >
+            <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
+              <div class="font-mono text-xs text-text-muted md:w-36 shrink-0 pt-1 flex md:flex-col gap-2 items-center md:items-start">
+                <span>$ {gitDate(post.data.pubDate)}</span>
+                {post.data.featured && (
+                  <span class="text-accent" data-lang-content="es">★ destacado</span>
+                )}
+                {post.data.featured && (
+                  <span class="text-accent" data-lang-content="en">★ featured</span>
+                )}
+              </div>
+
+              <div class="flex-1 min-w-0">
+                <div class="flex flex-wrap items-center gap-3 mb-2">
+                  <span class={`section-tag border px-2 py-0.5 ${CATEGORIES[post.data.category].color}`}>
+                    {CATEGORIES[post.data.category].label}
+                  </span>
+                  <span class="font-mono text-xs text-text-muted">
+                    {readingTime(post.body)} {es.min}
+                  </span>
+                </div>
+
+                <h2 class="font-sans text-lg md:text-2xl font-semibold text-text-primary tracking-tight group-hover:text-accent transition-colors">
+                  {post.data.title}
+                </h2>
+                <p class="mt-2 text-sm md:text-base text-text-secondary">{post.data.description}</p>
+
+                <div class="mt-4 flex flex-wrap gap-2">
+                  {post.data.tags.map((tag) => (
+                    <span class="tech-badge">#{tag}</span>
+                  ))}
+                </div>
+              </div>
+
+              <span class="font-display text-sm text-text-muted group-hover:text-accent transition-colors shrink-0 hidden md:block">
+                {es.read}
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      {posts.length === 0 && (
+        <div class="brutal-card p-10 text-center font-mono text-text-muted">
+          <p class="text-accent mb-2">$ git log</p>
+          <p>no hay entradas todavía — la primera en camino.</p>
+        </div>
+      )}
+    </section>
+  </main>
+
+  <Footer />
+
+  <script>
+    const filters = document.querySelectorAll<HTMLButtonElement>('#blog-filters .filter-chip');
+    const posts = document.querySelectorAll<HTMLElement>('#blog-list [data-category]');
+
+    filters.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const filter = chip.dataset.filter;
+        filters.forEach((c) => c.classList.remove('is-active'));
+        // 'all' existe en dos variantes de idioma: activa ambas
+        filters.forEach((c) => {
+          if (c.dataset.filter === filter) c.classList.add('is-active');
+        });
+        posts.forEach((post) => {
+          const match = filter === 'all' || post.dataset.category === filter;
+          post.classList.toggle('hidden', !match);
+        });
+      });
+    });
+  </script>
+</BaseLayout>
+
+<style is:global>
+  .filter-chip {
+    @apply font-display text-xs uppercase tracking-wider px-3 py-1.5 border
+           text-text-muted border-border hover:border-accent hover:text-accent
+           transition-colors duration-200;
+    border-radius: 0.3rem;
+  }
+
+  .filter-chip.is-active {
+    @apply border-accent text-accent bg-accent/10;
+  }
+</style>

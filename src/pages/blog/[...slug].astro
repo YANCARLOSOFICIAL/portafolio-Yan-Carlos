@@ -1,0 +1,99 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import App from '../../components/react/App';
+import Footer from '../../components/astro/Footer.astro';
+import { CATEGORIES, formatDate, readingTime } from '../../data/blog';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const all = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+const index = all.findIndex((p) => p.id === post.id);
+const newer = index > 0 ? all[index - 1] : null;
+const older = index < all.length - 1 ? all[index + 1] : null;
+const minutes = readingTime(post.body);
+const category = CATEGORIES[post.data.category];
+
+const es = {
+  back: '← volver a /blog',
+  min: 'min de lectura',
+  prev: 'commit anterior',
+  next: 'commit siguiente',
+};
+const en = {
+  back: '← back to /blog',
+  min: 'min read',
+  prev: 'previous commit',
+  next: 'next commit',
+};
+---
+
+<BaseLayout title={`${post.data.title} — Código Tecnológico`} description={post.data.description}>
+  <App client:load />
+
+  <main class="pt-16 pattern-grid min-h-screen">
+    <article class="max-w-3xl mx-auto px-6 py-14 md:py-20">
+      <a href="/blog" class="font-mono text-xs text-text-muted hover:text-accent transition-colors" data-lang-content="es">{es.back}</a>
+      <a href="/blog" class="font-mono text-xs text-text-muted hover:text-accent transition-colors" data-lang-content="en">{en.back}</a>
+
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <span class={`section-tag border px-2 py-0.5 ${category.color}`}>{category.label}</span>
+        <span class="font-mono text-xs text-text-muted">{formatDate(post.data.pubDate)}</span>
+        <span class="font-mono text-xs text-text-muted">
+          {minutes} <span data-lang-content="es">{es.min}</span><span data-lang-content="en">{en.min}</span>
+        </span>
+      </div>
+
+      <h1 class="section-title mt-4 text-2xl md:text-4xl">{post.data.title}</h1>
+      <p class="mt-4 text-text-secondary text-lg">{post.data.description}</p>
+
+      <div class="mt-6 flex flex-wrap gap-2">
+        {post.data.tags.map((tag) => (
+          <span class="tech-badge">#{tag}</span>
+        ))}
+      </div>
+
+      <hr class="my-10 border-border" />
+
+      <div class="prose-brutal">
+        <Content />
+      </div>
+
+      <nav class="mt-14 pt-8 border-t border-border flex flex-col sm:flex-row justify-between gap-4">
+        <div class="sm:max-w-[45%]">
+          {older && (
+            <a href={`/blog/${older.id}`} class="group block">
+              <span class="font-mono text-xs text-text-muted">{es.prev} ←</span>
+              <p class="text-sm text-text-secondary group-hover:text-accent transition-colors mt-1">
+                {older.data.title}
+              </p>
+            </a>
+          )}
+        </div>
+        <div class="sm:max-w-[45%] sm:text-right">
+          {newer && (
+            <a href={`/blog/${newer.id}`} class="group block">
+              <span class="font-mono text-xs text-text-muted">→ {es.next}</span>
+              <p class="text-sm text-text-secondary group-hover:text-accent transition-colors mt-1">
+                {newer.data.title}
+              </p>
+            </a>
+          )}
+        </div>
+      </nav>
+    </article>
+  </main>
+
+  <Footer />
+</BaseLayout>

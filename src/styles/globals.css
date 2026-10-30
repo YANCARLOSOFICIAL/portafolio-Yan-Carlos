@@ -160,6 +160,96 @@
   .lang-btn-inactive {
     @apply border-border text-text-muted hover:border-accent hover:text-accent;
   }
+
+  /* --- Prosa del blog (Markdown renderizado) --- */
+  .prose-brutal {
+    @apply text-text-secondary leading-relaxed text-base;
+  }
+
+  .prose-brutal > :first-child {
+    @apply mt-0;
+  }
+
+  .prose-brutal h2 {
+    @apply font-sans text-2xl md:text-3xl font-semibold text-text-primary tracking-tight mt-12 mb-4;
+  }
+
+  .prose-brutal h3 {
+    @apply font-sans text-xl md:text-2xl font-semibold text-text-primary tracking-tight mt-8 mb-3;
+  }
+
+  .prose-brutal p {
+    @apply my-4;
+  }
+
+  .prose-brutal a {
+    @apply text-accent underline underline-offset-4 decoration-accent/40 hover:decoration-accent transition-colors;
+  }
+
+  .prose-brutal strong {
+    @apply text-text-primary font-semibold;
+  }
+
+  .prose-brutal ul,
+  .prose-brutal ol {
+    @apply my-5 pl-6 space-y-2;
+  }
+
+  .prose-brutal ul {
+    @apply list-disc;
+  }
+
+  .prose-brutal ol {
+    @apply list-decimal;
+  }
+
+  .prose-brutal li::marker {
+    @apply text-accent;
+  }
+
+  .prose-brutal blockquote {
+    @apply my-6 border-l-2 border-accent bg-surface text-text-primary px-5 py-4;
+    border-radius: 0.35rem;
+  }
+
+  .prose-brutal blockquote p {
+    @apply my-1;
+  }
+
+  .prose-brutal :not(pre) > code {
+    @apply font-mono text-[0.875em] text-accent bg-surface border border-border px-1.5 py-0.5;
+    border-radius: 0.25rem;
+  }
+
+  .prose-brutal pre {
+    @apply my-6 p-4 md:p-5 overflow-x-auto border border-border text-sm leading-relaxed;
+    border-radius: 0.5rem;
+  }
+
+  .prose-brutal pre code {
+    @apply bg-transparent border-none p-0 text-inherit;
+  }
+
+  .prose-brutal table {
+    @apply w-full my-6 text-sm border-collapse;
+  }
+
+  .prose-brutal thead th {
+    @apply font-display text-xs uppercase tracking-widest text-accent border border-border bg-surface px-3 py-2.5 text-left;
+  }
+
+  .prose-brutal tbody td {
+    @apply border border-border px-3 py-2.5 text-text-secondary;
+  }
+
+  .prose-brutal hr {
+    @apply my-10 border-border;
+  }
+
+  .prose-brutal img {
+    @apply border border-border;
+    border-radius: 0.35rem;
+  }
 }
 
 @layer utilities {

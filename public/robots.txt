@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://portafolio-yan-carlos.pages.dev/sitemap.xml
+Sitemap: https://portafolio-yan-carlos.pages.dev/sitemap-index.xml
