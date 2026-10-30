@@ -86,6 +86,13 @@ npm run dev    # desarrollo con HMR
 npm run build  # prebuild (YouTube + READMEs) + build estático + sitemap
 ```
 
+## 🗺 Roadmap pendiente
+
+- **Newsletter**: definir servicio (Buttondown / Resend / endpoint propio en Cloudflare Functions) — el usuario pospuso la decisión.
+- Categorías y tags como páginas propias (`/blog/categoria/[cat]`, `/blog/tag/[tag]`).
+- Reemplazar el formulario `mailto:` por un endpoint real (Cloudflare Pages Function).
+- Posible i18n de las entradas del blog (hoy solo español).
+
 ## � Estructura del Proyecto
 
 ```text
